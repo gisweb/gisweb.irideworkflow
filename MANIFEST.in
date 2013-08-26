@@ -1,0 +1,2 @@
+recursive-include gisweb *
+global-exclude *pyc

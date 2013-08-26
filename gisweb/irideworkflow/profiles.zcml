@@ -1,0 +1,22 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="gisweb.irideworkflow">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Iride workflow interface"
+      directory="profiles/default"
+      description='Extension profile for the "Iride workflow interface" Plone theme.'
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:importStep
+      name="gisweb.irideworkflow.various"
+      title="Iride workflow interface: miscellaneous import steps"
+      description="Various import steps that are not handled by GS import/export handlers."
+      handler="gisweb.irideworkflow.setuphandlers.setupVarious">
+    <depends name="skins"/>
+  </genericsetup:importStep>
+
+</configure>

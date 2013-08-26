@@ -1,0 +1,17 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    i18n_domain="gisweb.irideworkflow">
+
+  <!-- File System Directory Views registration -->
+  <cmf:registerDirectory name="gisweb_irideworkflow_custom_images"/>
+  <cmf:registerDirectory name="gisweb_irideworkflow_custom_templates"/>
+  <cmf:registerDirectory name="gisweb_irideworkflow_styles"/>
+  <cmf:registerDirectory name="gisweb_irideworkflow_scripts" recursive="True" />
+
+  <!-- Note: This could also be done for all folders at once
+       by replacing the previous lines with this one:
+  <cmf:registerDirectory name="skins" directory="skins" recursive="True" />
+  -->
+
+</configure>
