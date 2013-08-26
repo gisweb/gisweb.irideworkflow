@@ -17,15 +17,15 @@ MittenteDestinatarioIn-like.
 plominoDocument = context.getParentDocument()
 
 fieldmap = dict(
-    CodiceFiscale = lambda doc: doc.checkItem('fisica_cf'),
-    CognomeNome = lambda doc: "%s %s" % (doc.checkItem('fisica_cognome'), doc.checkItem('fisica_nome')),
-    Nome = lambda doc: doc.checkItem('fisica_nome'),
-    Indirizzo = lambda doc: doc.checkItem('fisica_indirizzo'),
-    Localita = lambda doc: doc.checkItem('fisica_loc'),
-    DataNascita = lambda doc: doc.checkItem('fisica_data_nato', dateformat='%d/%m/%Y'),
-    # CodiceComuneResidenza = lambda doc: doc.checkItem('fisica_cod_cat'),
-    Nazionalita = lambda doc: doc.checkItem('fisica_cittadinanza'),
+    CodiceFiscale =       lambda doc: doc.checkItem('fisica_cf'),
+    CognomeNome =         lambda doc: "%s %s" % (doc.checkItem('fisica_cognome'), doc.checkItem('fisica_nome')),
+    Nome =                lambda doc: doc.checkItem('fisica_nome'),
+    Indirizzo =           lambda doc: doc.checkItem('fisica_indirizzo'),
+    Localita =            lambda doc: doc.checkItem('fisica_loc'),
+    DataNascita =         lambda doc: doc.checkItem('fisica_data_nato', dateformat='%d/%m/%Y'),
+    Nazionalita =         lambda doc: doc.checkItem('fisica_cittadinanza'),
     CodiceComuneNascita = lambda doc: doc.checkItem('fisica_cod_cat_nato'),
+    # CodiceComuneResidenza = lambda doc: doc.checkItem('fisica_cod_cat'),
     ############### I have NO IDEA about how to set those: ############################
     # DataInvio_DataProt
     # Spese_NProt

@@ -20,7 +20,7 @@ fixed = dict(
     frm_gara_base = dict(
         TipoDocumento='COMP',
         InCaricoA='COMPSTRANEW',
-        #Classifica='002.000.000'
+        Classifica='XVIII.02.03.'
     ),
     frm_concessione_1 = dict(
         TipoDocumento='CONAS',
