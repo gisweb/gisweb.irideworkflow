@@ -1,0 +1,66 @@
+ <!-- informazioni da formattare
+<TestataProcedimento xsi:nil="true">
+    <IdIter>int</IdIter>
+    <Descrizione>string</Descrizione>
+    <Responsabile>string</Responsabile>
+    <DataInizio>datetime</DataInizio>
+    <DataFine>datetime</DataFine>
+    <DurataTeorica>int</DurataTeorica>
+    <DurataEffettiva>int</DurataEffettiva>
+    <GiorniMancanti>int</GiorniMancanti>
+    <StatoProcedimento>string</StatoProcedimento>
+</TestataProcedimento>
+-->
+<div class="well well-small">
+    <tal:success tal:condition="python: options['success']==1 and 'Descrizione' in options['result']">
+        <h3 tal:content="options/result/Descrizione" />
+        <div class="row-fluid">
+            <div class="span4">
+               <span>ID Iter: <strong tal:content="options/result/IdIter" /></span>
+            </div>
+            <div class="span8">
+                <span>Responsabile: <strong tal:content="options/result/Responsabile" /></span>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12"><!-- valori possibili: "In corso" o "Terminato" -->
+               <span>Stato del procedimento: <strong
+                   tal:define="stato options/result/StatoProcedimento"
+                   tal:attributes="class python: 'text-success' if stato=='In corso' else 'text-error'"
+                   tal:content="stato" /></span>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span6">
+               <span>dal: <strong
+                   tal:define="inizio options/result/DataInizio"
+                   tal:content="python: 'N.P.' if inizio < DateTime(1970, 1, 1) else inizio.strftime('%d-%m-%Y')" /></span>
+            </div>
+            <div class="span6">
+                <span>al: <strong
+                    tal:define="fine options/result/DataFine"
+                    tal:content="python: 'N.P.' if fine < DateTime(1970, 1, 1) else fine.strftime('%d-%m-%Y')" /></span>
+            </div>
+        </div>
+    </tal:success>
+    <tal:searchfail1 tal:condition="python: options['success']==1 and len(options['result'])==0">
+        <div class="alert alert-block">
+            <h4>Attenzione!</h4>
+            Nessun procedimento trovato corrispondente al documento selezionato.
+        </div>
+    </tal:searchfail1>
+    <tal:searchfail1 tal:condition="python: options['success']==1 and 'Errore' in options['result']">
+        <div class="alert alert-block">
+            <h4>Attenzione!</h4>
+            Sono stati riscontrati i seguenti errori nella richiesta:
+            <span><strong tal:content="options/result/Errore"/></span>
+        </div>
+    </tal:searchfail1>
+    <tal:errfail tal:condition="python: options['success']==0">
+        <div class="alert alert-error">
+            <h4>Attenzione!</h4>
+            È stato riscontrato un problema di comunicazione col server.
+            <strong tal:content="options/message" />
+        </div>
+    </tal:errfail>
+</div>

@@ -4,7 +4,6 @@ from suds.client import Client
 from datetime import datetime, date
 from base64 import b64encode
 from DateTime import DateTime
-from random import choice
 
 # this url is good if you
 # ssh siti.provincia.sp.it -L 3340:10.94.128.230:80 -p 2229
@@ -40,7 +39,7 @@ def prepare_string(data, docid):
     return '\n'.join(result)
 
 def deep_normalize(d):
-    """  """
+    """ Normalize content of object returned from functions and methods """
     if 'sudsobject' in str(d.__class__):
         d = deep_normalize(dict(d))
     else:
@@ -61,6 +60,7 @@ def deep_normalize(d):
     return d
 
 class Iride():
+    """ Base class for interfacing to Iride web services """
 
     HOST = 'http://10.94.128.230' # 'http://127.0.0.1:3340' #
     SPATH = 'ulissetest/iride/web_services_20'
@@ -134,7 +134,7 @@ class Iride():
                 res = service(request)
         except Exception as err:
             out['message'] = '%s' % err
-            # for debug purposes in case of exception reasons are in input data
+            # for debug purposes in case of exception (or error) reasons are in input data
             out['request'] = deep_normalize(dict(request))
         else:
             if 'Errore' in res:
@@ -173,7 +173,7 @@ class Iride():
 
 
 class IrideProtocollo(Iride):
-    """ A class for manage connection to WSProtocolloDM service """
+    """ Class for interfacing to Iride WSProtocolloDM web service """
 
     #SERVICE_NAME = 'WSProtocolloDM'
     method_to_test = 'RicercaPerCodiceFiscale'
@@ -227,7 +227,6 @@ class IrideProtocollo(Iride):
             MittenteInterno = 'PROTO02',
             Data = date.today().isoformat(),
             #Classifica = 'XVIII.02.03.',
-            #AggiornaAnagrafiche = 'F'
         )
 
         request = self.build_xml('ProtocolloIn', **dict(defaults, **kw))
@@ -295,8 +294,8 @@ class IrideProtocollo(Iride):
         self.query_service(self.client.service.RicercaPerCodiceFiscale, request)
 
 
-
 class IrideProcedimento(Iride):
+    """ Class for interfacing to Iride WSProcedimenti web service """
 
     def __init__(self, **kw):
         Iride.__init__(self, 'WSProcedimenti', **kw)

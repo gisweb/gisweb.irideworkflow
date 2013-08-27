@@ -1,0 +1,99 @@
+ 
+<tal:block tal:define="fieldname options/fieldname;
+                       dburl python:context.getParentDatabase().absolute_url();
+                       sourceview python: options['field'].getSettings('sourceview');
+                       params python:options['field'].getSettings('dynamictableparam');
+                       cols python: options['field'].getSettings().getJQueryColumns();
+                       destForm python: context.REQUEST.get('destinationForm','');
+                       ">
+
+        <div id="modalInfo" style="display:None"></div>
+        <input type="hidden" id="destinationForm" tal:attributes="value destForm"/>
+        <script type="text/javascript" charset="utf-8"
+
+            tal:content="structure string:
+                jq(document).ready(function() {
+                /*jq('#modalInfo').dialog({
+                    autoOpen: false,
+                    width: 600,
+                    height: 400,
+                    resizable: false,
+                    title: 'Informazioni',
+                    modal: true,
+                    buttons: {
+                        'Chiudi': function () {
+                            jq(this).dialog('close');
+                            jq('img.view-status-info[src$=\'details_close.png\']').trigger('click');
+                        }
+                    }
+                });*/
+
+                var oTable = jq('#${fieldname}_datagrid').dataTable( {
+                    'aoColumns': ${cols},
+                    'sAjaxSource':'${dburl}/${sourceview}/search_json',
+                    'aoColumnDefs': [
+                        {
+                            'aTargets': ['_all'],
+                            'bUseRendered': false,
+                            'fnRender': function (oObj) {
+                                var cell = oObj.aData[oObj.iDataColumn];
+                                // var dburl=jq('#Plomino_Database_URL').val();
+                                var destForm=jq('#destinationForm').val();
+                                var infoUrl=''
+                                if (oObj.iDataColumn>=1) {
+                                    if ( destForm ){
+                                        return '<a href=\'' + '${dburl}' +'/' + destForm + '?parentDocument=' + oObj.aData[0] + '\' class=\'viewlink\'>' + cell + '</a>';
+                                    } else {
+                                        if (oObj.iDataColumn==1){
+                                           return '<img data-docid=\'' + oObj.aData[8] + '\' data-cf=\'' + oObj.aData[7] + '\' src=\'details_open.png\' class=\'view-status-info\'/> ';
+                                        }
+                                        return '<a href=\'' + '${dburl}' +'/' + oObj.aData[0] + '\' class=\'viewlink\'>' + cell + '</a>';
+                                    }
+                                };
+                            }
+                        },
+                        { 'aTargets': [0, 1], 'bSearchable': false, 'bSortable': false, 'sWidth': '0' },
+                    ],
+                    ${params},
+
+                    'oLanguage': {
+                        'sUrl': '@@collective.js.datatables.translation'
+                    }
+                } );
+
+                /* Add event listener for opening and closing details
+                   Note that the indicator for showing which row is open is not controlled by DataTables,
+                   rather it is done here
+                */
+                $('.view-status-info').live('click', function () {
+
+                    var nTr = $(this).parents('tr')[0];
+                    if (this.src.indexOf('details_close.png')!=-1)
+                    {
+                        this.src = 'details_open.png';
+                        this.alt = 'Apri la finestra con la visualizzazione delle informazioni';
+                        //jq('#modalInfo').dialog('close');
+                        oTable.fnClose( nTr );
+                    }
+                    else
+                    {
+                        /* Open this row */
+                        this.src = 'details_close.png';
+                        this.alt = 'Chiudi la finestra di visualizzazione delle informazioni';
+                        var data= jq(this).data();
+                        data['format'] = 'TestataProcedimento.pt';
+                        $('#modalInfo').load(
+                            '${dburl}/Iride_ricerca_procedimento',
+                            data,
+                            function (response, status, xhr) {
+                                var html = $('#modalInfo').html();
+                                oTable.fnOpen( nTr, html, 'details' );
+                        });
+                    }
+                } );
+
+                plominoSearchTables.push('${fieldname}_datagrid');
+            } );">
+        </script>
+        <table class="table table-striped table-bordered" data-plugin="datatables" tal:attributes="id string:${fieldname}_datagrid"></table>
+</tal:block>
