@@ -27,10 +27,35 @@ fixed = dict(
         InCaricoA='CONCESNEW',
         Classifica='XVIII.02.03.'
     ),
-    frm_occupazione_a = dict(
-        TipoDocumento = 'CONSC',
-        InCaricoA = 'CONCESNEW'
+    frm_concessione_2 = dict(
+        TipoDocumento='CONAC',
+        InCaricoA='CONCESNEW',
+        Classifica='XVIII.02.03.'
     ),
+    frm_concessione_3 = dict(
+        TipoDocumento='CONST',
+        InCaricoA='CONCESNEW',
+        Classifica='XVIII.02.03.'
+    ),
+    frm_concessione_4 = dict(
+        TipoDocumento='CONRE',
+        InCaricoA='CONCESNEW',
+        Classifica='XVIII.02.03.'
+    ),
+    frm_concessione_5 = dict(
+        TipoDocumento='CONSV',
+        InCaricoA='CONCESNEW',
+        Classifica='XVIII.02.03.'
+    ),
+    frm_concessione_6 = dict(
+        TipoDocumento='CONSD',
+        InCaricoA='CONCESNEW',
+        Classifica='XVIII.02.03.'
+    ),
+    #frm_occupazione_a = dict(
+        #TipoDocumento = 'CONSC',
+        #InCaricoA = 'CONCESNEW'
+    #),
     # whatever...
 )
 
