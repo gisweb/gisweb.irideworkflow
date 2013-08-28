@@ -26,6 +26,10 @@ tablenames = dict(
     #frm_occupazione_c = 'POR_CONCSTRA_CPUB'
 )
 
+render_bool(value):
+    if value: return 'S'
+    return 'N'
+
 fieldmaps = dict(
     frm_gara_base = dict(
         COMP_DENGARA =      lambda doc: doc.checkItem('gara_denominazione'),
@@ -60,12 +64,12 @@ fieldmaps = dict(
         PROG_WKTGEOM =    lambda doc: doc.checkItem('ubicazione_aprog_geometry'),
     ),
     frm_concessione_2 = dict(
-        PACCE_TIPO_ABP =   lambda doc: str('ABP' in doc.checkItem('ubicazione_strada_elenco'))[1],
-        PACCE_TIPO_RUR =   lambda doc: str('RUR' in doc.checkItem('ubicazione_strada_elenco'))[1],
-        PACCE_TIPO_CIA =   lambda doc: str('CIA' in doc.checkItem('ubicazione_strada_elenco'))[1],
-        PACCE_TIPO_MURI =  lambda doc: str('MURI' in doc.checkItem('ubicazione_strada_elenco'))[1],
-        PACCE_TIPO_REC =   lambda doc: str('REC' in doc.checkItem('ubicazione_strada_elenco'))[1],
-        PACCE_TIPO_ALTRO = lambda doc: str('ALTRO' in doc.checkItem('ubicazione_strada_elenco'))[1],
+        PACCE_TIPO_ABP =   lambda doc: render_bool('ABP' in doc.checkItem('ubicazione_strada_elenco')),
+        PACCE_TIPO_RUR =   lambda doc: render_bool('RUR' in doc.checkItem('ubicazione_strada_elenco')),
+        PACCE_TIPO_CIA =   lambda doc: render_bool('CIA' in doc.checkItem('ubicazione_strada_elenco')),
+        PACCE_TIPO_MURI =  lambda doc: render_bool('MURI' in doc.checkItem('ubicazione_strada_elenco')),
+        PACCE_TIPO_REC =   lambda doc: render_bool('REC' in doc.checkItem('ubicazione_strada_elenco')),
+        PACCE_TIPO_ALTRO = lambda doc: render_bool('ALTRO' in doc.checkItem('ubicazione_strada_elenco')),
         PACCE_TIPO_NOTE =  lambda doc: doc.checkItem('concessione_opere_altro'),
         PACCE_LOCSTRADA =  lambda doc: doc.checkItem('ubicazione_strada_elenco'),
         PACCE_COMUNE    =  lambda doc: doc.checkItem('ubicazione_comune'),
@@ -111,26 +115,26 @@ fieldmaps = dict(
         VOL_DATAREPERTORIO = lambda doc: doc.checkItem('concessione_repertorio_data'),
         VOL_INTESTAZIONE =   lambda doc: doc.checkItem('concessione_intestazione_precedente'),
         VOL_MOTIVO =         lambda doc: doc.checkItem('concessione_voltura_motivazione'),
-        VOL_COMUNE    =      lambda doc: doc.checkItem('ubicazione_comune'),
-        VOL_INDIRIZZO    =   lambda doc: doc.checkItem('ubicazione_indirizzo'),
+        VOL_COMUNE =         lambda doc: doc.checkItem('ubicazione_comune'),
+        VOL_INDIRIZZO =      lambda doc: doc.checkItem('ubicazione_indirizzo'),
         VOL_CIVICO    =      lambda doc: doc.checkItem('ubicazione_civico'),
-        VOL_CAP    =         lambda doc: doc.checkItem('ubicazione_cap'),
+        VOL_CAP =            lambda doc: doc.checkItem('ubicazione_cap'),
         VOL_FOGLIO =         lambda doc: doc.checkItem('ubicazione_foglio'),
         VOL_MAPPALE =        lambda doc: doc.checkItem('ubicazione_mappale'),
         VOL_MODIFICA =       lambda doc: doc.checkItem('concessione_opt')[1].upper(),
         VOL_NOTEMOD =        lambda doc: doc.checkItem('concessione_modificazioni_altro'),
-        #VOL_WKTGEOM
+        VOL_WKTGEOM =        lambda doc: doc.checkItem('localizzazione_indirizzo_geometry'),
     ),
     frm_concessione_6 = dict(
-        #DEP_NUMREPERTORIO
-        #DEP_DATAREPERTORIO
-        #DEP_INTESTAZIONE
-        #DEP_MEZZOBANCA
-        #DEP_IBAN
-        #DEP_CC
-        #DEP_ABI
-        #DEP_CAB
-    )
+        DEP_NUMREPERTORIO =  lambda doc: doc.checkItem('concessione_repertorio_numero'),
+        DEP_DATAREPERTORIO = lambda doc: doc.checkItem('concessione_repertorio_data'),
+        DEP_INTESTAZIONE =   lambda doc: doc.checkItem('concessione_intestazione_precedente'),
+        DEP_MEZZOBANCA =     lambda doc: render_bool(doc.checkItem('pagamento_elenco_mezzi')=='bonifico'),
+        DEP_IBAN =  lambda doc: doc.checkItem('pagamento_iban'),
+        DEP_CC =  lambda doc: doc.checkItem('pagamento_contocorrente'),
+        DEP_ABI =  lambda doc: doc.checkItem('pagamento_abi'),
+        DEP_CAB =  lambda doc: doc.checkItem('pagamento_cab'),
+    ),
     # whatever...
 )
         
