@@ -45,6 +45,7 @@ if 'result' in res_protocollo:
 else:
     context.addPortalMessage(res_protocollo['message'], msg_type='error')
 
+# for test porposes only
 if results == 1:
     return res_protocollo
 elif results == 2:

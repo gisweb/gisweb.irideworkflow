@@ -82,7 +82,7 @@ class Iride():
 
         url = '/'.join((self.HOST, self.SPATH, locals()[service]))
         self.url = url
-        self.client = Client(url, location=url)
+        self.client = Client(url, location=url, timeout=180)
 
     def build_xml(self, name, **kw):
         """ Generic XML helper """
