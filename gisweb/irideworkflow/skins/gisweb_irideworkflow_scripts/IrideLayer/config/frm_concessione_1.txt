@@ -1,0 +1,25 @@
+# ISTANZA per attraversamenti stradali, cavi e tubazioni aerei e/o sotterranei
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = CONAS
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_COMPSTRA]
+ATTR_TIPOPERE
+ATTR_LOCSTRADA = ubicazione_strada_elenco
+ATTR_COMUNE = ubicazione_comune
+ATTR_LATO = ubicazione_lato
+ATTR_PROGRE = ubicazione_prog
+ATTR_INIPROGRE = ubicazione_daprog
+ATTR_FINEPROGRE = ubicazione_aprog
+ATTR_FOGLIO = ubicazione_foglio
+ATTR_MAPPALE = ubicazione_mappale
+ATTR_NOTE = concessione_annotazioni
+APROG_WKTGEOM = ubicazione_prog_geometry
+DAPROG_WKTGEOM = ubicazione_daprog_geometry
+PROG_WKTGEOM = ubicazione_aprog_geometry

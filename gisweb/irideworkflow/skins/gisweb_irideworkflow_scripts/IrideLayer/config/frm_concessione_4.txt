@@ -1,0 +1,18 @@
+# ISTANZA per rinnovo/proroga/revisione provvedimento
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = CONRE
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_CONCSTRA_PROVV]
+PROVV_TIPORIC = concessione_richiesta
+PROVV_NUMPROVV = concessione_numero
+PROVV_DATAPROVV = concessione_data_rilascio
+PROVV_DATASCAD = concessione_data_scadenza
+PROVV_DTPROROGA = concessione_data_proroga
+PROVV_NOTE = concessione_annotazioni

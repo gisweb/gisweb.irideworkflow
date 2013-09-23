@@ -1,0 +1,7 @@
+# -*- coding: utf-8 -*-
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento
+InCaricoA = CONCESNEW
+Classifica = XVIII.02.03.

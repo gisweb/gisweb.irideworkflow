@@ -1,0 +1,32 @@
+# Denuncia ai sensi dell'art. 21 c.2 L.R. 43/1995 delle acque meteoriche di dilavamento
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = AMETE
+InCaricoA = INQUIACQUENEW
+Classifica = IX.04.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_ACQUE_METEO]
+AMETE_COMUNE = ubicazione_comune
+AMETE_INDIRIZZO = ubicazione_indirizzo
+AMETE_CIVICO = ubicazione_civico
+AMETE_CAP = ubicazione_cap
+AMETE_FOGLIO = ubicazione_foglio
+AMETE_MAPPALE = ubicazione_mappale
+AMETE_SUPERFICIE = acque_meteoriche_sup
+AMETE_ATTIVITA = acque_meteoriche_attivita
+AMETE_PIAZZA_NCO = acque_meteoriche_piazzali_1
+AMETE_TERRA_NCO = acque_meteoriche_tetti_1
+AMETE_RECAPITO_NCO = acque_meteoriche_recapito_1
+AMETE_PIAZZA_CO = acque_meteoriche_piazzali_2
+AMETE_TERRA_CO = acque_meteoriche_tetti_2
+AMETE_RECAPITO_CO = acque_meteoriche_recapito_2
+AMETE_NAUTOR = acque_meteoriche_aut
+AMETE_DATAUTOR = acque_meteoriche_aut_data
+AMETE_ENTEAUTOR = acque_meteoriche_aut_ril
+AMETE_WKTGEOM = localizzazione_indirizzo_geometry

@@ -1,0 +1,20 @@
+# ISTANZA di svincolo deposito cauzionale
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = CONSD
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_CONCSTRA_DEP]
+DEP_NUMREPERTORIO = concessione_repertorio_numero
+DEP_DATAREPERTORIO = concessione_repertorio_data
+DEP_INTESTAZIONE = concessione_intestazione_precedente
+#DEP_MEZZOBANCA
+DEP_IBAN = pagamento_iban
+DEP_CC = pagamento_contocorrente
+DEP_ABI = pagamento_abi
+DEP_CAB = pagamento_cab

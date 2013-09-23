@@ -1,0 +1,32 @@
+# ISTANZA per accessi permanenti (privati, rurali, commerciali, industriali e
+# artigianali) oppure per recinzioni e muri di sostegno di tipo permanente
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = CONAC
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_CONCSTRA_PACCE]
+#PACCE_TIPO_ABP
+#PACCE_TIPO_RUR
+#PACCE_TIPO_CIA
+#PACCE_TIPO_MURI
+#PACCE_TIPO_REC
+#PACCE_TIPO_ALTRO
+PACCE_TIPO_NOTE = concessione_opere_altro
+PACCE_LOCSTRADA = ubicazione_strada_elenco
+PACCE_COMUNE = ubicazione_comune
+PACCE_LATO = ubicazione_lato
+PACCE_PROGRE = ubicazione_prog
+PACCE_INIPROGRE = ubicazione_daprog
+PACCE_FINEPROGRE = ubicazione_aprog
+PACCE_FOGLIO = ubicazione_foglio
+PACCE_MAPPALE = ubicazione_mappale
+PACCE_NOTE = concessione_annotazioni
+APROG_WKTGEOM = ubicazione_prog_geometry
+DAPROG_WKTGEOM = ubicazione_daprog_geometry
+PROG_WKTGEOM = ubicazione_aprog_geometry

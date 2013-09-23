@@ -1,0 +1,39 @@
+# -*- coding: utf-8 -*-
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = COMP
+InCaricoA = CONCESNEW
+Classifica = XVIII.02.03.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+POR_PCOMPSTRA = gara_punto_percorso
+
+
+# - STRUTTURA MONORECORD
+[POR_COMPSTRA]
+COMP_DENGARA = gara_denominazione
+COMP_DATACOMP = gara_data_gara
+COMP_LOCALITA = gara_comune_gara
+COMP_ORE_RITROVO = gara_ora_ritrovo
+COMP_LUO_RITROVO = gara_luogo_ritrovo
+COMP_LUO_PARTENZA = gara_luogo_partenza
+COMP_ORE_PARTENZA = gara_ora_partenza
+COMP_ORE_ARRIVO = gara_ora_arrivo
+COMP_LUO_ARRIVO = gara_luogo_arrivo
+COMP_ITINERARIO = gara_itinerario
+COMP_DATA_SOPLUO = gara_data_sopraluogo
+COMP_NUM_POLIZZA = gara_polizza_num
+COMP_DATA_POLIZZA = gara_polizza_data
+COMP_SOC_ASSICURA = gara_polizza_societa
+COMP_CATEG = gara_tipo
+
+
+# - STRUTTURE MULTIRECORD
+[POR_PCOMPSTRA]
+PCOMP_UBICA = ubicazione
+PCOMP_POSLAT = lat
+PCOMP_POSLONG = lng
+PCOMP_SIMBOLO = tipo
+PCOMP_WKTGEOM = posizione

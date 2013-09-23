@@ -1,0 +1,28 @@
+# ISTANZA per accessi, recinzioni, ponteggi, occupazioni di natura temporanea
+# o da cantiere
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = CONST
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_CONCSTRA_TACCE]
+#TACCE_TIPOPERE
+TACCE_LOCSTRADA = ubicazione_strada_elenco
+TACCE_COMUNE = ubicazione_comune
+TACCE_LATO = ubicazione_lato
+TACCE_PROGRE = ubicazione_prog
+TACCE_INIPROGRE = ubicazione_daprog
+TACCE_FINEPROGRE = ubicazione_aprog
+TACCE_FOGLIO = ubicazione_foglio
+TACCE_MAPPALE = ubicazione_mappale
+TACCE_DATAINI = concessione_data_da
+TACCE_DATAFINE = concessione_data_a
+TACCE_NOTE = concessione_annotazioni
+APROG_WKTGEOM = ubicazione_prog_geometry
+DAPROG_WKTGEOM = ubicazione_daprog_geometry
+PROG_WKTGEOM = ubicazione_aprog_geometry
