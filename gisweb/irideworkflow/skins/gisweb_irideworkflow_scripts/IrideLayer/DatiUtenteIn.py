@@ -14,139 +14,79 @@ Ricava dal PlominoDocument le informazioni utili per costruire un oggetto
 DatiUtenteIn-like.
 """
 
+from gisweb.irideworkflow import conf2dict
+from gisweb.utils import json_dumps, json_loads
+
 plominoDocument = context.getParentDocument()
+conf_name = '%s.txt' % plominoDocument.getForm().getFormName()
+resources = plominoDocument.getParentDatabase().resources
 
-tablenames = dict(
-    frm_gara_base = 'POR_COMPSTRA',
-    frm_concessione_1 = 'POR_CONCSTRA_ATTR',
-    frm_concessione_2 = 'POR_CONCSTRA_PACCE',
-    frm_concessione_3 = 'POR_CONCSTRA_TACCE',
-    frm_concessione_4 = 'POR_CONCSTRA_PROVV',
-    #frm_occupazione_a = 'POR_CONCSTRA_VOL',
-    #frm_occupazione_c = 'POR_CONCSTRA_CPUB'
-)
+msg = 'Layer per la pratica "%s" NON ancora implementato!' % plominoDocument.Title().decode('ascii', errors='replace').encode('ascii', errors='replace')
 
-render_bool(value):
-    if value: return 'S'
-    return 'N'
+if conf_name in script.config.keys():
+    conf = conf2dict(str(getattr(script.config, conf_name)))
+elif 'IrideLayer' in resources.keys() and conf_name in resources.IrideLayer.keys():
+    conf = conf2dict(str(getattr(resources.IrideLayer, conf_name)))
+else:
+    assert False, msg
 
-fieldmaps = dict(
-    frm_gara_base = dict(
-        COMP_DENGARA =      lambda doc: doc.checkItem('gara_denominazione'),
-        COMP_DATACOMP =     lambda doc: doc.checkItem('gara_data_gara'),
-        COMP_LOCALITA =     lambda doc: doc.checkItem('gara_comune_gara'),
-        COMP_ORE_RITROVO =  lambda doc: doc.checkItem('gara_ora_ritrovo'),
-        COMP_LUO_RITROVO =  lambda doc: doc.checkItem('gara_luogo_ritrovo'),
-        COMP_LUO_PARTENZA = lambda doc: doc.checkItem('gara_luogo_partenza'),
-        COMP_ORE_PARTENZA = lambda doc: doc.checkItem('gara_ora_partenza'),
-        COMP_ORE_ARRIVO =   lambda doc: doc.checkItem('gara_ora_arrivo'),
-        COMP_LUO_ARRIVO =   lambda doc: doc.checkItem('gara_luogo_arrivo'),
-        COMP_ITINERARIO =   lambda doc: doc.checkItem('gara_itinerario'),
-        COMP_DATA_SOPLUO =  lambda doc: doc.checkItem('gara_data_sopraluogo'),
-        COMP_NUM_POLIZZA =  lambda doc: doc.checkItem('gara_polizza_num'),
-        COMP_DATA_POLIZZA = lambda doc: doc.checkItem('gara_polizza_data'),
-        COMP_SOC_ASSICURA = lambda doc: doc.checkItem('gara_polizza_societa'),
-        COMP_CATEG =        lambda doc: doc.checkItem('gara_tipo')
-    ),
-    frm_concessione_1 = dict(
-        ATTR_TIPOPERE =   lambda doc: doc.checkItem('concessione_opere') or doc.checkItem('concessione_opere_altro'),
-        ATTR_LOCSTRADA =  lambda doc: doc.checkItem('ubicazione_strada_elenco'),
-        ATTR_COMUNE =     lambda doc: doc.checkItem('ubicazione_comune'),
-        ATTR_LATO =       lambda doc: doc.checkItem('ubicazione_lato'),
-        ATTR_PROGRE =     lambda doc: doc.checkItem('ubicazione_prog'),
-        ATTR_INIPROGRE =  lambda doc: doc.checkItem('ubicazione_daprog'),
-        ATTR_FINEPROGRE = lambda doc: doc.checkItem('ubicazione_aprog'),
-        ATTR_FOGLIO =     lambda doc: doc.checkItem('ubicazione_foglio'),
-        ATTR_MAPPALE =    lambda doc: doc.checkItem('ubicazione_mappale'),
-        ATTR_NOTE =       lambda doc: doc.checkItem('concessione_annotazioni'),
-        APROG_WKTGEOM =   lambda doc: doc.checkItem('ubicazione_prog_geometry'),
-        DAPROG_WKTGEOM =  lambda doc: doc.checkItem('ubicazione_daprog_geometry'),
-        PROG_WKTGEOM =    lambda doc: doc.checkItem('ubicazione_aprog_geometry'),
-    ),
-    frm_concessione_2 = dict(
-        PACCE_TIPO_ABP =   lambda doc: render_bool('ABP' in doc.checkItem('ubicazione_strada_elenco')),
-        PACCE_TIPO_RUR =   lambda doc: render_bool('RUR' in doc.checkItem('ubicazione_strada_elenco')),
-        PACCE_TIPO_CIA =   lambda doc: render_bool('CIA' in doc.checkItem('ubicazione_strada_elenco')),
-        PACCE_TIPO_MURI =  lambda doc: render_bool('MURI' in doc.checkItem('ubicazione_strada_elenco')),
-        PACCE_TIPO_REC =   lambda doc: render_bool('REC' in doc.checkItem('ubicazione_strada_elenco')),
-        PACCE_TIPO_ALTRO = lambda doc: render_bool('ALTRO' in doc.checkItem('ubicazione_strada_elenco')),
-        PACCE_TIPO_NOTE =  lambda doc: doc.checkItem('concessione_opere_altro'),
-        PACCE_LOCSTRADA =  lambda doc: doc.checkItem('ubicazione_strada_elenco'),
-        PACCE_COMUNE    =  lambda doc: doc.checkItem('ubicazione_comune'),
-        PACCE_LATO =       lambda doc: doc.checkItem('ubicazione_lato'),
-        PACCE_PROGRE =     lambda doc: doc.checkItem('ubicazione_prog'),
-        PACCE_INIPROGRE =  lambda doc: doc.checkItem('ubicazione_daprog'),
-        PACCE_FINEPROGRE = lambda doc: doc.checkItem('ubicazione_aprog'),
-        PACCE_FOGLIO =     lambda doc: doc.checkItem('ubicazione_foglio'),
-        PACCE_MAPPALE =    lambda doc: doc.checkItem('ubicazione_mappale'),
-        PACCE_NOTE =       lambda doc: doc.checkItem('concessione_annotazioni'),
-        APROG_WKTGEOM =    lambda doc: doc.checkItem('ubicazione_prog_geometry'),
-        DAPROG_WKTGEOM =   lambda doc: doc.checkItem('ubicazione_daprog_geometry'),
-        PROG_WKTGEOM =     lambda doc: doc.checkItem('ubicazione_aprog_geometry'),
-
-    ),
-    frm_concessione_3 = dict(
-        TACCE_TIPOPERE =   lambda doc: doc.checkItem('concessione_opere') or doc.checkItem('concessione_opere_altro'),
-        TACCE_LOCSTRADA =  lambda doc: doc.checkItem('ubicazione_strada_elenco'),
-        TACCE_COMUNE    =  lambda doc: doc.checkItem('ubicazione_comune'),
-        TACCE_LATO =       lambda doc: doc.checkItem('ubicazione_lato'),
-        TACCE_PROGRE =     lambda doc: doc.checkItem('ubicazione_prog'),
-        TACCE_INIPROGRE =  lambda doc: doc.checkItem('ubicazione_daprog'),
-        TACCE_FINEPROGRE = lambda doc: doc.checkItem('ubicazione_aprog'),
-        TACCE_FOGLIO =     lambda doc: doc.checkItem('ubicazione_foglio'),
-        TACCE_MAPPALE =    lambda doc: doc.checkItem('ubicazione_mappale'),
-        TACCE_DATAINI =    lambda doc: doc.checkItem('concessione_data_da'),
-        TACCE_DATAFINE =   lambda doc: doc.checkItem('concessione_data_a'),
-        TACCE_NOTE =       lambda doc: doc.checkItem('concessione_annotazioni'),
-        APROG_WKTGEOM =    lambda doc: doc.checkItem('ubicazione_prog_geometry'),
-        DAPROG_WKTGEOM =   lambda doc: doc.checkItem('ubicazione_daprog_geometry'),
-        PROG_WKTGEOM =     lambda doc: doc.checkItem('ubicazione_aprog_geometry'),
-    ),
-    frm_concessione_4 = dict(
-        PROVV_TIPORIC =   lambda doc: doc.checkItem('concessione_richiesta'),
-        PROVV_NUMPROVV =  lambda doc: doc.checkItem('concessione_numero'),
-        PROVV_DATAPROVV = lambda doc: doc.checkItem('concessione_data_rilascio'),
-        PROVV_DATASCAD =  lambda doc: doc.checkItem('concessione_data_scadenza'),
-        PROVV_DTPROROGA = lambda doc: doc.checkItem('concessione_data_proroga'),
-        PROVV_NOTE =      lambda doc: doc.checkItem('concessione_annotazioni'),
-    ),
-    frm_concessione_5 = dict(
-        VOL_NUMREPERTORIO =  lambda doc: doc.checkItem('concessione_repertorio_numero'),
-        VOL_DATAREPERTORIO = lambda doc: doc.checkItem('concessione_repertorio_data'),
-        VOL_INTESTAZIONE =   lambda doc: doc.checkItem('concessione_intestazione_precedente'),
-        VOL_MOTIVO =         lambda doc: doc.checkItem('concessione_voltura_motivazione'),
-        VOL_COMUNE =         lambda doc: doc.checkItem('ubicazione_comune'),
-        VOL_INDIRIZZO =      lambda doc: doc.checkItem('ubicazione_indirizzo'),
-        VOL_CIVICO    =      lambda doc: doc.checkItem('ubicazione_civico'),
-        VOL_CAP =            lambda doc: doc.checkItem('ubicazione_cap'),
-        VOL_FOGLIO =         lambda doc: doc.checkItem('ubicazione_foglio'),
-        VOL_MAPPALE =        lambda doc: doc.checkItem('ubicazione_mappale'),
-        VOL_MODIFICA =       lambda doc: doc.checkItem('concessione_opt')[1].upper(),
-        VOL_NOTEMOD =        lambda doc: doc.checkItem('concessione_modificazioni_altro'),
-        VOL_WKTGEOM =        lambda doc: doc.checkItem('localizzazione_indirizzo_geometry'),
-    ),
-    frm_concessione_6 = dict(
-        DEP_NUMREPERTORIO =  lambda doc: doc.checkItem('concessione_repertorio_numero'),
-        DEP_DATAREPERTORIO = lambda doc: doc.checkItem('concessione_repertorio_data'),
-        DEP_INTESTAZIONE =   lambda doc: doc.checkItem('concessione_intestazione_precedente'),
-        DEP_MEZZOBANCA =     lambda doc: render_bool(doc.checkItem('pagamento_elenco_mezzi')=='bonifico'),
-        DEP_IBAN =  lambda doc: doc.checkItem('pagamento_iban'),
-        DEP_CC =  lambda doc: doc.checkItem('pagamento_contocorrente'),
-        DEP_ABI =  lambda doc: doc.checkItem('pagamento_abi'),
-        DEP_CAB =  lambda doc: doc.checkItem('pagamento_cab'),
-    ),
-    # whatever...
-)
-        
-key = plominoDocument.getForm().getFormName()
-assert (key in fieldmaps) and (key in tablenames), 'Layer per la pratica "%s" NON ancora implementato!' % plominoDocument.Title().decode('ascii', errors='replace').encode('ascii', errors='replace')
-
-fieldmap = fieldmaps.get(key) or dict()
 out = dict()
-for k,fun in fieldmap.items():
-    res = fun(plominoDocument)
-    if res != None:
-        out[k] = res
 
-return {tablenames[key]: (out, )}
+def getrecords(doc, values):
+
+    if isinstance(doc, basestring):
+        doc = plominoDocument.getParentDatabase().getDocument(doc)
     
+    record = dict()
+    for k,raw in values.items():
+            # per valore semplicemente mancante nel file di configurazione
+            # considero <nome campo> == <nome colonna>
+            if not raw: raw=k
+            v = raw.split(',')
+            value = doc.checkItem(*v)
+            if value:
+                record[k] = value
+    return record
+
+def foo(v):
+    return json_loads(json_dumps(v))
+    
+for tablename,values in conf.items():
+    record = dict()
+    if tablename not in ['CONFIG'] + conf['CONFIG'].keys():
+        out[tablename] = (getrecords(plominoDocument, values), )
+
+    elif tablename != 'CONFIG':
+        fieldcontainer = conf['CONFIG'][tablename]
+        plominoForm = plominoDocument.getForm()
+        plominoField = plominoForm.getFormField(fieldcontainer)
+        fieldtype = plominoField.getFieldType()
+        itemvalue = plominoDocument.getItem(fieldcontainer, []) or []
+        if fieldtype == 'DOCLINK':
+            if itemvalue:
+                out[tablename] = tuple()
+                for docid in itemvalue:
+                    out[tablename] = out[tablename] + (getrecords(docid, values), )
+        if fieldtype == 'DATAGRID':
+            if itemvalue:
+                out[tablename] = tuple()
+                sortedfields = plominoField.getSettings().field_mapping.split(',')
+                for rec in itemvalue:
+                    record = dict()
+                    for k,raw in values.items():
+                        v = raw.split(',')[0] # non uso checkItem, non considero eventuali attributi
+                        record[k] = foo(rec[sortedfields.index(v)])
+                    out[tablename] = out[tablename] + (record, )
+
+return out
+
+
+
+#fieldmap = fieldmaps.get(key) or dict()
+#out = dict()
+#for k,fun in fieldmap.items():
+    #res = fun(plominoDocument)
+    #if res != None:
+        #out[k] = res
+
+#return {tablenames[key]: (out, )}

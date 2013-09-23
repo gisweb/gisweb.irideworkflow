@@ -15,68 +15,19 @@ ProtocolloIn-like.
 """
 
 plominoDocument = context.getParentDocument()
+conf_name = '%s.txt' % plominoDocument.getForm().getFormName()
 
-commons = dict(Classifica='XVIII.02.03.', InCaricoA='CONCESNEW')
+msg = 'Layer per la pratica "%s" NON ancora implementato!' % plominoDocument.Title().decode(
+    'ascii', errors='replace').encode('ascii', errors='replace')
+assert (conf_name in context.config.keys()), msg
 
-fixed = dict(
-    frm_gara_base = dict(commons,
-        TipoDocumento='COMP',
-        InCaricoA='COMPSTRANEW',
-        #Classifica='XVIII.02.03.'
-    ),
-    frm_concessione_1 = dict(
-        TipoDocumento='CONAS',
-        #InCaricoA='CONCESNEW',
-        #Classifica='XVIII.02.03.'
-    ),
-    frm_concessione_2 = dict(
-        TipoDocumento='CONAC',
-        #InCaricoA='CONCESNEW',
-        #Classifica='XVIII.02.03.'
-    ),
-    frm_concessione_3 = dict(
-        TipoDocumento='CONST',
-        #InCaricoA='CONCESNEW',
-        #Classifica='XVIII.02.03.'
-    ),
-    frm_concessione_4 = dict(
-        TipoDocumento='CONRE',
-        #InCaricoA='CONCESNEW',
-        #Classifica='XVIII.02.03.'
-    ),
-    frm_concessione_5 = dict(
-        TipoDocumento='CONSV',
-        #InCaricoA='CONCESNEW',
-        #Classifica='XVIII.02.03.'
-    ),
-    frm_concessione_6 = dict(
-        TipoDocumento='CONSD',
-        #InCaricoA='CONCESNEW',
-        #Classifica='XVIII.02.03.'
-    ),
-    #frm_occupazione_a = dict(
-        #TipoDocumento = 'CONSC',
-        #InCaricoA = 'CONCESNEW'
-    #),
-    # whatever...
-)
+from gisweb.irideworkflow import conf2dict
 
-formname = plominoDocument.getForm().getFormName()
+conf = conf2dict(str(getattr(script.config, conf_name)))
+defaults = conf2dict(str(getattr(script.config, 'defaults.txt')))['CONFIG']
+
 return dict(
-    fixed[formname],
+    defaults,
     Oggetto = plominoDocument.Title(),
+    **dict([(k,v) for k,v in conf['CONFIG'].items() if k not in conf])
 )
-
-#fieldmap = dict(
-    #Oggetto =       lambda doc: doc.Title(), #(doc.Title()).decode('ascii', 'replace').encode('ascii', 'replace'),
-    #TipoDocumento = lambda doc: fixed[doc.getForm().getFormName()]['TipoDocumento'],
-    #InCaricoA =     lambda doc: fixed[doc.getForm().getFormName()]['InCaricoA'],
-    ##Classifica =    lambda doc: fixed[doc.getForm().getFormName()]['Classifica'],
-#)
-
-#out = dict()
-#for k,fun in fieldmap.items():
-    #res = fun(plominoDocument)
-    #if res != None:
-        #out[k] = res
-#return out     
