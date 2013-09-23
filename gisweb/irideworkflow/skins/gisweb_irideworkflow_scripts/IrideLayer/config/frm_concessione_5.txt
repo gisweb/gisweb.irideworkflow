@@ -20,6 +20,6 @@ VOL_CIVICO = ubicazione_civico
 VOL_CAP = ubicazione_cap
 VOL_FOGLIO = ubicazione_foglio
 VOL_MAPPALE = ubicazione_mappale
-#VOL_MODIFICA
+VOL_MODIFICA = concessione_opt
 VOL_NOTEMOD = concessione_modificazioni_altro
 VOL_WKTGEOM = localizzazione_indirizzo_geometry

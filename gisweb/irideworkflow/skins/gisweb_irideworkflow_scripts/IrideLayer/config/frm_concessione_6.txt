@@ -13,7 +13,7 @@ TipoDocumento = CONSD
 DEP_NUMREPERTORIO = concessione_repertorio_numero
 DEP_DATAREPERTORIO = concessione_repertorio_data
 DEP_INTESTAZIONE = concessione_intestazione_precedente
-#DEP_MEZZOBANCA
+DEP_MEZZOBANCA = pagamento_elenco_mezzi
 DEP_IBAN = pagamento_iban
 DEP_CC = pagamento_contocorrente
 DEP_ABI = pagamento_abi

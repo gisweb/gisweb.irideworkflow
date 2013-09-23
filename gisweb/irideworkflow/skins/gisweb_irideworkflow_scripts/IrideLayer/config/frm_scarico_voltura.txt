@@ -1,0 +1,30 @@
+# DOMANDA DI VOLTURA DELL’AUTORIZZAZIONE ALLO SCARICO DI TIPO PRODUTTIVO
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = SCAVD
+InCaricoA = INQUIACQUENEW
+Classifica = IX.04.01.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+
+# - STRUTTURA MONORECORD
+[POR_SCARICO_VOL]
+SCAVD_NAUTOR = scarico_autorizzazione_numero
+SCAVD_DATAUTOR = scarico_autorizzazione_data
+SCAVD_TITOLARE = scarico_autorizzazione_intestazione
+SCAVD_COMNAS = scarico_comune_nato
+SCAVD_DATANAS = scarico_data_nato
+SCAVD_COMRES = scarico_localita
+SCAVD_INDIRES = scarico_via
+SCAVD_CIVRES = scarico_civico
+SCAVD_COMUNE = ubicazione_comune
+SCAVD_INDIRIZZO = ubicazione_indirizzo
+SCAVD_CIVICO = ubicazione_civico
+SCAVD_CAP = ubicazione_cap
+SCAVD_FOGLIO = ubicazione_foglio
+SCAVD_MAPPALE = ubicazione_mappale
+SCAVD_WKTGEOM = localizzazione_indirizzo_geometry

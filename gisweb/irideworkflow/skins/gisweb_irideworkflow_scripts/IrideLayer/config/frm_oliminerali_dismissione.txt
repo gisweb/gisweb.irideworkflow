@@ -1,0 +1,26 @@
+# Comunicazione di dismissione dello stabilimento di lavorazione e/o stoccaggio di
+# oli minerali
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = OMCDI
+InCaricoA = DEPOLIMINNEW
+Classifica = IX.06.04.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_OLI_DISMISSIONE]
+DISM_TIPOLOGIA = oliminerali_concessione_tipologia
+DISM_DATARIL = oliminerali_concessione_data
+DISM_PROTORIL = oliminerali_concessione_protocollo
+DISM_DATADISM = oliminerali_dismissione_data
+DISM_COMUNE = ubicazione_comune
+DISM_INDIRIZZO = ubicazione_indirizzo
+DISM_CIVICO = ubicazione_civico
+DISM_CAP = ubicazione_cap
+DISM_FOGLIO = ubicazione_foglio
+DISM_MAPPALE = ubicazione_mappale
+DISM_WKTGEOM = localizzazione_indirizzo_geometry

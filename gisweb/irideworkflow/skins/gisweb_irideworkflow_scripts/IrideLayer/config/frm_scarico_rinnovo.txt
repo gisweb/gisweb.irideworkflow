@@ -1,0 +1,26 @@
+# DOMANDA DI RINNOVO DELL'AUTORIZZAZIONE DEFINITIVA ALLO SCARICO DI TIPO PRODUTTIVO
+# NEL RISPETTO DELLE DISPOSIZIONI DELL’ART. 9 DELLA L.R. 43/95 E DELL'ART. 124 E 125
+# DEL D. LGS. 152/06 E S.M.I
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = SCARD
+InCaricoA = INQUIACQUENEW
+Classifica = IX.04.01.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+
+# - STRUTTURA MONORECORD
+[POR_SCARICO_RD]
+SCARD_NAUTOR = scarico_rinnovo_numero
+SCARD_DATAUTOR = scarico_rinnovo_data
+SCARD_COMUNE = ubicazione_comune
+SCARD_INDIRIZZO = ubicazione_indirizzo
+SCARD_CIVICO = ubicazione_civico
+SCARD_CAP = ubicazione_cap
+SCARD_FOGLIO = ubicazione_foglio
+SCARD_MAPPALE = ubicazione_mappale
+SCARD_WKTGEOM = localizzazione_indirizzo_geometry

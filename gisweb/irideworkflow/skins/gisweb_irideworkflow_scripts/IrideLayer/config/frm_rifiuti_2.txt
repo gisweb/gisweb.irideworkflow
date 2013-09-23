@@ -1,0 +1,17 @@
+# Domanda di autorizzazione impianti di smaltimento e recupero rifiuti
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = 
+InCaricoA = RIFIUTINEW
+Classifica = IX.07.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+
+# - STRUTTURA MONORECORD
+[]
+
+
+# - STRUTTURA MULTIRECORD
+

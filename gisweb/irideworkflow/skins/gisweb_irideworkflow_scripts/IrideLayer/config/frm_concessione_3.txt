@@ -11,7 +11,7 @@ TipoDocumento = CONST
 
 # - STRUTTURA MONORECORD
 [POR_CONCSTRA_TACCE]
-#TACCE_TIPOPERE
+TACCE_TIPOPERE
 TACCE_LOCSTRADA = ubicazione_strada_elenco
 TACCE_COMUNE = ubicazione_comune
 TACCE_LATO = ubicazione_lato
