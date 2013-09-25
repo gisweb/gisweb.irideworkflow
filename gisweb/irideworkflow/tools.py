@@ -25,13 +25,17 @@ def leggi_documento(docid, **kw):
     conn = IrideProtocollo(**kw)
     return conn.LeggiDocumento(docid)
 
-def inserisci_protocollo(MittenteIn, AllegatoIn, UtenteIn, ProtocolloIn, testinfo=False, **ccp):
-    """ """
+def inserisci_protocollo(MittentiIn, AllegatiIn, UtenteIn, ProtocolloIn, testinfo=False, **ccp):
+    """
+
+    TODO:
+    * supporto per mittenti multipli (MittentiIn)
+    """
     conn = IrideProtocollo(testinfo=testinfo, **ccp)
 
     res_protocollo = conn.InserisciProtocollo(
-        mittenti=[MittenteIn],
-        allegati=[AllegatoIn],
+        mittenti = MittentiIn,
+        allegati = AllegatiIn,
         **ProtocolloIn
     )
 
@@ -128,3 +132,10 @@ def procedimento_pratica(cf, docid, testinfo=False, **ccp):
             return res_procedimenti
     else:
         return res_procedimenti
+
+        
+################################################################# TEST FUNCTIONS #
+
+def test_build_mittente(mitt, **ccp):
+    conn = IrideProtocollo(testinfo=True, **ccp)
+    return conn.build_mittente(**mitt)

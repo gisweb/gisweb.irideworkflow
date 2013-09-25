@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=itemname, default=None, format='ISO'
+##parameters=itemname, default=None, format='%d/%m/%Y'
 ##title=
 ##
 # Example code:

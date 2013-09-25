@@ -5,3 +5,4 @@
 TipoDocumento
 InCaricoA = CONCESNEW
 Classifica = XVIII.02.03.
+AggiornaAnagrafiche = S

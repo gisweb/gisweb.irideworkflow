@@ -77,7 +77,7 @@ for tablename,values in conf.items():
                         v = raw.split(',')[0] # non uso checkItem, non considero eventuali attributi
                         record[k] = foo(rec[sortedfields.index(v)])
                     out[tablename] = out[tablename] + (record, )
-
+                    
 return out
 
 

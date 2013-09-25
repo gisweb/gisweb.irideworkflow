@@ -27,7 +27,7 @@ conf = conf2dict(str(getattr(script.config, conf_name)))
 defaults = conf2dict(str(getattr(script.config, 'defaults.txt')))['CONFIG']
 
 return dict(
-    defaults,
+    defaults, # valori le cui chiavi sono presenti anche in conf saranno sovrascritti
     Oggetto = plominoDocument.Title(),
     **dict([(k,v) for k,v in conf['CONFIG'].items() if k not in conf])
 )

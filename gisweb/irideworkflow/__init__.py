@@ -14,6 +14,7 @@ from tools import test_di_connessione
 from tools import leggi_documento
 from tools import inserisci_protocollo
 from tools import procedimento_pratica
+from tools import test_build_mittente
 
 import ConfigParser
 try:

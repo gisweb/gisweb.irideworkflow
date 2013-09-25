@@ -90,9 +90,17 @@ class Iride():
         # a quanto pare iride ha qualche problema con i valori settati a None
         # come è di default per cui i valori non forniti li setto a '' (stringa vuota)
         for k,v in dict(xml).items():
-            # considero SOLO gli oggetti semplici
+            # considero gli oggetti semplici
             if v == None:
                 xml[k] = kw.get(k) or ''
+            # qui ho considerato che la struttura o contiene oggetti semplici (vedi sopra)
+            # o contiene oggetti ArrayOf<something>-like.
+            elif kw[k]:
+                # l'elemento k di kw a questo punto sarà una lista di dizionari
+                for o in kw[k]:
+                    xml[k][xml[k].__keylist__[0]].append(self.build_xml(str(v).split('\n')[0][8:-2], **o))
+                    
+                
         return xml
 
     def build_obj(self, name, **kw):

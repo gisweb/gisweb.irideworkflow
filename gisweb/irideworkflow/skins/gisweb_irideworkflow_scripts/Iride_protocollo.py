@@ -9,6 +9,15 @@
 ##
 # Example code:
 
+"""
+tipo: tipo di protocollo (E o A: Entrata/Arrivo, U o P: Uscita/Partenza, I: Interno)
+oggetto:
+data: data della richiesta di protocollazione (se mancante verrà usata quella
+    corrente dalle procedure interne)
+
+testinfo e results sono parametri di test
+"""
+
 assert context.isAuthor(), "You need edit permission on this document!"
 
 from gisweb.irideworkflow import inserisci_protocollo
@@ -20,8 +29,8 @@ from gisweb.irideworkflow import inserisci_protocollo
 # il valore I (protocollo interno) non ha corrispondenze
 diz = dict(E='A', U='P')
 
-MittenteIn = context.IrideLayer.MittenteDestinatarioIn()
-AllegatoIn = context.IrideLayer.AllegatoIn()
+MittentiIn = context.IrideLayer.MittentiDestinatariIn()
+AllegatiIn = context.IrideLayer.AllegatoIn()
 UtenteIn = context.IrideLayer.DatiUtenteIn()
 ProtocolloIn = context.IrideLayer.ProtocolloIn()
 
@@ -31,7 +40,7 @@ if oggetto!=None:
 if data != None:
     ProtocolloIn['Data'] = data
 
-res_protocollo, res_utente = inserisci_protocollo(MittenteIn, AllegatoIn,
+res_protocollo, res_utente = inserisci_protocollo(MittentiIn, AllegatiIn,
     UtenteIn, ProtocolloIn, testinfo=testinfo, **context.Iride_loadPortalSettings())
 
 if 'result' in res_protocollo:
