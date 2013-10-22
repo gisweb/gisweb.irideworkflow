@@ -41,3 +41,7 @@ def conf2dict(string):
     for session in config.sections():
         out[session] = dict([(k,v) for k,v in config.items(session) if v])
     return out
+
+def cwd():
+    import os
+    return os.getcwd()
