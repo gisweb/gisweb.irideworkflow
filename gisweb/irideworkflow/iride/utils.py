@@ -3,24 +3,15 @@
 from Products.CMFPlomino.PlominoUtils import csv_to_array
 import os
 
-path = 'src/gisweb.irideworkflow/gisweb/irideworkflow/iride/'
-# in case spervisord is used
-if os.getcwd().endswith('bin'):
-    path = '../' + path
-filepath = 'utils/dbo_GEO_COMUNE.csv'
+from pkg_resources import resource_string
 
-def getcci():
-    with open(path+filepath, 'r') as source:
-        # Codici Comuni Iride
-        CCI =  csv_to_array(source.read(), delimiter=';', quotechar='"')
-    return CCI
+CCI = csv_to_array(resource_string(__name__, 'utils/dbo_GEO_COMUNE.csv'), delimiter=';', quotechar='"')
     
 def getCodcom(codfisco):
     """
     dato un codice fiscale di un comune voglio il corrispondente codice ISTAT.
     """
     assert codfisco, 'Variable has to be evaluated as True'
-    CCI = getcci()
     i = CCI[0].index('GCO_ISTAT')
     flt = lambda row : row[4].upper()==codfisco.upper()
     res = filter(flt, CCI)
