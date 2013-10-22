@@ -9,10 +9,10 @@ TipoDocumento = CONAS
 # NESSUNA STRUTTURA MULTIRECORD PRESENTE
 
 # - STRUTTURA MONORECORD
-[POR_COMPSTRA]
+[POR_CONCSTRA_ATTR]
 ATTR_TIPOPERE
 ATTR_LOCSTRADA = ubicazione_strada_elenco
-ATTR_COMUNE = ubicazione_comune
+ATTR_COMUNE = COMUNE_ISTAT
 ATTR_LATO = ubicazione_lato
 ATTR_PROGRE = ubicazione_prog
 ATTR_INIPROGRE = ubicazione_daprog

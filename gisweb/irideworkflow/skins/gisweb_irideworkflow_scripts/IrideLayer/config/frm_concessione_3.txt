@@ -13,7 +13,7 @@ TipoDocumento = CONST
 [POR_CONCSTRA_TACCE]
 TACCE_TIPOPERE
 TACCE_LOCSTRADA = ubicazione_strada_elenco
-TACCE_COMUNE = ubicazione_comune
+TACCE_COMUNE = COMUNE_ISTAT
 TACCE_LATO = ubicazione_lato
 TACCE_PROGRE = ubicazione_prog
 TACCE_INIPROGRE = ubicazione_daprog

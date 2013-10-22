@@ -12,7 +12,7 @@ Classifica = IX.04.
 
 # - STRUTTURA MONORECORD
 [POR_ACQUE_METEO]
-AMETE_COMUNE = ubicazione_comune
+AMETE_COMUNE = COMUNE_ISTAT
 AMETE_INDIRIZZO = ubicazione_indirizzo
 AMETE_CIVICO = ubicazione_civico
 AMETE_CAP = ubicazione_cap

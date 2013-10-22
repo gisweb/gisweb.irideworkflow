@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from iride.interface import IrideProtocollo, IrideProcedimento
+from iride.interface import IrideProtocollo, IrideProcedimento, IridePratiche
+from iride.interface import doc2xml, prepare_string2
 
 def test_di_connessione(**kw):
     """ Verifica lo stato della connessione. """
@@ -133,9 +134,26 @@ def procedimento_pratica(cf, docid, testinfo=False, **ccp):
     else:
         return res_procedimenti
 
-        
+def wm_attiva_procedimento(kw, testinfo=False, **ccp):
+    """ """
+    conn = IridePratiche(testinfo=testinfo, **ccp)
+    res = conn.wm_attiva_procedimento(**kw)
+    return res
+
+def InserisciDatiUtente(docid, UtenteIn, testinfo=False, **ccp):
+    """ """
+    conn = IrideProtocollo(testinfo=testinfo, **ccp)
+    return conn.InserisciDatiUtente(docid, UtenteIn)
+
 ################################################################# TEST FUNCTIONS #
 
 def test_build_mittente(mitt, **ccp):
     conn = IrideProtocollo(testinfo=True, **ccp)
     return conn.build_mittente(**mitt)
+
+def test_prepare_string(data, docid):
+    return doc2xml(prepare_string2(data, docid), pprint=True)
+
+def test_build_xml(name, kw={}, **ccp):
+    conn = IridePratiche(testinfo=True, **ccp)
+    return conn.build_xml(name, **kw)

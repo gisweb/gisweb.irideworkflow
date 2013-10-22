@@ -19,7 +19,7 @@ PACCE_TIPO_REC
 PACCE_TIPO_ALTRO
 PACCE_TIPO_NOTE = concessione_opere_altro
 PACCE_LOCSTRADA = ubicazione_strada_elenco
-PACCE_COMUNE = ubicazione_comune
+PACCE_COMUNE = COMUNE_ISTAT
 PACCE_LATO = ubicazione_lato
 PACCE_PROGRE = ubicazione_prog
 PACCE_INIPROGRE = ubicazione_daprog

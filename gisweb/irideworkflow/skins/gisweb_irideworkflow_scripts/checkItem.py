@@ -19,17 +19,22 @@ assert itemname in items+fields, 'Missing PlominoField %s' % (itemname)
 
 value = context.getItem(itemname, default)
 
-if isinstance(value, DateTime):
-    if format in ('ISO', ):
+if format==None:
+    return value
+
+elif callable(format):
+    return format(value)
+
+elif isinstance(value, DateTime):
+    if format.upper() in ('ISO', ):
         return value.ISO()
     elif format:
         return value.strftime(format)
 
-elif isinstance(1, (bool, int, basestring, )):
-    if format == 'S/N':
-        if value:
-            return 'S'
-        else:
-            return 'N'
+elif format == 'S/N':
+    if value:
+        return 'S'
+    else:
+        return 'N'
 
 return value

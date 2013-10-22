@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=
+##parameters=json=False
 ##title=Build a DatiUtenteIn-like object
 ##
 # Example code:
@@ -77,8 +77,13 @@ for tablename,values in conf.items():
                         v = raw.split(',')[0] # non uso checkItem, non considero eventuali attributi
                         record[k] = foo(rec[sortedfields.index(v)])
                     out[tablename] = out[tablename] + (record, )
-                    
-return out
+
+if not json:
+    return out
+else:
+    from gisweb.utils import json_dumps
+    print json_dumps(out)
+    return printed
 
 
 

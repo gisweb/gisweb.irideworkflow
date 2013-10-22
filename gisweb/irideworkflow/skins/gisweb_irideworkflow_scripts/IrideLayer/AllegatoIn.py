@@ -28,4 +28,3 @@ for k,fun in fieldmap.items():
     if res != None:
         out[k] = res
 return out
-    
