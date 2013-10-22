@@ -5,7 +5,8 @@ import os
 
 from pkg_resources import resource_string
 
-CCI = csv_to_array(resource_string(__name__, 'utils/dbo_GEO_COMUNE.csv'), delimiter=';', quotechar='"')
+filepath = 'utils/dbo_GEO_COMUNE.csv'
+CCI = csv_to_array(resource_string(__name__, filepath), delimiter=';', quotechar='"')
     
 def getCodcom(codfisco):
     """
