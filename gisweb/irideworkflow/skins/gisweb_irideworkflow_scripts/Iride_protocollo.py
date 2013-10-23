@@ -26,8 +26,9 @@ if not context.getItem('irideIdDocumento'):
     res1 = context.wm_attiva_procedimento(oggetto=oggetto, data=data, testinfo=testinfo, json=False, pmsg=pmsg)
     out.append(res1)
 
-res2 = context.InserisciDatiUtente(testinfo=testinfo, json=False, pmsg=pmsg)
-out.append(res2)
+if context.getItem('irideIdDocumento'):
+    res2 = context.InserisciDatiUtente(testinfo=testinfo, json=False, pmsg=pmsg)
+    out.append(res2)
 
 if json:
     context.REQUEST.RESPONSE.setHeader("Content-type", "application/json")

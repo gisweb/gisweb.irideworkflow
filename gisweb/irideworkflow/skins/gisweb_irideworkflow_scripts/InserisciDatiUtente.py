@@ -38,7 +38,7 @@ if pmsg:
 
 if json:
     context.REQUEST.RESPONSE.setHeader("Content-type", "application/json")
-    print json_dumps(res)
+    print json_dumps(res, prettyxml=True)
     return printed
 else:
     return res

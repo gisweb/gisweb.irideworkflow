@@ -49,6 +49,7 @@ def prepare_string2(data, docid):
     for tablename, rows in data.items():
         locals()[tablename] = etree.SubElement(root, 'table', name=tablename)
         for i, row in enumerate(rows):
+            # a quanto pare NON servono più
             #row.update(
                 #dict(
                     #IRIDE_DOCID = docid,
@@ -60,7 +61,7 @@ def prepare_string2(data, docid):
             locals()['row_%s' % i] = etree.SubElement(locals()[tablename], 'row')
             for key,value in row.items():
                 locals()['%s_%s' % (key, i)] = etree.SubElement(locals()['row_%s' % i], 'field', name=key)
-                locals()['%s_%s' % (key, i)].text = str(value)
+                locals()['%s_%s' % (key, i)].text = u"%s" % value
     return doc
                 
                 
@@ -369,11 +370,11 @@ class IridePratiche(Iride):
         codice_fiscale_titolare,
         anagrafica_titolare,
         codice_fiscale_richiedente,
-        anagrafica_richiedente,
         tipo_procedimento,
         oggetto,
         dati_procedimento,
-        dati_richiesta
+        dati_richiesta,
+        anagrafica_richiedente="",
     ):
         """
         Scopo:
@@ -492,7 +493,6 @@ class IridePratiche(Iride):
 
 class IrideProtocollo(Iride):
     """
-    Warning: DEPRECATED?!?
     Class for interfacing to Iride WSProtocolloDM web service
     """
 

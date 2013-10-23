@@ -82,7 +82,7 @@ if not json:
     return out
 else:
     from gisweb.utils import json_dumps
-    print json_dumps(out)
+    print json_dumps(out, prettyxml=True)
     return printed
 
 
