@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=itemname, default=None, format='%d/%m/%Y'
+##parameters=itemname, default=None, format='%d/%m/%Y', check=True
 ##title=
 ##
 # Example code:
@@ -15,7 +15,8 @@ fields = [i.getId() for i in context.getForm().getFormFields(includesubforms=Tru
 # il test serve per verificare l'allineamento tra i form e questo script,
 # caso mai venissero aggiornati i nomi di alcuni campi.
 # In tal caso voglio essere avvertito prima possibile!!
-assert itemname in items+fields, 'Missing PlominoField %s' % (itemname)
+if check:
+    assert itemname in items+fields, 'Missing PlominoField %s' % (itemname)
 
 value = context.getItem(itemname, default)
 

@@ -39,5 +39,5 @@ def conf2dict(string):
     
     out = dict()
     for session in config.sections():
-        out[session] = dict([(k,v) for k,v in config.items(session) if v])
+        out[session] = dict([(k,v) for k,v in config.items(session)])
     return out

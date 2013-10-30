@@ -40,9 +40,10 @@ def getrecords(doc, values):
     record = dict()
     for k,raw in values.items():
             # per valore semplicemente mancante nel file di configurazione
-            # considero <nome campo> == <nome colonna>
+            # considero <nome campo> = <nome colonna>
             if not raw: raw=k
             v = raw.split(',')
+            if not v[0]: v[0]=k
             value = doc.checkItem(*v)
             if value:
                 record[k] = value
@@ -50,7 +51,7 @@ def getrecords(doc, values):
 
 def foo(v):
     return json_loads(json_dumps(v))
-    
+
 for tablename,values in conf.items():
     record = dict()
     if tablename not in ['CONFIG'] + conf['CONFIG'].keys():

@@ -2,16 +2,72 @@
 
 [CONFIG]
 # - INFORMAZIONI DI PROTOCOLLAZIONE
-TipoDocumento = 
+TipoDocumento = RIFDA
 InCaricoA = RIFIUTINEW
 Classifica = IX.07.
 
 # - STRUTTURE MULTI-RECORD PRESENTI
 # -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+POR_SUBRIFIUTI = ubicazione_altri_mappali
 
-# - STRUTTURA MONORECORD
-[]
+# - STRUTTURE MONORECORD
+[POR_RIFIUTI]
+NSEMP_TIPORIC = rifiuti_richiesta_opt
+NSEMP_NREP = concessione_repertorio_numero
+NSEMP_DATAREP = concessione_repertorio_data
+NSEMP_D1 = ,N,,
+NSEMP_D2 = ,N,,
+NSEMP_D3 = ,N,,
+NSEMP_D4 = ,N,,
+NSEMP_D5 = ,N,,
+NSEMP_D6 = ,N,,
+NSEMP_D7 = ,N,,
+NSEMP_D8 = ,N,,
+NSEMP_D9 = ,N,,
+NSEMP_D10 = ,N,,
+NSEMP_D11 = ,N,,
+NSEMP_D12 = ,N,,
+NSEMP_D13 = ,N,,
+NSEMP_D14 = ,N,,
+NSEMP_D15 = ,N,,
+NSEMP_R1 = ,N,,
+NSEMP_R2 = ,N,,
+NSEMP_R3 = ,N,,
+NSEMP_R4 = ,N,,
+NSEMP_R5 = ,N,,
+NSEMP_R6 = ,N,,
+NSEMP_R7 = ,N,,
+NSEMP_R8 = ,N,,
+NSEMP_R9 = ,N,,
+NSEMP_R10 = ,N,,
+NSEMP_R11 = ,N,,
+NSEMP_R12 = ,N,,
+NSEMP_R13 = ,N,,
+NSEMP_COMUNE = ubicazione_comune
+NSEMP_INDIRIZZO = ubicazione_indirizzo
+NSEMP_CIVICO = ubicazione_civico
+NSEMP_CAP = ubicazione_cap
+NSEMP_FOGLIO = ubicazione_foglio
+NSEMP_MAPPALE = ubicazione_mappale
+NSEMP_WKTGEOM = localizzazione_indirizzo_geometry
 
 
-# - STRUTTURA MULTIRECORD
+[POR_GESRIFIUTI]
+GEST_RAGSOC = gestore_denominazione
+GEST_COMUNE = gestore_comune
+GEST_PROVIN = gestore_provincia
+GEST_CAP = gestore_cap
+GEST_LOCALITA = gestore_localita
+GEST_INDIRIZZO = gestore_indirizzo
+GEST_CIVICO = gestore_civico
+GEST_PARTIVA = gestore_piva
+GEST_CODFIS = gestore_cf
+GEST_EMAIL = gestore_email
+GEST_TELEF = gestore_telefono
+GEST_CELL = gestore_cellulare
+GEST_FAX = gestore_fax
 
+# - STRUTTURE MULTIRECORD
+[POR_SUBRIFIUTI]
+SUB_FOGLIO = ubicazione_foglio
+SUB_MAPPALE = ubicazione_mappale
