@@ -1,0 +1,47 @@
+# ISTANZA concessione demaniale
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = COTER
+InCaricoA = FD1SETT4
+Classifica = XVII.02.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+POR_UBICA_DEMAUTO = posizione_punto
+
+# - STRUTTURA MONORECORD
+[POR_DEMAUTO]
+DEMAU_TIPORIC = tipo_richiesta
+DEMAU_OGGCONC = nome_concessione
+DEMAU_USOCONC = uso_concessione
+DEMAU_AREACONC = area_concessione
+DEMAU_TEMPCONC = temporanea_concessione
+DEMAU_ANNICONC = anni_concessione
+POR_DEMAUTODEMAU_NCONC = numero_concessione
+DEMAU_DATACONC = data_concessione
+DEMAU_NPRATICA = numero_pratica_concessione
+DEMAU_MODIFICA = modifiche_concessione_originale
+DEMAU_DESMODIFICA = descrizione_modifiche_concessione
+DEMAU_DATASCAD = data_scadenza
+DEMAU_DATAINI_SAN = data_sanatoria
+DEMAU_COMUNE = ubicazione_comune
+DEMAU_FOGLIO = localizzazione_foglio
+DEMAU_MAPPALE = localizzazione_mappale
+#DEMAU_OPARZIALE = 
+#DEMAU_NOMAPPALE = 
+#DEMAU_CORSO = 
+#DEMAU_POSLAT =
+#DEMAU_POSLONG = 
+DEMAU_WKTGEOM = localizzazione_indirizzo_geometry
+
+# - STRUTTURE MULTIRECORD
+[POR_UBICA_DEMAUTO]
+UDEMAU_COMUNE = comune_punto
+UDEMAU_FOGLIO = foglio_punto
+UDEMAU_MAPPALE = mapale_punto
+UDEMAU_OPARZIALE = totale_demanio
+UDEMAU_NOMAPPALE = mappale_no_censito
+UDEMAU_CORSO = corso_acqua_punto
+UDEMAU_POSLAT = lat
+UDEMAU_POSLONG = lng

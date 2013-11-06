@@ -1,0 +1,41 @@
+# ISTANZA di autorizzazione per il taglio del bosco in area vincolata idrogeologicamente
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = BOIDR
+InCaricoA = FD5SETT4
+Classifica = XVII.06.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+POR_UBICA_BOSCO = posizione_punto
+
+# - STRUTTURA MONORECORD
+[POR_BOSCO]
+BO_COMUNE_NCT = ubicazione_comune
+BO_FOGLIO = ubicazione_foglio
+BO_MAPPALE = ubicazione_mappale
+#BO_UBICAZIONE =
+BO_INDIRIZZO = localizzazione_indirizzo
+#BO_POSLAT
+#BO_POSLONG
+BO_COLTURA = cambio_coltura
+BO_LOC_TAGLIO = localita_vincolo
+BO_COM_TAGLIO = comune_vincolo
+BO_NOME_PROGE = nominativo_progettista
+BO_LOC_STUDIO = studio_progettista
+BO_VIA_STUDIO = via_progettista
+BO_NCIV_STUDIO = civico_progettista
+BO_TELEF_PROGE = telefono_progettista
+BO_AREA_SIC = area_sic
+BO_WKTGEOM = localizzazione_indirizzo_geometry
+
+[POR_UBICA_BOSCO]
+UBO_COMUNE = comune_punto
+UBO_FOGLIO = foglio_punto
+UBO_MAPPALE = mappale_punto
+UBO_UBICAZIONE = ubicazione
+UBO_INDIRIZZO = indirizzo_terreno
+UBO_POSLAT = lat
+UBO_POSLONG = lng
+

@@ -1,0 +1,47 @@
+# ISTANZA di autorizzazione per interventi in area vincolata idrogeologicamente
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = INGEO
+InCaricoA = FD5SETT4
+Classifica = XVII.06.01.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+POR_UBICA_INGEO = posizione_punto
+
+# - STRUTTURA MONORECORD
+[POR_INGEO]
+INGEO_COMUNE = ubicazione_comune
+INGEO_FOGLIO = ubicazione_foglio
+INGEO_MAPPALE = ubicazione_mappale
+#INGEO_UBICAZIONE
+INGEO_INDIRIZZO = localizzazione_indirizzo
+#INGEO_POSLAT
+#INGEO_POSLONG
+INGEO_TIPOISTANZA = tipologia_autorizzazione
+INGEO_DATALAVORI = data_sanatoria
+INGEO_SANATORIA_PARZ = sanatoria_parziale
+INGEO_DESLAVORI = descrizione_autorizzazione
+INGEO_NUMATTO = numero_determina
+INGEO_DATATTO = data_determina
+INGEO_NUMPRATICA = numero_pratica_determina
+INGEO_COMUNE_NCT = ubicazione_comune
+INGEO_LOCAREA = localita_vincolo
+INGEO_COMUNAREA = comune_vincolo
+INGEO_NOME_PROGE = nominativo_progettista
+INGEO_LOC_STUDIO = studio_progettista
+INGEO_VIA_STUDIO = via_progettista
+INGEO_NCIV_STUDIO = civico_progettista
+INGEO_TELEF_PROGE = telefono_progettista
+INGEO_WKTGEOM = localizzazione_indirizzo_geometry
+
+[POR_UBICA_INGEO]
+UINGEO_COMUNE = comune_punto
+UINGEO_FOGLIO = foglio_punto
+UINGEO_MAPPALE = mappale_punto
+UINGEO_UBICAZIONE = ubicazione
+UINGEO_INDIRIZZO = indirizzo_terreno
+UINGEO_POSLAT = lat
+UINGEO_POSLONG = lng
+

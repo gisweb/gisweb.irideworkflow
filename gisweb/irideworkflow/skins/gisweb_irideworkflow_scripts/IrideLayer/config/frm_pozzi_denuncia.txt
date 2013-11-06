@@ -1,0 +1,63 @@
+# ISTANZA denuncia pozzo
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = DENPO
+InCaricoA = FD1SETT4
+Classifica = XVII.03.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_POZZI]
+DPOZ_TERRENO  = proprieta_terreno
+# vedi formula in frm_pozzi_denuncia/DPOZ_T
+DPOZ_DOMES = DPOZ_T1,N,,
+DPOZ_IRRIG = DPOZ_T2,N,,
+DPOZ_CONSU = DPOZ_T3,N,,
+DPOZ_INDUS = DPOZ_T4,N,,
+DPOZ_PESCI = DPOZ_T5,N,,
+DPOZ_SPORTVE = DPOZ_T6,N,,
+DPOZ_IGIENE = DPOZ_T7,N,,
+
+DPOZ_DESAUTO = tipologia_autorizzazione_pozzo
+DPOZ_NAUTO = numero_autorizzazione
+DPOZ_DATAUTO = data_autorizzazione
+DPOZ_DATVAL = amministratore_concessione
+DPOZ_NPRATICA = numero_pratica_concessione
+
+DPOZ_DESCOMUNE = ubicazione_comune
+DPOZ_COMUNE = ubicazione_comune
+#DPOZ_UBICAZIONE = localizzazione_indirizzo
+#DPOZ_INDIRIZZO = localizzazione_indirizzo
+#DPOZ_FOGLIO = localizzazione_foglio
+#DPOZ_MAPPALE = localizzazione_mappale
+#DPOZ_POSLAT
+#DPOZ_POSLONG
+DPOZ_DESINDIRIZZO = ubicazione_indirizzo
+DPOZ_DESCIVICO = ubicazione_civico
+DPOZ_DESCAP = ubicazione_cap
+DPOZ_DESFOGLIO = ubicazione_foglio
+DPOZ_DESMAPPALE = ubicazione_mappale
+
+DPOZ_DATAPOZZO = data_perforazione
+DPOZ_DITTA = ditta_perforazione
+DPOZ_DIAMETRO = diametro_pozzo
+DPOZ_PROFONDITA = profondita_pozzo
+DPOZ_CONTATORE = contatore_pozzo
+DPOZ_TIPO_POMPA = tipo_pompa
+DPOZ_POTENZA_POMPA = potenza_pompa
+DPOZ_PORTATA_POMPA = portata_pompa
+DPOZ_PORTAT_POZZO = portata_pozzo
+DPOZ_DIAMETRO_TUBO = diametro_tubo
+DPOZ_AVANPOZZO = avanpozzo
+DPOZ_ATTIVITA = attivita_pozzo
+DPOZ_MOTIVO_NOATT = motivo_inattivita
+DPOZ_DATA_CESSATT = motivo_inattivita
+DPOZ_UTILIZZO = utilizzo_pozzo
+DPOZ_GGUTILIZZO = utilizzo_giorni_anno
+DPOZ_OREUTILIZZO = utilizzo_ore_giorno
+DPOZ_CONSUMO_ANNO = consumo_annuo
+DPOZ_WKTGEOM = localizzazione_indirizzo_geometry

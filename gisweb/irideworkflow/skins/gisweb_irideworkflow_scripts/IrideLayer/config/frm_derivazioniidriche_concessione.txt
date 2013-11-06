@@ -1,0 +1,62 @@
+# ISTANZA di concessione di derivazione d'acqua pubblica
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = COIDR
+InCaricoA = FD1SETT4
+Classifica = XVII.03.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+POR_UBICA_CONIDR = posizione_punto
+POR_LOC_CONIDR = utilizzo_concessione
+
+# - STRUTTURA MONORECORD
+[POR_CONIDR]
+CONIDR_TIPCONC = tipologia_concessione
+
+# vedi formula in frm_derivazioniidriche_concessione/CONIDR_TIPO
+CONIDR_SORGCORSO = CONIDR_T1,N,,
+CONIDR_SORGPOZZO = CONIDR_T2,N,,
+CONIDR_SORGENTE = CONIDR_T3,N,,
+CONIDR_IRRIG = CONIDR_T4,N,,
+CONIDR_CONSU = CONIDR_T5,N,,
+CONIDR_INDUS = CONIDR_T6,N,,
+CONIDR_PESCI = CONIDR_T7,N,,
+CONIDR_IDROELE = CONIDR_T8,N,,
+CONIDR_IGIENE = CONIDR_T9,N,,
+
+CONIDR_DESCORSO = fiume_concessione
+CONIDR_DESORGENTE = sorgente_denominazione
+CONIDR_NMODULOMAX = moduli_massimi_concessione
+CONIDR_NMODULOMED = moduli_medi_concessione
+CONIDR_NCONC = numero_concessione
+CONIDR_DATACONC = data_concessione
+CONIDR_NPRATICA = numero_pratica_concessione
+CONIDR_MODIFICA = modifiche_concessione_originale
+CONIDR_DESMODIFICA = descrizione_modifiche_concessione
+CONIDR_MOTIVO
+CONIDR_DESINDIRIZZO = pozzo_indirizzo
+CONIDR_DESCIVICO = pozzo_civico
+CONIDR_DESCAP = pozzo_cap
+CONIDR_DESFOGLIO = pozzo_foglio
+CONIDR_DESMAPPALE = pozzo_mappale
+CONIDR_COMUNE = ubicazione_comune
+CONIDR_FOGLIO = localizzazione_foglio
+CONIDR_MAPPALE = localizzazione_mappale
+#CONIDR_POSLAT = 
+#CONIDR_POSLONG = 
+CONIDR_WKTGEOM = localizzazione_indirizzo_geometry
+
+
+# - STRUTTURE MULTIRECORD
+[POR_UBICA_CONIDR]
+UCONIDR_COMUNE = comune_punto
+UCONIDR_FOGLIO = foglio_punto
+UCONIDR_MAPPALE = mappale_punto
+UCONIDR_POSLAT = lat
+UCONIDR_POSLONG = lng
+
+[POR_LOC_CONIDR]
+LCONIDR_LOC = localita
+LCONIDR_COMUNE = ubicazione_comune

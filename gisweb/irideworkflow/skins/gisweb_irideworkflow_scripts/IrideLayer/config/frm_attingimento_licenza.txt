@@ -1,0 +1,43 @@
+# ISTANZA per il rilascio di licenza di attingimento d'acqua pubblica
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = LIIDR
+InCaricoA = FD1SETT4
+Classifica = XVII.03.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+POR_UBICA_ACQUAP = posizione_punto
+
+# - STRUTTURA MONORECORD
+[POR_ACQUAP]
+ATTAP_TIPCONC = tipologia_concessione
+ATTAP_SORGENTE = fiume_concessione
+# vedi formula in frm_attingimento_licenza/ATAP_USO
+ATTAP_IRRIG = ATTAP_U1,N,,
+ATTAP_CONSU = ATTAP_U2,N,,
+ATTAP_INDUS = ATTAP_U3,N,,
+ATTAP_PESCI = ATTAP_U4,N,,
+ATTAP_IDROELE = ATTAP_U5,N,,
+ATTAP_IGIENE = ATTAP_U6,N,,
+
+ATTAP_DESCORSO = fiume_concessione
+ATTAP_NCONC = numero_concessione
+ATTAP_DATACONC = data_concessione
+ATTAP_NPRATICA = numero_pratica_concessione
+ATTAP_MODIFICA = modifiche_concessione_originale
+ATTAP_DESMODIFICA = descrizione_modifiche_concessione
+ATTAP_COMUNE = COMUNE_ISTAT
+ATTAP_FOGLIO = ubicazione_foglio
+ATTAP_MAPPALE = ubicazione_mappale
+#ATTAP_POSLAT
+#ATTAP_POSLONG
+ATTAP_WKTGEOM = localizzazione_indirizzo_geometry
+
+[POR_UBICA_ACQUAP]
+UACQUAP_COMUNE = comune_punto
+UACQUAP_FOGLIO = comune_foglio
+UACQUAP_MAPPALE = comune_mappale
+UACQUAP_POSLAT = lat
+UACQUAP_POSLONG = lng
