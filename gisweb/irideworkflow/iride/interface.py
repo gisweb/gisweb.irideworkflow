@@ -369,11 +369,11 @@ class IridePratiche(Iride):
     def wm_attiva_procedimento(self,
         codice_fiscale_titolare,
         anagrafica_titolare,
-        codice_fiscale_richiedente,
         tipo_procedimento,
         oggetto,
         dati_procedimento,
         dati_richiesta,
+        codice_fiscale_richiedente="",
         anagrafica_richiedente="",
     ):
         """
