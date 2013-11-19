@@ -8,7 +8,8 @@ Classifica = XVII.02.
 
 # - STRUTTURE MULTI-RECORD PRESENTI
 # -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
-POR_UBICA_DEMAUTO = posizione_punto
+POR_UBICA_DEMAUTO = ubicazione_grid
+POR_SOG_DEMAUTO = demanio_uscente
 
 # - STRUTTURA MONORECORD
 [POR_DEMAUTO]
@@ -25,23 +26,27 @@ DEMAU_MODIFICA = modifiche_concessione_originale
 DEMAU_DESMODIFICA = descrizione_modifiche_concessione
 DEMAU_DATASCAD = data_scadenza
 DEMAU_DATAINI_SAN = data_sanatoria
-DEMAU_COMUNE = ubicazione_comune
-DEMAU_FOGLIO = localizzazione_foglio
-DEMAU_MAPPALE = localizzazione_mappale
+#DEMAU_COMUNE = ubicazione_comune
+#DEMAU_FOGLIO = localizzazione_foglio
+#DEMAU_MAPPALE = localizzazione_mappale
 #DEMAU_OPARZIALE = 
 #DEMAU_NOMAPPALE = 
 #DEMAU_CORSO = 
 #DEMAU_POSLAT =
 #DEMAU_POSLONG = 
-DEMAU_WKTGEOM = localizzazione_indirizzo_geometry
+#DEMAU_WKTGEOM = localizzazione_indirizzo_geometry
 
 # - STRUTTURE MULTIRECORD
 [POR_UBICA_DEMAUTO]
-UDEMAU_COMUNE = comune_punto
-UDEMAU_FOGLIO = foglio_punto
-UDEMAU_MAPPALE = mapale_punto
+UDEMAU_COMUNE = ubicazione_comune
+UDEMAU_FOGLIO = ubicazione_foglio
+UDEMAU_MAPPALE = ubicazione_mapale
 UDEMAU_OPARZIALE = totale_demanio
 UDEMAU_NOMAPPALE = mappale_no_censito
 UDEMAU_CORSO = corso_acqua_punto
-UDEMAU_POSLAT = lat
-UDEMAU_POSLONG = lng
+#UDEMAU_POSLAT = lat
+#UDEMAU_POSLONG = lng
+
+[POR_SOG_DEMAUTO]
+SOGDEMAUTO_COGNOME = cognome_uscente
+SOGDEMAUTO_NOME = nome_uscente

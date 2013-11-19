@@ -23,10 +23,10 @@ resources = plominoDocument.getParentDatabase().resources
 
 msg = 'Layer per la pratica "%s" NON ancora implementato!' % plominoDocument.Title().decode('ascii', errors='replace').encode('ascii', errors='replace')
 
-if conf_name in script.config.keys():
-    conf = conf2dict(str(getattr(script.config, conf_name)))
-elif 'IrideLayer' in resources.keys() and conf_name in resources.IrideLayer.keys():
+if 'IrideLayer' in resources.keys() and conf_name in resources.IrideLayer.keys():
     conf = conf2dict(str(getattr(resources.IrideLayer, conf_name)))
+elif conf_name in script.config.keys():
+    conf = conf2dict(str(getattr(script.config, conf_name)))
 else:
     assert False, msg
 
@@ -36,7 +36,7 @@ def getrecords(doc, values):
 
     if isinstance(doc, basestring):
         doc = plominoDocument.getParentDatabase().getDocument(doc)
-    
+
     record = dict()
     for k,raw in values.items():
             # per valore semplicemente mancante nel file di configurazione
