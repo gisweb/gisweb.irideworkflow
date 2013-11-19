@@ -10,7 +10,6 @@
 # Example code:
 
 """
-
 Chiavi da restituire:
     pro_id        (Numerico) Numero identificativo del procedimento
     pro_nrprot    (Numerico) Numero del protocollo

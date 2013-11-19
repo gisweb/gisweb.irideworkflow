@@ -50,6 +50,7 @@ out['tipo_procedimento'] = '%(TipoDocumento)s|%(Classifica)s|%(InCaricoA)s' % da
 
 out['oggetto'] = datiProtocolloIn['Oggetto']
 
+# TODO: restituisce ancora un dizionario VUOTO!!
 out['dati_procedimento'] = plominoDocument.IrideLayer.SubDatiProcedimentoIn()
 
 out['dati_richiesta'] = plominoDocument.IrideLayer.SubDatiRichiestaIn()

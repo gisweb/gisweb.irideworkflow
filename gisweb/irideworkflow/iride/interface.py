@@ -99,6 +99,7 @@ def prepare_xml_richiesta(dati_allegati=[], **kw):
 
     from xml_templates import titolare, richiedente, allegati
 
+    # almeno il titolare della richiesta è obbligatorio
     dati_titolare = etree.SubElement(dati_procedimento, 'dati_titolare')
     test = dict()
     for el,v in titolare.items():
@@ -109,13 +110,15 @@ def prepare_xml_richiesta(dati_allegati=[], **kw):
             assign_value(locals()[el], kw[el], *v)
             test[el] = kw[el]
 
-    dati_richiedente = etree.SubElement(dati_procedimento, 'dati_richiedente')
-    for el,v in richiedente.items():
-        locals()[el] = etree.SubElement(dati_richiedente, el)
-        if 'dati_richiedente' in kw and el in kw['dati_richiedente']:
-            assign_value(locals()[el], kw['dati_richiedente'][el], *v)
-        elif el in kw:
-            assign_value(locals()[el], kw[el], *v)
+    if 'dati_richiedente' in kw or any([i.startswith('ric_') for i in kw]):
+        # se non viene fornita informazione riguardante il richiedente evito
+        dati_richiedente = etree.SubElement(dati_procedimento, 'dati_richiedente')
+        for el,v in richiedente.items():
+            locals()[el] = etree.SubElement(dati_richiedente, el)
+            if 'dati_richiedente' in kw and el in kw['dati_richiedente']:
+                assign_value(locals()[el], kw['dati_richiedente'][el], *v)
+            elif el in kw:
+                assign_value(locals()[el], kw[el], *v)
 
     inc = 0
     for allnfo in dati_allegati:
