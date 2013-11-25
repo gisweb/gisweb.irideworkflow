@@ -33,7 +33,7 @@ RSEMP_WKTGEOM = localizzazione_indirizzo_geometry
 # - STRUTTURE MULTIRECORD
 [POR_SUBRIFIUTI_SEMP]
 SUBSEMP_FOGLIO = ubicazione_foglio
-SUBSEMP_MAPPALE = ubicazione_MAPPALE
+SUBSEMP_MAPPALE = ubicazione_mappale
 
 [POR_RIFIUTICER_SEMP]
 CERSEMP_TIPOLOGIA = rifiuti_tipologia

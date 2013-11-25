@@ -12,15 +12,15 @@ POR_UBICA_SCIAIDR = posizione_punto
 
 # - STRUTTURA MONORECORD
 [POR_SCIAIDR]
-SCIAIDR_COMUNE_NCT = ubicazione_comune
-SCIAIDR_FOGLIO = ubicazione_foglio
+#SCIAIDR_COMUNE_NCT = ubicazione_comune
+#SCIAIDR_FOGLIO = ubicazione_foglio
 SCIAIDR_MAPPALE = ubicazione_mappale
 #SCIAIDR_UBICAZIONE = 
 SCIAIDR_INDIRIZZO = localizzazione_indirizzo
 #SCIAIDR_POSLAT
 #SCIAIDR_POSLONG
 SCIAIDR_LOC_MOVTE = localita_vincolo
-SCIAIDR_COM_MOVTE = localita_comune
+SCIAIDR_COM_MOVTE = comune_vincolo
 SCIAIDR_NOME_PROGE = nominativo_progettista
 SCIAIDR_LOC_STUDIO = studio_progettista
 SCIAIDR_VIA_STUDIO = via_progettista

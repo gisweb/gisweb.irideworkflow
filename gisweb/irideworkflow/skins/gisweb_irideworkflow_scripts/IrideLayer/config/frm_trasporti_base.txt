@@ -1,0 +1,72 @@
+# Istanza di autorizzazione al trasporto eccezionale
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = TRASE
+InCaricoA = TRASECCNEW
+Classifica = XVIII.02.03.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+POR_TRASPORTO_ASSE = convoglio_carichi
+
+
+# - STRUTTURA MONORECORD
+[POR_TRASPORTO_ECC]
+ECC_PRATICA = trasporti_richiesta
+ECC_TRANSITI = trasporti_tipo
+ECC_RITORNO = trasporti_ritorno
+ECC_DATAINIT = autorizzata_dal
+ECC_DATAFINET = autorizzata_al
+ECC_ANNOTA = trasporti_note
+ECC_DATAPAG = trasporti_oneri_data
+ECC_IMPORTO = trasporti_oneri_importo
+ECC_MARCATIPO_AUTO = trattore_marca
+ECC_TARGA_AUTO = trattore_targa
+ECC_ASSI_AUTO = trattore_assi
+ECC_RUOTE_AUTO = trattore_ruote
+ECC_LUNG_AUTO = trattore_lunghezza
+ECC_LARG_AUTO = trattore_larghezza
+ECC_TARA_AUTO = trattore_tara
+ECC_CARICO_AUTO = trattore_carico
+ECC_PORTATA_AUTO = trattore_portata
+ECC_PESO_AUTO = trattore_pmax
+ECC_TARGA1_AUTO =  
+ECC_TARGA2_AUTO = trattore_targa_2
+ECC_TARGA3_AUTO = trattore_targa_3
+ECC_TARGA4_AUTO = trattore_targa_4
+ECC_TARGA5_AUTO = trattore_targa_5
+ECC_MARCATIPO_RIMOR = rimorchio_marca
+ECC_TARGA_RIMOR = rimorchio_targa
+ECC_ASSI_RIMOR = rimorchio_assi
+ECC_RUOTE_RIMOR = rimorchio_ruote
+ECC_LUNG_RIMOR = rimorchio_lunghezza
+ECC_LARG_RIMOR = rimorchio_larghezza
+ECC_TARA_RIMOR = rimorchio_tara
+ECC_CARICO_RIMOR = rimorchio_carico
+ECC_PORTATA_RIMOR = rimorchio_portata
+ECC_PESO_ RIMOR = rimorchio_pmax
+ECC_TARGA1_RIMOR = rimorchio_targa_1
+ECC_TARGA2_RIMOR = rimorchio_targa_2
+ECC_TARGA3_RIMOR = rimorchio_targa_3
+ECC_TARGA4_RIMOR = rimorchio_targa_4
+ECC_TARGA5_RIMOR = rimorchio_targa_5
+ECC_DESCONVOGLIO = convoglio_carico
+ECC_ASSI_CONVOGLIO = convoglio_assi
+ECC_LARG_CONVOGLIO = convoglio_larghezza
+ECC_LUNG_CONVOGLIO = convoglio_lunghezza
+ECC_ALT_CONVOGLIO = convoglio_altezza
+ECC_PESO_CONVOGLIO = convoglio_peso
+ECC_VELOCITA_CONVOGLIO = convoglio_velocita
+ECC_PERCORSI_CONVOGLIO = convoglio_percorsi_tipo
+ECC_SCORTA_CONVOGLIO = convoglio_scorta
+ECC_INDIRIZZOP_CONVOGLIO = convoglio_partenza
+ECC_INDIRIZZOA_CONVOGLIO = convoglio_arrivo
+ECC_TRAGITTO_CONVOGLIO = convoglio_tragitto
+
+
+[POR_TRASPORTO_ASSE]
+ASSE_NUMERO = caricoassi_asse
+ASSE_CARICO = caricoassi_carico
+ASSE_INTERASSE = caricoassi_interasse
+ASSE_TIPO = caricoassi_tipo

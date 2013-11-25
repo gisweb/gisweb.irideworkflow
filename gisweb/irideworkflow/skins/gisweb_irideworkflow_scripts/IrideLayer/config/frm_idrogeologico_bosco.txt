@@ -13,8 +13,8 @@ POR_UBICA_BOSCO = posizione_punto
 # - STRUTTURA MONORECORD
 [POR_BOSCO]
 BO_COMUNE_NCT = ubicazione_comune
-BO_FOGLIO = ubicazione_foglio
-BO_MAPPALE = ubicazione_mappale
+#BO_FOGLIO = ubicazione_foglio
+#BO_MAPPALE = ubicazione_mappale
 #BO_UBICAZIONE =
 BO_INDIRIZZO = localizzazione_indirizzo
 #BO_POSLAT

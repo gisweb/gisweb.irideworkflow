@@ -40,7 +40,7 @@ DEMAU_DATAINI_SAN = data_sanatoria
 [POR_UBICA_DEMAUTO]
 UDEMAU_COMUNE = ubicazione_comune
 UDEMAU_FOGLIO = ubicazione_foglio
-UDEMAU_MAPPALE = ubicazione_mapale
+UDEMAU_MAPPALE = ubicazione_mappale
 UDEMAU_OPARZIALE = totale_demanio
 UDEMAU_NOMAPPALE = mappale_no_censito
 UDEMAU_CORSO = corso_acqua_punto

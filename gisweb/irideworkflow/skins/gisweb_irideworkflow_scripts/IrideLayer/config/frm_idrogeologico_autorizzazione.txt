@@ -12,7 +12,7 @@ POR_UBICA_INGEO = posizione_punto
 
 # - STRUTTURA MONORECORD
 [POR_INGEO]
-INGEO_COMUNE = ubicazione_comune
+#INGEO_COMUNE = ubicazione_comune
 INGEO_FOGLIO = ubicazione_foglio
 INGEO_MAPPALE = ubicazione_mappale
 #INGEO_UBICAZIONE
