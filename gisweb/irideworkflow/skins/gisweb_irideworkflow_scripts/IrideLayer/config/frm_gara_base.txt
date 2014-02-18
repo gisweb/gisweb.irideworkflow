@@ -35,5 +35,5 @@ COMP_CATEG = gara_tipo
 PCOMP_UBICA = ubicazione
 PCOMP_POSLAT = lat
 PCOMP_POSLONG = lng
-PCOMP_SIMBOLO = tipo
+PCOMP_SIMBOLO = elemento_tipo
 PCOMP_WKTGEOM = posizione
