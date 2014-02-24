@@ -4,7 +4,7 @@
 # - INFORMAZIONI DI PROTOCOLLAZIONE
 TipoDocumento = TRASE
 InCaricoA = TRASECCNEW
-Classifica = XVIII.03.
+Classifica = XVIII.02.03.
 
 # - STRUTTURE MULTI-RECORD PRESENTI
 # -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
