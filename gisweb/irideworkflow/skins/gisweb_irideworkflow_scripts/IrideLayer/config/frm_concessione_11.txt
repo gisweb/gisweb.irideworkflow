@@ -1,0 +1,41 @@
+# Istanza per posizionamento cartelli, insegne e altri mezzi pubblicitari permanenti o temporanei
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = CONPB
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_CONCSTRA_PUB]
+PUB_TIPOINTERVENTO = concessione_opere
+PUB_DESINTERVENTO = concessione_opere_altro
+PUB_LOCSTRADA = ubicazione_strada_elenco
+PUB_COMUNE = ubicazione_comune
+PUB_LATO = ubicazione_lato
+PUB_PROGRE = ubicazione_km_prog
+PUB_INIPROGRE = ubicazione_daprog
+PUB_FINEPROGRE = ubicazione_aprog
+PUB_LOCFOGLIO = ubicazione_foglio
+PUB_LOCMAPPALE = ubicazione_mappale
+PUB_TIPOIMPIANTO = cartello_tipo
+PUB_MSGPUB = cartello_messaggio
+PUB_ILLUMINA = cartello_illuminato
+PUB_PERTINENZA = cartello_pertinenza
+PUB_DISTRIB = cartello_distributore
+PUB_DIMBASE = cartello_base
+PUB_DIMALTEZZA = cartello_altezza
+PUB_DISTANZA = cartello_distanza_margine
+PUB_TOTMQ = cartello_mq
+PUB_DURATAPERM
+PUB_DURATATEMP
+PUB_DATAINITEMP = cartello_data_da
+PUB_DATAFINETEMP = cartello_data_a
+PUB_MESSAGGIO = cartello_testo
+PUB_NOTE = concessione_annotazioni
+PUB_AREAT = cartello_areatutelata,N,S/N,
+APROG_WKTGEOM = ubicazione_aprog_geometry
+DAPROG_WKTGEOM = ubicazione_daprog_geometry
+PROG_WKTGEOM = ubicazione_prog_geometry

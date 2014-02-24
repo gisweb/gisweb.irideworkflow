@@ -1,0 +1,19 @@
+# ISTANZA per rinnovo/proroga/variazione messaggio pubblicitario
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = CONRP
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_CONCSTRA_VARPUB]
+VARPUB_TIPORIC = concessione_richiesta
+VARPUB_INTERVENTO = concessione_opere
+VARPUB_ALTROINTERVENTO = concessione_opere_altro
+VARPUB_NUMPROVV = concessione_numero
+VARPUB_DATAPROVV = concessione_data_rilascio
+VARPUB_DATASCAD = concessione_data_scadenza
+VARPUB_NOTE = concessione_annotazioni
