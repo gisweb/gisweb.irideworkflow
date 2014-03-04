@@ -30,7 +30,7 @@ elif conf_name in script.config.keys():
 else:
     assert False, msg
 
-out = dict()
+out = dict(IRIDE_RUOLOINS='GISWEB')
 
 def getrecords(doc, values):
 
