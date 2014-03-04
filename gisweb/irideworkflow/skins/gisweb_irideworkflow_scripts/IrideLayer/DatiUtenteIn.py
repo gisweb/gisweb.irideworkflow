@@ -30,7 +30,7 @@ elif conf_name in script.config.keys():
 else:
     assert False, msg
 
-out = dict(IRIDE_RUOLOINS='GISWEB')
+out = dict()
 
 def getrecords(doc, values):
 
@@ -53,6 +53,7 @@ def foo(v):
     return json_loads(json_dumps(v))
 
 for tablename,values in conf.items():
+
     record = dict()
     if tablename not in ['CONFIG'] + conf['CONFIG'].keys():
         out[tablename] = (getrecords(plominoDocument, values), )
