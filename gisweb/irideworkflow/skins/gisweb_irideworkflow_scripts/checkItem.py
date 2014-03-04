@@ -20,6 +20,11 @@ if check:
 
 value = context.getItem(itemname, default)
 
+fld = context.getForm().getFormField(itemname)
+if fld.getFieldType() in ('SELECTION', ) and fld.getSettings('widget') in ('SELECT', 'RADIO', ):
+    nfo = dict([i.split('|')[::-1] for i in fld.getSettings().getSelectionList(context)])
+    return nfo.get(value)
+
 if format==None:
     return value
 
