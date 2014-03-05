@@ -150,7 +150,7 @@ def ModificaSoloAnagrafiche(IdDocumento, MittentiDestinatari, testinfo=False, **
     in uno a molti (i.e. eventuali cointestatari)
     """
     conn = IrideProtocollo(testinfo=testinfo, **ccp)
-    return conn.ModificaDocumentoEAnagrafiche(self, IdDocumento=IdDocumento, MittentiDestinatari=MittentiDestinatari)
+    return conn.ModificaDocumentoEAnagrafiche(IdDocumento=IdDocumento, MittentiDestinatari=MittentiDestinatari)
 
 ################################################################# TEST FUNCTIONS #
 
