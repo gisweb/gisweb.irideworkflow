@@ -104,5 +104,3 @@ if index:
     idx = int(index)-1
     return MittentiDestinatari[idx]
 return MittentiDestinatari
-        
-            

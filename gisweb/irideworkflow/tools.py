@@ -30,7 +30,7 @@ def inserisci_protocollo(MittentiIn, AllegatiIn, UtenteIn, ProtocolloIn, testinf
     """
 
     TODO:
-    * supporto per mittenti multipli (MittentiIn)
+    * supporto per mittenti multipli (MittentiDestinatariIn)
     """
     conn = IrideProtocollo(testinfo=testinfo, **ccp)
 
@@ -144,6 +144,13 @@ def InserisciDatiUtente(docid, UtenteIn, testinfo=False, **ccp):
     """ """
     conn = IrideProtocollo(testinfo=testinfo, **ccp)
     return conn.InserisciDatiUtente(docid, UtenteIn)
+
+def ModificaSoloAnagrafiche(IdDocumento, MittentiDestinatari, testinfo=False, **ccp):
+    """ Usa il servizio ModificaDocumentoEAnagrafiche per inserire le anagrafiche
+    in uno a molti (i.e. eventuali cointestatari)
+    """
+    conn = IrideProtocollo(testinfo=testinfo, **ccp)
+    return conn.ModificaDocumentoEAnagrafiche(self, IdDocumento=IdDocumento, MittentiDestinatari=MittentiDestinatari)
 
 ################################################################# TEST FUNCTIONS #
 

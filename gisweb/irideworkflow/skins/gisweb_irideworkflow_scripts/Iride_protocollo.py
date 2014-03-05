@@ -30,6 +30,9 @@ if context.getItem('irideIdDocumento'):
     res2 = context.InserisciDatiUtente(testinfo=testinfo, json=False, pmsg=pmsg)
     out.append(res2)
 
+    res3 = context.ModificaSoloAnagrafiche(testinfo=testinfo, json=False)
+    out.append(res3)
+
 if json:
     context.REQUEST.RESPONSE.setHeader("Content-type", "application/json")
     print json_dumps(out, prettyxml=True)

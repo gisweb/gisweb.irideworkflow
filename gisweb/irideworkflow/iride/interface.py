@@ -592,7 +592,6 @@ class IrideProtocollo(Iride):
 
     def InserisciDocumentoEAnagrafiche(self, mittenti=[], allegati=[], **kw):
         """
-        TODO
         Inserisce un documento non protocollato e le anagrafiche (max 100) ed
         eventualmente esegue l'avvio dell'iter
         """
@@ -614,8 +613,16 @@ class IrideProtocollo(Iride):
 
         request = self.build_xml('RicercaPerCodiceFiscale', **dict(defaults, **kw))
 
-        self.query_service('RicercaPerCodiceFiscale', request)
+        retrun self.query_service('RicercaPerCodiceFiscale', request)
 
+    def ModificaDocumentoEAnagrafiche(self, **kw):
+        """ Partendo dal docid, o in sua assenza dall'anno e numero protocollo,
+        il sistema provvederà a recuperare il documento e ad aggiornarlo con le
+        informazioni presenti nell'xml di richiesta.
+        """
+
+        request = self.build_xml('ProtoIn', **kw)
+        return self.query_service('ModificaDocumentoEAnagrafiche', request)
 
 class IrideProcedimento(Iride):
     """
