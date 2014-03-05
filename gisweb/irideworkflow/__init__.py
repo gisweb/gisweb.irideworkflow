@@ -15,7 +15,7 @@ from tools import leggi_documento
 from tools import inserisci_protocollo
 from tools import procedimento_pratica
 from tools import test_build_mittente, test_prepare_string, test_build_xml
-from tools import wm_attiva_procedimento, InserisciDatiUtente
+from tools import wm_attiva_procedimento, InserisciDatiUtente, ModificaSoloAnagrafiche
 
 from iride.xml_templates import titolare as xml_template_titolare
 from iride.xml_templates import richiedente as xml_template_richiedente
@@ -36,7 +36,7 @@ def conf2dict(string):
     config = ConfigParser.RawConfigParser(allow_no_value=True)
     config.optionxform=str
     config.readfp(StringIO.StringIO(string))
-    
+
     out = dict()
     for session in config.sections():
         out[session] = dict([(k,v) for k,v in config.items(session)])
