@@ -27,7 +27,8 @@ COMP_DATA_SOPLUO = gara_data_sopraluogo
 COMP_NUM_POLIZZA = gara_polizza_num
 COMP_DATA_POLIZZA = gara_polizza_data
 COMP_SOC_ASSICURA = gara_polizza_societa
-COMP_CATEG = gara_tipo
+COMP_CATEG = gara_categoria
+COMP_TIPOCOMP = gara_tipo
 
 
 # - STRUTTURE MULTIRECORD

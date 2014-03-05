@@ -57,6 +57,7 @@ for tablename,values in conf.items():
     record = dict()
     if tablename not in ['CONFIG'] + conf['CONFIG'].keys():
         out[tablename] = (getrecords(plominoDocument, values), )
+        out[tablename][0]['IRIDE_RUOLOINS'] = 'GISWEB'
 
     elif tablename != 'CONFIG':
         fieldcontainer = conf['CONFIG'][tablename]
