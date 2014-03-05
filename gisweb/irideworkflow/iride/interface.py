@@ -613,7 +613,7 @@ class IrideProtocollo(Iride):
 
         request = self.build_xml('RicercaPerCodiceFiscale', **dict(defaults, **kw))
 
-        retrun self.query_service('RicercaPerCodiceFiscale', request)
+        return self.query_service('RicercaPerCodiceFiscale', request)
 
     def ModificaDocumentoEAnagrafiche(self, **kw):
         """ Partendo dal docid, o in sua assenza dall'anno e numero protocollo,
