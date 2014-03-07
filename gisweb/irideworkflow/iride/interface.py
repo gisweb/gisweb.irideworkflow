@@ -621,8 +621,8 @@ class IrideProtocollo(Iride):
         informazioni presenti nell'xml di richiesta.
         """
 
-        request = self.build_xml('ProtoIn', **kw)
-        return self.query_service('ModificaDocumentoEAnagrafiche', request)
+        request = self.build_xml('ModificaDocumentoEAnagrafiche', **kw)
+        return self.query_service('ModificaDocumento', request)
 
 class IrideProcedimento(Iride):
     """
@@ -631,7 +631,7 @@ class IrideProcedimento(Iride):
     """
 
     service = 'WSProcedimenti/WSProcedimenti.asmx?WSDL'
-    
+
     def __init__(self, **kw):
         Iride.__init__(self, **kw)
 
