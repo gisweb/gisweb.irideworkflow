@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=index=0
+##parameters=index=0, json=False
 ##title=Build a MittenteDestinatarioIn-like object
 ##
 # Example code:
@@ -76,7 +76,7 @@ def get_cointestatario(rec):
     nfo = dict(zip(gridfields, rec))
 
     cointestatario = dict(
-        CodiceFiscale = lambda doc: doc['fisica_cf_cointestatari'],
+        CodiceFiscale = lambda doc: doc['fisica_cf'],
         CognomeNome = lambda doc: '%s %s' % (doc['fisica_cognome'], doc['fisica_nome'], ),
         Indirizzo = lambda doc: '%s, %s' % (doc['fisica_indirizzo'], doc['fisica_civico'], ),
         CodiceComuneResidenza = lambda doc: doc['fisica_cod_cat'],
@@ -89,15 +89,23 @@ def get_cointestatario(rec):
 
     return dict([(k,f(nfo)) for k,f in cointestatario.items()])
 
+
 for el in (PersonaFisica, PersonaGiuridica, ):
-    MittentiDestinatari.append(dict([(k,f(plominoDocument)) for k,f in el.items()]))
+    elnfo = dict([(k,f(plominoDocument)) for k,f in el.items()])
+    if not elnfo['CodiceFiscale'] is None:
+        MittentiDestinatari.append(elnfo)
 
 #if 'sub_fisica_cointestatari' in plominoDocument.getForm().getSubforms():
     #MittentiDestinatari.append(dict([(k,f(plominoDocument)) for k,f in cointestatario.items()]))
 
-if plominoDocument.hasItem('elenco_altri_cointestatari'):
+if plominoDocument.hasItem('elenco_cointestatari'):
     cointestatari = plominoDocument.getItem('elenco_cointestatari', []) or []
     MittentiDestinatari += [get_cointestatario(rec) for rec in cointestatari]
+
+if json:
+    from Products.CMFPlomino.PlominoUtils import json_dumps
+    print json_dumps(MittentiDestinatari)
+    return printed
 
 if index:
     idx = int(index)-1
