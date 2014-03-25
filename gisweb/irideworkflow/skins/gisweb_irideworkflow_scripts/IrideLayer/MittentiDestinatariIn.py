@@ -95,7 +95,7 @@ for el in (PersonaFisica, PersonaGiuridica, ):
 #if 'sub_fisica_cointestatari' in plominoDocument.getForm().getSubforms():
     #MittentiDestinatari.append(dict([(k,f(plominoDocument)) for k,f in cointestatario.items()]))
 
-if plominoDocument.hasItem('elenco_cointestatari'):
+if plominoDocument.hasItem('elenco_altri_cointestatari'):
     cointestatari = plominoDocument.getItem('elenco_cointestatari', []) or []
     MittentiDestinatari += [get_cointestatario(rec) for rec in cointestatari]
 
