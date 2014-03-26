@@ -601,9 +601,8 @@ class IrideProtocollo(Iride):
         return self.query_service('InserisciDocumento', request)
 
     def RicercaPerCodiceFiscale(self, CodiceFiscale, SoloProtocollo=False, **kw):
-        """
-        Restituisce gli estremi dei documenti (eventualmente solo i protocollati)
-        per codice fiscale dell'intestatario.
+        """ Restituisce gli estremi dei documenti per codice fiscale
+        dell'intestatario (eventualmente solo i protocollati).
         """
 
         defaults = dict(
@@ -621,8 +620,11 @@ class IrideProtocollo(Iride):
         informazioni presenti nell'xml di richiesta.
         """
 
-        request = self.build_xml('ModificaDocumentoEAnagrafiche', **kw)
-        return self.query_service('ModificaDocumento', request)
+        request = self.build_xml('ModificaDocumentoEAnagrafiche')
+        sub_request = self.build_xml('ModificaProtocolloIn', **kw)
+        request.ProtoIn = sub_request
+        return self.query_service('ModificaDocumento', sub_request)
+
 
 class IrideProcedimento(Iride):
     """
