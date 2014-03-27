@@ -14,6 +14,8 @@ Ricava dal PlominoDocument le informazioni utili per costruire un oggetto
 MittenteDestinatarioIn-like.
 """
 
+from gisweb.irideworkflow import getCodcom
+
 plominoDocument = context.getParentDocument()
 
 MittentiDestinatari = []
@@ -32,10 +34,10 @@ PersonaFisica = dict(
     Nome = lambda doc: doc.checkItem('fisica_nome'),
     Localita = lambda doc: doc.checkItem('fisica_loc_nato'),
     Indirizzo = lambda doc: '%s, %s' % (doc.checkItem('fisica_indirizzo'), doc.checkItem('fisica_civico'), ),
-    CodiceComuneResidenza = lambda doc: doc.checkItem('fisica_cod_cat'),
+    CodiceComuneResidenza = lambda doc: getCodcom(doc.checkItem('fisica_cod_cat')),
     DataNascita = lambda doc: doc.checkItem('fisica_data_nato'),
-    CodiceComuneNascita = lambda doc: doc.checkItem('fisica_cod_cat_nato'),
-    Nazionalita = lambda doc: 'IT' if doc.getItem('fisica_cod_cat_nato') != 'EE' else doc.getItem('fisica_comune_nato'),
+    CodiceComuneNascita = lambda doc: getCodcom(doc.checkItem('fisica_cod_cat_nato')),
+    Nazionalita = lambda doc: '' if doc.getItem('fisica_cod_cat_nato') != 'EE' else doc.getItem('fisica_comune_nato'),
     TipoSogg = lambda doc: 'S',
     TipoPersona = lambda doc: 'FI',
     Recapiti = lambda doc: get_recapiti('sub_fisica_recapiti', doc)
@@ -46,11 +48,11 @@ PersonaGiuridica = dict(
     CognomeNome = lambda doc: doc.checkItem('giuridica_denominazione'),
     Localita = lambda doc: doc.checkItem('giuridica_localita'),
     Indirizzo = lambda doc: '%s, %s' % (doc.checkItem('giuridica_indirizzo'), doc.checkItem('giuridica_civico'), ),
-    CodiceComuneResidenza = lambda doc: doc.checkItem('giuridica_cod_cat'),
+    CodiceComuneResidenza = lambda doc: getCodcom(doc.checkItem('giuridica_cod_cat')),
     # questi campi direi che non hanno un corrispettivo riferito alla persona giuridica
     # DataNascita = lambda doc: doc.checkItem('fisica_data_nato')
     # CodiceComuneNascita = lambda doc: doc.checkItem('fisica_cod_cat_nato')
-    Nazionalita = lambda doc: 'IT' if doc.getItem('giuridica_cod_cat') != 'EE' else doc.getItem('giuridica_comune'),
+    Nazionalita = lambda doc: '' if doc.getItem('giuridica_cod_cat') != 'EE' else doc.getItem('giuridica_comune'),
     TipoSogg = lambda doc: 'I',
     TipoPersona = lambda doc: 'GI',
     Recapiti = lambda doc: get_recapiti('sub_giuridica_recapiti', doc)
@@ -60,7 +62,7 @@ cointestatario = dict(
     CodiceFiscale = lambda doc: doc.checkItem('fisica_cf_cointestatari'),
     CognomeNome = lambda doc: '%s %s' % (doc.checkItem('fisica_cognome_cointestatari'), doc.checkItem('fisica_nome_cointestatari'), ),
     Indirizzo = lambda doc: '%s, %s' % (doc.checkItem('fisica_indirizzo_cointestatari'), doc.checkItem('fisica_civico_cointestatari'), ),
-    CodiceComuneResidenza = lambda doc: doc.checkItem('fisica_cod_cat_cointestatari'),
+    CodiceComuneResidenza = lambda doc: getCodcom(doc.checkItem('fisica_cod_cat_cointestatari')),
     DataNascita = lambda doc: doc.checkItem('fisica_data_nato_cointestatari'),
     CodiceComuneNascita = lambda doc: doc.checkItem('fisica_cod_cat_nato_cointestatari'),
     Nazionalita = lambda doc: 'IT' if doc.getItem('fisica_cod_cat_nato_cointestatari') != 'EE' else doc.getItem('fisica_comune_nato_cointestatari'),
@@ -79,9 +81,9 @@ def get_cointestatario(rec):
         CodiceFiscale = lambda doc: doc['fisica_cf'],
         CognomeNome = lambda doc: '%s %s' % (doc['fisica_cognome'], doc['fisica_nome'], ),
         Indirizzo = lambda doc: '%s, %s' % (doc['fisica_indirizzo'], doc['fisica_civico'], ),
-        CodiceComuneResidenza = lambda doc: doc['fisica_cod_cat'],
+        CodiceComuneResidenza = lambda doc: getCodcom(doc['fisica_cod_cat']),
         DataNascita = lambda doc: doc['fisica_data_nato'],
-        CodiceComuneNascita = lambda doc: doc['fisica_cod_cat_nato'],
+        CodiceComuneNascita = lambda doc: getCodcom(doc['fisica_cod_cat_nato']),
         Nazionalita = lambda doc: 'IT' if doc['fisica_cod_cat_nato'] != 'EE' else doc['fisica_comune_nato'],
         TipoSogg = lambda doc: 'S',
         TipoPersona = lambda doc: 'FI',
