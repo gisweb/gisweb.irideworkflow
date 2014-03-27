@@ -9,12 +9,14 @@
 ##
 # Example code:
 
-assert context.isAuthor(), "You need edit permission on this document!"
+plominoDocument = context.getParentDocument()
+
+assert plominoDocument.isAuthor(), "You need edit permission on this document!"
 
 from gisweb.irideworkflow import leggi_documento
 from Products.CMFPlomino.PlominoUtils import json_dumps
 
-docid = context.getItem('irideIdDocumento')
+docid = plominoDocument.getItem('irideIdDocumento')
 
 if docid:
     res = leggi_documento(docid)
