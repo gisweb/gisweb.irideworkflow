@@ -21,6 +21,7 @@ from gisweb.utils import json_dumps
 UtenteIn = context.IrideLayer.DatiUtenteIn()
 res = InserisciDatiUtente(docid, UtenteIn, testinfo=True, **context.Iride_loadPortalSettings())
 
+msgtype = 'info'
 if not res['success']:
     context.setItem('InserisciDatiUtenteFailed', True)
     if pmsg:
@@ -29,14 +30,14 @@ if not res['success']:
 else:
     if test:
         context.removeItem('InserisciDatiUtenteFailed')
+    msg = ''
     # WARNING: il messaggio di conferma in uscita da Iride non è di interesse per 
     # un semplice utente che compila la domanda.
     # TODO: al limite si può rendere visibile per debug.
     #if pmsg:
         #msg = res['result']['Messaggio']
-        #msgtype = 'info'
 
-if pmsg:
+if pmsg and msg:
     context.addPortalMessage(msg, msg_type=msgtype)
 
 if json:
