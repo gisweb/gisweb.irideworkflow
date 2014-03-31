@@ -100,11 +100,12 @@ for fld in fields:
     if (fldname in items) and (fld.getFieldType() == 'ATTACHMENT'):
         value = plominoDocument.getItem(fldname, {}) or {}
         for fname,ftype in value.items():
+            name_components = fname.split('.')
             out['dati_allegati'].append(
                 dict(
                     all_descri = '',
-                    all_tipo = ftype.split('/')[1],
-                    all_nomefile = fname,
+                    all_tipo = name_components[-1],
+                    all_nomefile = '.'.join(name_components[:-1]),
                     all_blob = plominoDocument.getfile(filename=fname),
                     all_firma = 'N'
                 )
