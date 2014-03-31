@@ -224,7 +224,7 @@ class Iride():
                 for o in kw[k]:
                     xml[k][xml[k].__keylist__[0]].append(self.build_xml(str(v).split('\n')[0][8:-2], **o))
         return xml
-        
+
     def build_obj(self, name, **kw):
         """
         Helper for getting a dictionary with keys loaded from the correspondent
@@ -278,7 +278,7 @@ class Iride():
                 # for backward compatibility with python 2.6
                 total_seconds = lambda x: x.seconds + x.microseconds*10**-6
                 out['time_elapsed'] = total_seconds(datetime.now()-t0)
-            
+
         return out
 
     def get_ProtocolloIn(self, mittenti=[], allegati=[], **kw):

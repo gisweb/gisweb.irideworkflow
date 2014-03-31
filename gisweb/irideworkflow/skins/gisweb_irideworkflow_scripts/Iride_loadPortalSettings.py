@@ -17,6 +17,13 @@ from Products.CMFCore.utils import getToolByName
 pp = getToolByName(context,'portal_properties')
 
 if 'Iride' in pp.keys():
-    return dict([(k,v) for k,v in pp['Iride'].propertyItems() if k!='title'])
+    out = dict([(k,v) for k,v in pp['Iride'].propertyItems() if k!='title'])
 else:
-    return dict()
+    out = dict()
+
+updatenfo = dict([(k,v) for k,v in context.getParentDatabase().propertyItems()
+    if k.startswith('Iride_')])
+if len(updatenfo)>0:
+    out.update(updatenfo)
+
+return out
