@@ -29,9 +29,12 @@ if not res['success']:
 else:
     if test:
         context.removeItem('InserisciDatiUtenteFailed')
-    if pmsg:
-        msg = res['result']['Messaggio']
-        msgtype = 'info'
+    # WARNING: il messaggio di conferma in uscita da Iride non è di interesse per 
+    # un semplice utente che compila la domanda.
+    # TODO: al limite si può rendere visibile per debug.
+    #if pmsg:
+        #msg = res['result']['Messaggio']
+        #msgtype = 'info'
 
 if pmsg:
     context.addPortalMessage(msg, msg_type=msgtype)

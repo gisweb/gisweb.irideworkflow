@@ -466,7 +466,6 @@ class IridePratiche(Iride):
                 (i.e.: "T" tutti (default), "P" pagati e "N" da pagare)
         """
 
-        
         request = self.build_xml('wm_lista_oneri',
             codice_fiscale = codice_fiscale,
             filtro = filtro
@@ -486,7 +485,7 @@ class IridePratiche(Iride):
         """
 
         oneri = doc2xml(prepare_ls_oneri(**dati_oneri))
-        
+
         request = self.build_xml('wm_pagato',
             ls_oneri = oneri
         )
