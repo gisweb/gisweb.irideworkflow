@@ -23,6 +23,7 @@ else:
 
 updatenfo = dict([(k,v) for k,v in context.getParentDatabase().propertyItems()
     if k.startswith('Iride_')])
+
 if len(updatenfo)>0:
     out.update(updatenfo)
 
