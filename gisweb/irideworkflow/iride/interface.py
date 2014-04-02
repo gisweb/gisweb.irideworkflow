@@ -219,42 +219,23 @@ class Iride():
                     suds_type = class_type.split('.')[2]
                     if suds_type.startswith('ArrayOf'):
                         for o in kw[k]:
-                            xml[k][xml[k].__keylist__[0]].append(self.build_xml(str(v).split('\n')[0].strip()[1:-2], **o))
+                            newname = str(v).split('\n')[0].strip()[1:-2]
+                            parent = child_of + '.' + k
+                            xml[k][xml[k].__keylist__[0]].append(self.build_xml(newname, child_of=parent, **o))
                     else:
                         pars = kw.get(k) or {}
-                        parent = child_of + '.' + 
-                        self._compile_xml_(xml[k], , **pars)
-
-
+                        parent = child_of + '.' + k
+                        self._compile_xml_(xml[k], child_of=parent, **pars)
 
     def build_xml(self, name, **kw):
         """ Generic XML helper """
         xml = self.client.factory.create(name)
         self._compile_xml_(xml, **kw)
-        ## a quanto pare iride ha qualche problema con i valori settati a None
-        ## come è di default per cui i valori non forniti li setto a '' (stringa vuota)
-        #for k,v in dict(xml).items():
-            ## considero gli oggetti semplici
-            #if v is None:
-                #xml[k] = kw.get(k) or ''
-            #elif v.__class__.startswith('<class suds.sudsobject.') and k in kw and kw[k]:
-                ## WARNING: per ora NON considero che un oggetto sudsobject
-                ## annidato ne possa contenenre altri
-                #for kk,vv in dict(v).items():
-                    
-                
-            ## qui ho considerato che la struttura o contiene oggetti semplici (vedi sopra)
-            ## o contiene oggetti ArrayOf<something>-like.
-            #elif k in kw and kw[k]:
-                ## l'elemento k di kw a questo punto sarà una lista di dizionari
-                #for o in kw[k]:
-                    #xml[k][xml[k].__keylist__[0]].append(self.build_xml(str(v).split('\n')[0].strip()[1:-2], **o))
         return xml
 
     def build_obj(self, name, **kw):
-        """
-        Helper for getting a dictionary with keys loaded from the correspondent
-        xml-like object
+        """ Helper for getting a dictionary with keys loaded from the
+        correspondent xml-like object
         """
         xml = self.client.factory.create(name)
         obj = dict()
