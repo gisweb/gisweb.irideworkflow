@@ -152,11 +152,11 @@ def ModificaSoloAnagrafiche(IdDocumento, Classifica, TipoDocumento, Oggetto,
     """
     conn = IrideProtocollo(testinfo=testinfo, **ccp)
     return conn.ModificaDocumentoEAnagrafiche(
-        IdDocumento=IdDocumento,
+        IdDocumento = IdDocumento,
         Classifica = Classifica,
         TipoDocumento = TipoDocumento,
         Oggetto = Oggetto,
-        MittentiDestinatari=MittentiDestinatari)
+        MittentiDestinatari = MittentiDestinatari)
 
 ################################################################# TEST FUNCTIONS #
 

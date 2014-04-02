@@ -16,9 +16,7 @@ from gisweb.irideworkflow import ModificaSoloAnagrafiche
 from gisweb.utils import json_dumps
 
 MittentiDestinatariIn = context.IrideLayer.MittentiDestinatariIn()
-
 datiProtocolloIn = context.IrideLayer.ProtocolloIn()
-
 res = ModificaSoloAnagrafiche(IdDocumento = docid,
     Classifica = datiProtocolloIn['Classifica'],
     TipoDocumento = datiProtocolloIn['TipoDocumento'],
