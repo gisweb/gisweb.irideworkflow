@@ -208,21 +208,47 @@ class Iride():
         self.url = url
         self.client = Client(url, location=url, timeout=self.timeout)
 
+    def _compile_xml_(self, xml, child_of='', **kw):
+        """ In place xml compilation """
+        for k,v in dict(xml).items():
+            if v in (None, '', ):
+                xml[k] = kw.get(k) or ''
+            else:
+                class_type = str(v.__class__)
+                if class_type.startswith('suds.sudsobject'):
+                    suds_type = class_type.split('.')[2]
+                    if suds_type.startswith('ArrayOf'):
+                        for o in kw[k]:
+                            xml[k][xml[k].__keylist__[0]].append(self.build_xml(str(v).split('\n')[0].strip()[1:-2], **o))
+                    else:
+                        pars = kw.get(k) or {}
+                        parent = child_of + '.' + 
+                        self._compile_xml_(xml[k], , **pars)
+
+
+
     def build_xml(self, name, **kw):
         """ Generic XML helper """
         xml = self.client.factory.create(name)
-        # a quanto pare iride ha qualche problema con i valori settati a None
-        # come è di default per cui i valori non forniti li setto a '' (stringa vuota)
-        for k,v in dict(xml).items():
-            # considero gli oggetti semplici
-            if v == None:
-                xml[k] = kw.get(k) or ''
-            # qui ho considerato che la struttura o contiene oggetti semplici (vedi sopra)
-            # o contiene oggetti ArrayOf<something>-like.
-            elif k in kw and kw[k]:
-                # l'elemento k di kw a questo punto sarà una lista di dizionari
-                for o in kw[k]:
-                    xml[k][xml[k].__keylist__[0]].append(self.build_xml(str(v).split('\n')[0][8:-2], **o))
+        self._compile_xml_(xml, **kw)
+        ## a quanto pare iride ha qualche problema con i valori settati a None
+        ## come è di default per cui i valori non forniti li setto a '' (stringa vuota)
+        #for k,v in dict(xml).items():
+            ## considero gli oggetti semplici
+            #if v is None:
+                #xml[k] = kw.get(k) or ''
+            #elif v.__class__.startswith('<class suds.sudsobject.') and k in kw and kw[k]:
+                ## WARNING: per ora NON considero che un oggetto sudsobject
+                ## annidato ne possa contenenre altri
+                #for kk,vv in dict(v).items():
+                    
+                
+            ## qui ho considerato che la struttura o contiene oggetti semplici (vedi sopra)
+            ## o contiene oggetti ArrayOf<something>-like.
+            #elif k in kw and kw[k]:
+                ## l'elemento k di kw a questo punto sarà una lista di dizionari
+                #for o in kw[k]:
+                    #xml[k][xml[k].__keylist__[0]].append(self.build_xml(str(v).split('\n')[0].strip()[1:-2], **o))
         return xml
 
     def build_obj(self, name, **kw):
@@ -622,15 +648,14 @@ class IrideProtocollo(Iride):
         defaults = dict(
             Utente = UTENTE,
             Ruolo = RUOLO,
-            Origine = 'A'
+            Origine = 'A',
         )
 
-        request = self.build_xml('ModificaDocumentoEAnagrafiche',
-            CodiceAmministrazione='',
-            CodiceAOO = '')
-        sub_request = self.build_xml('ModificaProtocolloIn', **dict(defaults, **kw))
-        request.ProtoIn = sub_request
-        return self.query_service('ModificaDocumento', sub_request)
+        request = self.build_xml('ModificaDocumentoEAnagrafiche', ModificaProtocolloIn=dict(defaults, **kw))
+        #sub_request = self.build_xml('ModificaProtocolloIn', **dict(defaults, **kw))
+        #request.ProtoIn = sub_request
+
+        return self.query_service('ModificaDocumento', request)
 
 
 class IrideProcedimento(Iride):
