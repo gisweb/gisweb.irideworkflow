@@ -268,19 +268,18 @@ class Iride():
             out['message'] = '%s' % err
             # for debug purposes in case of exception reasons are in input data
             out['request'] = deep_normalize(dict(request))
+            out['xml_received'] = str(self.client.last_sent())
         else:
             out['result'] = self.parse_response(res)
-            if any([i in out['result'] for i in ('Errore', 'cod_err', )]):
+            if self.testinfo or any([i in out['result'] for i in ('Errore', 'cod_err', )]):
                 out['request'] = deep_normalize(dict(request))
+                out['xml_received'] = str(self.client.last_sent())
             else:
                 out['success'] = 1
             if self.testinfo:
                 # for backward compatibility with python 2.6
                 total_seconds = lambda x: x.seconds + x.microseconds*10**-6
                 out['time_elapsed'] = total_seconds(datetime.now()-t0)
-
-        if self.testinfo:
-            out['xml_received'] = str(self.client.last_sent())
 
         return out
 
