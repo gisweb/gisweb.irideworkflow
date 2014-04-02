@@ -29,7 +29,7 @@ if res['success']:
         msg = 'Pratica inviata con successo!'
         msgtype = 'info'
 elif pmsg:
-    msg = res.get('message') or ('Errore n. %s: %s' % (res['result']['cod_err'], res['result']['des_err']))
+    msg = res.get('message') or ('Errore n. %s: %s' % (res['result'].get('cod_err'), res['result'].get('des_err'))
     msgtype = 'error'
 
 if pmsg:
