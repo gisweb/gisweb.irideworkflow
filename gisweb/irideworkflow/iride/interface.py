@@ -16,8 +16,8 @@ from gisweb.utils import XmlDictConfig
 # This one is good at Spezia
 #URL = 'http://10.94.128.230/ulissetest/iride/web_services_20/WSProtocolloDM/WSProtocolloDM.asmx?WSDL'
 
-UTENTE = 'AMMINISTRATORE'
-RUOLO = 'AMMINISTRATORE'
+UTENTE = 'GISWEB'
+RUOLO = 'GISWEB'
 APPARTENENZA = 'DOCUMENTO'
 
 def get_current_datetime_as_string():
