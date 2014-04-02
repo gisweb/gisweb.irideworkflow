@@ -513,28 +513,27 @@ class IrideProtocollo(Iride):
         return out
 
     def LeggiDocumento(self, IdDocumento, **kw):
-        """
-        Restituisce i dati di un documento eventualmente protocollato a
+        """ Restituisce i dati di un documento eventualmente protocollato a
         partire da IdDocumento.
 
-        IdDocumento: identificativo del documento (str)
+        IdDocumento { string }: identificativo del documento
         """
 
         defaults = dict(
             Utente = UTENTE,
             Ruolo = RUOLO,
         )
+        defaults.update(kw)
 
         request = self.build_xml('LeggiDocumento',
             IdDocumento = IdDocumento,
-            **dict(defaults, **kw)
+            **defaults
         )
 
         return self.query_service('LeggiDocumento', request)
 
     def InserisciProtocollo(self, mittenti=[], allegati=[], **kw):
-        """
-        Inserisce un documento protocollato e le anagrafiche (max 100)
+        """ Inserisce un documento protocollato e le anagrafiche (max 100)
         ed eventualmente esegue l'avvio dell'iter.
 
         mittenti e allegati: liste di dizionari delle informazioni per la
@@ -564,8 +563,7 @@ class IrideProtocollo(Iride):
         return self.query_service('InserisciProtocollo', request)
 
     def InserisciDatiUtente(self, Identificativo, DatiUtente, **kw):
-        """
-        Inserisce i dati utente associati a un documento, un soggetto o un'attivita'
+        """ Inserisce i dati utente associati a un documento, un soggetto o un'attivita'
 
         Identificativo: identificativo del documento (str);
         DatiUtente: dizionario delle informazioni per costruire un oggetto xml
@@ -619,8 +617,13 @@ class IrideProtocollo(Iride):
         informazioni presenti nell'xml di richiesta.
         """
 
+        defaults = dict(
+            Utente = UTENTE,
+            Ruolo = RUOLO,
+        )
+
         request = self.build_xml('ModificaDocumentoEAnagrafiche')
-        sub_request = self.build_xml('ModificaProtocolloIn', **kw)
+        sub_request = self.build_xml('ModificaProtocolloIn', **dict(defaults, **kw))
         request.ProtoIn = sub_request
         return self.query_service('ModificaDocumento', sub_request)
 
