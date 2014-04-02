@@ -146,7 +146,7 @@ def InserisciDatiUtente(docid, UtenteIn, testinfo=False, **ccp):
     return conn.InserisciDatiUtente(docid, UtenteIn)
 
 def ModificaSoloAnagrafiche(IdDocumento, Classifica, TipoDocumento, Oggetto,
-    MittentiDestinatari, testinfo=False, **ccp):
+    MittentiDestinatari, InCaricoA, testinfo=False, **ccp):
     """ Usa il servizio ModificaDocumentoEAnagrafiche per inserire le anagrafiche
     in uno a molti (i.e. eventuali cointestatari)
     """
@@ -156,6 +156,7 @@ def ModificaSoloAnagrafiche(IdDocumento, Classifica, TipoDocumento, Oggetto,
         Classifica = Classifica,
         TipoDocumento = TipoDocumento,
         Oggetto = Oggetto,
+        InCaricoA = InCaricoA,
         MittentiDestinatari = MittentiDestinatari)
 
 ################################################################# TEST FUNCTIONS #

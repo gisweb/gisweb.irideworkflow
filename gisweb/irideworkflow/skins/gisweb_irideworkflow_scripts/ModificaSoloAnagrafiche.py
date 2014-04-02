@@ -18,9 +18,13 @@ from gisweb.utils import json_dumps
 MittentiDestinatariIn = context.IrideLayer.MittentiDestinatariIn()
 datiProtocolloIn = context.IrideLayer.ProtocolloIn()
 
-
-otherpars = dict(datiProtocolloIn, **context.Iride_loadPortalSettings())
-res = ModificaSoloAnagrafiche(docid, **otherpars)
+res = ModificaSoloAnagrafiche(IdDocumento = docid,
+    Classifica = datiProtocolloIn['Classifica'],
+    TipoDocumento = datiProtocolloIn['TipoDocumento'],
+    Oggetto = datiProtocolloIn['Oggetto'],
+    InCaricoA = datiProtocolloIn['InCaricoA'],
+    MittentiDestinatari = MittentiDestinatariIn,
+    **context.Iride_loadPortalSettings())
 
 if json:
     context.REQUEST.RESPONSE.setHeader("Content-type", "application/json")
