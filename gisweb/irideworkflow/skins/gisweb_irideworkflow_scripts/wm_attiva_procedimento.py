@@ -26,7 +26,7 @@ if res['success']:
     context.setItem('data_protocollo', dprot)
 
     if pmsg:
-        msg = 'Protocollazione avvenuta con successo!'
+        msg = 'Pratica inviata con successo!'
         msgtype = 'info'
 elif pmsg:
     msg = res.get('message') or ('Errore n. %s: %s' % (res['result']['cod_err'], res['result']['des_err']))

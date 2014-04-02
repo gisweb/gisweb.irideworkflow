@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=
+##parameters=protocolloAutomatico='SI'
 ##title=
 ##
 # Example code:
@@ -84,7 +84,7 @@ out = dict()
 out['ProcessID'] = plominoDocument.getId()
 out['Oggetto'] = plominoDocument.Title()
 out['Stato'] = ''
-out['protocolloAutomatico'] = 'Si'
+out['protocolloAutomatico'] = protocolloAutomatico
 
 if plominoDocument.getItem('giuridica_opt', ''):
     out.update(plominoDocument.IrideLayer.compilagiuridica())
