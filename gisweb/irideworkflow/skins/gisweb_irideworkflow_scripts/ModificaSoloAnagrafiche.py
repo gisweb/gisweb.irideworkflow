@@ -24,6 +24,7 @@ res = ModificaSoloAnagrafiche(IdDocumento = docid,
     Oggetto = datiProtocolloIn['Oggetto'],
     InCaricoA = datiProtocolloIn['InCaricoA'],
     MittentiDestinatari = MittentiDestinatariIn,
+    testinfo = testinfo,
     **context.Iride_loadPortalSettings())
 
 if json:
