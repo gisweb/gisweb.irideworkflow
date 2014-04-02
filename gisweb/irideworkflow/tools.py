@@ -145,12 +145,18 @@ def InserisciDatiUtente(docid, UtenteIn, testinfo=False, **ccp):
     conn = IrideProtocollo(testinfo=testinfo, **ccp)
     return conn.InserisciDatiUtente(docid, UtenteIn)
 
-def ModificaSoloAnagrafiche(IdDocumento, MittentiDestinatari, testinfo=False, **ccp):
+def ModificaSoloAnagrafiche(IdDocumento, Classifica, TipoDocumento, Oggetto,
+    MittentiDestinatari, testinfo=False, **ccp):
     """ Usa il servizio ModificaDocumentoEAnagrafiche per inserire le anagrafiche
     in uno a molti (i.e. eventuali cointestatari)
     """
     conn = IrideProtocollo(testinfo=testinfo, **ccp)
-    return conn.ModificaDocumentoEAnagrafiche(IdDocumento=IdDocumento, MittentiDestinatari=MittentiDestinatari)
+    return conn.ModificaDocumentoEAnagrafiche(
+        IdDocumento=IdDocumento,
+        Classifica = Classifica,
+        TipoDocumento = TipoDocumento,
+        Oggetto = Oggetto,
+        MittentiDestinatari=MittentiDestinatari)
 
 ################################################################# TEST FUNCTIONS #
 

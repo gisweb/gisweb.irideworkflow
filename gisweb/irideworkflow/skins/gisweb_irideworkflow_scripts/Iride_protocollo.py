@@ -18,22 +18,37 @@ testinfo e results sono parametri di test
 """
 
 assert context.isAuthor(), "You need edit permission on this document!"
-from gisweb.utils import json_dumps
+from gisweb.irideworkflow import leggi_documento
 
 out = []
 
 if not context.getItem('irideIdDocumento'):
-    res1 = context.wm_attiva_procedimento(oggetto=oggetto, data=data, testinfo=testinfo, json=False, pmsg=pmsg)
+    res1 = context.wm_attiva_procedimento(oggetto=oggetto, data=data,
+        testinfo=testinfo, json=False, pmsg=pmsg)
+
     out.append(res1)
 
-if context.getItem('irideIdDocumento'):
+docid = context.getItem('irideIdDocumento')
+if docid:
     res2 = context.InserisciDatiUtente(testinfo=testinfo, json=False, pmsg=pmsg)
     out.append(res2)
+
+    # 1. richiamare il servizio LeggiDocumento con ID del documento
+
+    # OutLeggiDocumento = leggi_documento(docid)
+
+    ## 2. compilare l'array MittentiDestinatari con i dati della lettura completa
+    # tramite il servizio LeggiAnagrafica per ciascun id di soggetto per
+    # preservare i soggetti mittenti esistenti
+
+    # 3. inserire in aggiunta nell'array MittentiDestinatari i nuovi soggetti
+    # cointestatari
 
     res3 = context.ModificaSoloAnagrafiche(testinfo=testinfo, json=False)
     out.append(res3)
 
 if json:
+    from gisweb.utils import json_dumps
     context.REQUEST.RESPONSE.setHeader("Content-type", "application/json")
     print json_dumps(out, prettyxml=True)
     return printed
