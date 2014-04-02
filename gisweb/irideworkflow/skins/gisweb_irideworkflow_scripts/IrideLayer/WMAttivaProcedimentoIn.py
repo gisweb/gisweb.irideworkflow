@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=
+##parameters=protocollo_automatico='SI'
 ##title=
 ##
 # Example code:
@@ -12,6 +12,8 @@
 """
 Ricava dal PlominoDocument le informazioni utili per costruire un oggetto
 dati_procedimento-like.
+
+    protocollo_automatico (String) SI/NO
 
 Chiavi da restituire:
     codice_fiscale_titolare: identificativo del soggetto intestatario del  procedimento;
@@ -51,7 +53,7 @@ out['tipo_procedimento'] = '%(TipoDocumento)s|%(Classifica)s|%(InCaricoA)s' % da
 out['oggetto'] = datiProtocolloIn['Oggetto']
 
 # TODO: restituisce ancora un dizionario VUOTO!!
-out['dati_procedimento'] = plominoDocument.IrideLayer.SubDatiProcedimentoIn()
+out['dati_procedimento'] = plominoDocument.IrideLayer.SubDatiProcedimentoIn(protocollo_automatico=protocollo_automatico)
 
 out['dati_richiesta'] = plominoDocument.IrideLayer.SubDatiRichiestaIn()
 

@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=oggetto=None, data=None, testinfo=False, json=False, pmsg=True
+##parameters=oggetto=None, data=None, protocollo_automatico='SI', testinfo=False, json=False, pmsg=True
 ##title=
 ##
 # Example code:
@@ -13,7 +13,7 @@ from Products.CMFPlomino.PlominoUtils import StringToDate
 from gisweb.irideworkflow import wm_attiva_procedimento
 from gisweb.utils import json_dumps
 
-DataIn = context.IrideLayer.WMAttivaProcedimentoIn()
+DataIn = context.IrideLayer.WMAttivaProcedimentoIn(protocollo_automatico=protocollo_automatico)
 res = wm_attiva_procedimento(DataIn, testinfo=testinfo, **context.Iride_loadPortalSettings())
 msg = ''
 

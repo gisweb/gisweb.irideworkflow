@@ -4,17 +4,24 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=oggetto=None, data=None, testinfo=False, json=False, pmsg=True
+##parameters=oggetto=None, data=None, protocollo_automatico='SI', pmsg=True, testinfo=False, json=False
 ##title=
 ##
 # Example code:
 
 """
-oggetto: se non specificato diversamente viene considerato il titolo del documento;
-data: data della richiesta di protocollazione (se mancante verrà usata quella
-    corrente dalle procedure interne)
+    oggetto (String):
+        se non specificato diversamente viene considerato il titolo del documento;
+    data (String):
+        data della richiesta di protocollazione (se mancante verrà usata quella
+        corrente dalle procedure interne)
+    protocollo_automatico (String):
+        valori accettai: SI/NO. utile per inibire la protocollazione.
+        caso d'uso: invio di pratiche pregresse già protocollate
+    pmsg (Boolean):
+        se i messaggi di errore debbano essere passati al PortalMessage
 
-testinfo e results sono parametri di test
+    testinfo e json sono parametri di test/debug.
 """
 
 assert context.isAuthor(), "You need edit permission on this document!"
@@ -24,7 +31,7 @@ out = []
 
 if not context.getItem('irideIdDocumento'):
     res1 = context.wm_attiva_procedimento(oggetto=oggetto, data=data,
-        testinfo=testinfo, json=False, pmsg=pmsg)
+        testinfo=testinfo, protocollo_automatico=protocollo_automatico, json=False, pmsg=pmsg)
 
     out.append(res1)
 
