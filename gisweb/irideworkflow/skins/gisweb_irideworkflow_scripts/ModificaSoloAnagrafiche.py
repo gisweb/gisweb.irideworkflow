@@ -19,11 +19,12 @@ MittentiDestinatariIn = context.IrideLayer.MittentiDestinatariIn()
 
 datiProtocolloIn = context.IrideLayer.ProtocolloIn()
 
-res = ModificaSoloAnagrafiche(docid,
+res = ModificaSoloAnagrafiche(IdDocumento = docid,
     Classifica = datiProtocolloIn['Classifica'],
     TipoDocumento = datiProtocolloIn['TipoDocumento'],
     Oggetto = datiProtocolloIn['Oggetto'],
-    MittentiDestinatariIn, testinfo=True, **context.Iride_loadPortalSettings())
+    MittentiDestinatari = MittentiDestinatariIn,
+    testinfo=True, **context.Iride_loadPortalSettings())
 
 if json:
     context.REQUEST.RESPONSE.setHeader("Content-type", "application/json")
