@@ -81,7 +81,7 @@ def doc2xml(root, pprint=False):
 def prepare_xml_richiesta(dati_allegati=[], **kw):
     """
     doc url: http://projects.gisweb.it/projects/gisweb-irideworkflow/wiki/Wiki#Descrizione-degli-argomenti-wap
-    
+
     Le chiavi per i vari sub-nodi sono uniche quindi ho previsto possano anche essere
     passate direttamente come parametri di richiesta. In alternativa possono essere
     passati 3/4 dizionari distinti (dati_richiedente, dati_titolare,
@@ -625,7 +625,9 @@ class IrideProtocollo(Iride):
             Origine = 'A'
         )
 
-        request = self.build_xml('ModificaDocumentoEAnagrafiche')
+        request = self.build_xml('ModificaDocumentoEAnagrafiche',
+            CodiceAmministrazione='',
+            CodiceAOO = '')
         sub_request = self.build_xml('ModificaProtocolloIn', **dict(defaults, **kw))
         request.ProtoIn = sub_request
         return self.query_service('ModificaDocumento', sub_request)
