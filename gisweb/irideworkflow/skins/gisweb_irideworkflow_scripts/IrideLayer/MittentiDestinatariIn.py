@@ -66,7 +66,7 @@ cointestatario = dict(
     DataNascita = lambda doc: doc.checkItem('fisica_data_nato_cointestatari'),
     CodiceComuneNascita = lambda doc: doc.checkItem('fisica_cod_cat_nato_cointestatari'),
     Nazionalita = lambda doc: 'IT' if doc.getItem('fisica_cod_cat_nato_cointestatari') != 'EE' else doc.getItem('fisica_comune_nato_cointestatari'),
-    TipoSogg = lambda doc: 'S',
+    TipoSogg = lambda doc: 'C',
     TipoPersona = lambda doc: 'FI',
     Recapiti = lambda doc: get_recapiti('sub_fisica_cointestatari', doc)
 )
@@ -85,7 +85,7 @@ def get_cointestatario(rec):
         DataNascita = lambda doc: doc['fisica_data_nato'],
         CodiceComuneNascita = lambda doc: getCodcom(doc['fisica_cod_cat_nato']),
         Nazionalita = lambda doc: 'IT' if doc['fisica_cod_cat_nato'] != 'EE' else doc['fisica_comune_nato'],
-        TipoSogg = lambda doc: 'S',
+        TipoSogg = lambda doc: 'C',
         TipoPersona = lambda doc: 'FI',
     )
 
