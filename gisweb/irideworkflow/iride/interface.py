@@ -271,10 +271,11 @@ class Iride():
             out['xml_received'] = str(self.client.last_sent())
         else:
             out['result'] = self.parse_response(res)
-            if self.testinfo or any([i in out['result'] for i in ('Errore', 'cod_err', )]):
+            failtest = any([i in out['result'] for i in ('Errore', 'cod_err', )])
+            if self.testinfo or failtest:
                 out['request'] = deep_normalize(dict(request))
                 out['xml_received'] = str(self.client.last_sent())
-            else:
+            if not failtest:
                 out['success'] = 1
             if self.testinfo:
                 # for backward compatibility with python 2.6

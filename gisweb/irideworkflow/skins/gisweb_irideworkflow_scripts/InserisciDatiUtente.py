@@ -25,7 +25,7 @@ msgtype = 'info'
 if not res['success']:
     context.setItem('InserisciDatiUtenteFailed', True)
     if pmsg:
-        msg = res.get('message') or res['result']['Errore']
+        msg = res.get('message') or res['result'].get('Errore')
         msgtype = 'error'
 else:
     if test:
