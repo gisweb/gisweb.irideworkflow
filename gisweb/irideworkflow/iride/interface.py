@@ -279,6 +279,9 @@ class Iride():
                 total_seconds = lambda x: x.seconds + x.microseconds*10**-6
                 out['time_elapsed'] = total_seconds(datetime.now()-t0)
 
+        if self.testinfo:
+            out['xml_received'] = str(self.client.last_sent())
+
         return out
 
     def get_ProtocolloIn(self, mittenti=[], allegati=[], **kw):
