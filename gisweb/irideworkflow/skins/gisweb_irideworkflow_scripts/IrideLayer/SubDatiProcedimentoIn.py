@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=protocollo_automatico='SI'
+##parameters=
 ##title=
 ##
 # Example code:
@@ -22,4 +22,4 @@ Chiavi da restituire:
     protocollo_automatico (Stringa)  SI/NO ???
 """
 
-return dict(protocollo_automatico=protocollo_automatico)
+return dict()
