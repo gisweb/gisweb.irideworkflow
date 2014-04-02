@@ -620,7 +620,7 @@ class IrideProtocollo(Iride):
         defaults = dict(
             Utente = UTENTE,
             Ruolo = RUOLO,
-            Origina = 'A'
+            Origine = 'A'
         )
 
         request = self.build_xml('ModificaDocumentoEAnagrafiche')
