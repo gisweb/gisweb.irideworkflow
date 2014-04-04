@@ -94,7 +94,7 @@ else:
 
 items = plominoDocument.getItems()
 fields = plominoDocument.getForm().getFormFields(includesubforms=True)
-out['dati_allegati'] = list()
+dati_allegati = list()
 for fld in fields:
     fldname = fld.getId()
     if (fldname in items) and (fld.getFieldType() == 'ATTACHMENT'):
@@ -111,15 +111,19 @@ for fld in fields:
             elif nparts>2:
                 fileextension = '.'+'.'.join(name_components[-2:])
                 filename = '.'.join(name_components[:-2])
+            weight = 0 if fldname == 'documenti_pdf' else 1
             is_p7m = fname.lower().endswith('p7m')
-            out['dati_allegati'].append(
+            dati_allegati.append((
+                weight,
                 dict(
                     all_descri = fld.Title(),
                     all_tipo = fileextension,
                     all_nomefile = filename,
                     all_blob = plominoDocument.getfile(filename=fname),
                     all_firma = 'S' if is_p7m else 'N'
-                )
+                ), )
             )
+dati_allegati.sort()
+out['dati_allegati'] = [i[1] for i in dati_allegati]
 
 return out
