@@ -101,18 +101,24 @@ for fld in fields:
         value = plominoDocument.getItem(fldname, {}) or {}
         for fname,ftype in value.items():
             name_components = fname.split('.')
-            if len(name_components)>2:
-                fileextension = '.'.join(name_components[-2:])
+            nparts = len(name_components)
+            if nparts == 1:
+                filename = fname
+                fileextension = ''
+            elif nparts == 2:
+                filename = name_components[0]
+                fileextension = '.'+name_components[1]
+            elif nparts>2:
+                fileextension = '.'+'.'.join(name_components[-2:])
                 filename = '.'.join(name_components[:-2])
-            else:
-                filename, fileextension = name_components
+            is_p7m = fname.lower().endswith('p7m')
             out['dati_allegati'].append(
                 dict(
                     all_descri = fld.Title(),
-                    all_tipo = '.'+fileextension,
+                    all_tipo = fileextension,
                     all_nomefile = filename,
                     all_blob = plominoDocument.getfile(filename=fname),
-                    all_firma = 'N'
+                    all_firma = 'S' if is_p7m else 'N'
                 )
             )
 

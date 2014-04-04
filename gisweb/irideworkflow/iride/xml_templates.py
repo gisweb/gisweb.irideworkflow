@@ -8,6 +8,9 @@ except:
 
 
 tstr = (lambda x: isinstance(x, basestring), lambda x: x, )
+
+tuni = (lambda x: isinstance(x, basestring), lambda x: x.decode('utf-8'), )
+
 tint =  (lambda x: isinstance(x, int), lambda x: str(x), )
 tdate = (lambda x: isinstance(x, (DateTime, datetime)), lambda x: x.strftime('%Y-%m-%d'), )
 tblob = (lambda x: True, lambda x: b64encode(x))
@@ -47,9 +50,9 @@ richiedente = dict([(k.replace('tit_', 'ric_'),v) for k,v in titolare.items()])
 
 allegati = dict(
     all_blob = tblob,
-    all_descri = tstr,
+    all_descri = tuni,
     all_tipo = tstr,
-    all_nomefile = tstr,
+    all_nomefile = tuni,
     all_firma = tstr
 )
 
