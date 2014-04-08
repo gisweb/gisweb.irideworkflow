@@ -16,8 +16,8 @@ from gisweb.utils import XmlDictConfig
 # This one is good at Spezia
 #URL = 'http://10.94.128.230/ulissetest/iride/web_services_20/WSProtocolloDM/WSProtocolloDM.asmx?WSDL'
 
-UTENTE = 'AMMINISTRATORE'
-RUOLO = 'AMMINISTRATORE'
+UTENTE = 'GISWEB'
+RUOLO = 'GISWEB'
 APPARTENENZA = 'DOCUMENTO'
 
 def get_current_datetime_as_string():
@@ -63,9 +63,7 @@ def prepare_string2(data, docid):
                 locals()['%s_%s' % (key, i)] = etree.SubElement(locals()['row_%s' % i], 'field', name=key)
                 locals()['%s_%s' % (key, i)].text = u"%s" % value
     return doc
-                
-                
-    
+
 def assign_value(obj, value, validator, transform):
     if value in ('', None, ):
         obj.text = ''
@@ -209,29 +207,32 @@ class Iride():
         self.client = Client(url, location=url, timeout=self.timeout)
 
     def _compile_xml_(self, xml, child_of='', **kw):
-        """ In place xml compilation """
+        """ Xml fields filling """
         for k,v in dict(xml).items():
             if v in (None, '', ):
-                xml[k] = kw.get(k) or ''
+                xml[k] = '' if not k in kw else kw[k]
             else:
                 class_type = str(v.__class__)
                 if class_type.startswith('suds.sudsobject'):
                     suds_type = class_type.split('.')[2]
                     if suds_type.startswith('ArrayOf'):
-                        for o in kw[k]:
-                            newname = str(v).split('\n')[0].strip()[1:-2]
-                            parent = child_of + '.' + k
-                            xml[k][xml[k].__keylist__[0]].append(self.build_xml(newname, child_of=parent, **o))
+                        if k in kw:
+                            for o in kw[k]:
+                                newname = suds_type[7:]
+                                parent = child_of + '.' + k # just for debug
+                                newobj = self.build_xml(newname, child_of=parent, **o)
+                                xml[k][xml[k].__keylist__[0]].append(newobj)
                     else:
-                        pars = kw.get(k) or {}
-                        parent = child_of + '.' + k
-                        self._compile_xml_(xml[k], child_of=parent, **pars)
+                        pars = {} if not k in kw else kw[k]
+                        parent = child_of + '.' + k # just for debug
+                        xml[k] = self._compile_xml_(xml[k], child_of=parent, **pars)
+        return xml
 
     def build_xml(self, name, **kw):
         """ Generic XML helper """
-        xml = self.client.factory.create(name)
-        self._compile_xml_(xml, **kw)
-        return xml
+        plain_xml = self.client.factory.create(name)
+        compiled_xml = self._compile_xml_(plain_xml, **kw)
+        return compiled_xml
 
     def build_obj(self, name, **kw):
         """ Helper for getting a dictionary with keys loaded from the
@@ -632,7 +633,7 @@ class IrideProtocollo(Iride):
             Origine = 'A',
         )
 
-        request = self.build_xml('ModificaDocumentoEAnagrafiche', ModificaProtocolloIn=dict(defaults, **kw))
+        request = self.build_xml('ModificaDocumentoEAnagrafiche', ProtoIn=dict(defaults, **kw))
         #sub_request = self.build_xml('ModificaProtocolloIn', **dict(defaults, **kw))
         #request.ProtoIn = sub_request
 
