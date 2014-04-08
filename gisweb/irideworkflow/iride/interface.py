@@ -225,7 +225,9 @@ class Iride():
                     else:
                         pars = {} if not k in kw else kw[k]
                         parent = child_of + '.' + k # just for debug
-                        xml[k] = self._compile_xml_(xml[k], child_of=parent, **pars)
+                        compiled = self._compile_xml_(xml[k], child_of=parent, **pars)
+                        for c in compiled.__keylist__:
+                            xml[k][c] = compiled[c]
         return xml
 
     def build_xml(self, name, **kw):
