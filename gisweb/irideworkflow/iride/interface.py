@@ -291,7 +291,7 @@ class Iride():
             fail_test = any([i in out['result'] for i in ('Errore', 'cod_err', )])
 
             if self.testinfo or fail_test:
-                out['request'] = deep_normalize((dict(request, )+other)
+                out['request'] = deep_normalize((dict(request), )+other)
                 out['request_repr'] = '%s' % request
                 out['xml_received'] = str(self.client.last_sent())
             if not fail_test:
