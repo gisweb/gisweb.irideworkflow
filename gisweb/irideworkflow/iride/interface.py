@@ -687,7 +687,7 @@ class IrideProtocollo(Iride):
         )
 
         #request = self.build_xml('ModificaDocumentoEAnagrafiche', ProtoIn=dict(defaults, **kw))
-        request = self.build_xml('ProtoIn', **dict(defaults, **kw))
+        request = self.build_xml('ModificaProtocolloIn', **dict(defaults, **kw))
 
         return self.query_service('ModificaDocumento', request, '', '')
 
