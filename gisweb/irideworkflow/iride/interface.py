@@ -637,7 +637,7 @@ class IrideProtocollo(Iride):
         return self.query_service('RicercaPerCodiceFiscale', request)
 
     def _SendAgainModificaDocumentoEAnagrafiche(self):
-        """ """
+        """ DEPRECATED """
         # 1. recupero il documento appena inviato
         bad_xml_request = str(self.client.last_sent())
 
