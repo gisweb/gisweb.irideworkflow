@@ -173,7 +173,7 @@ def deep_normalize(d):
     """ Normalize content of object returned from functions and methods """
     if 'sudsobject' in str(d.__class__):
         d = deep_normalize(dict(d))
-    else:
+    elif isinstance(d, dict):
         for k,v in d.iteritems():
             if 'sudsobject' in str(v.__class__):
                 #print k, v, '%s' % v.__class__
@@ -188,6 +188,11 @@ def deep_normalize(d):
                 # per problemi di permessi sugli oggetti datetime trasformo
                 # in DateTime di Zope
                 d[k] = DateTime(v.isoformat())
+    elif isinstance(d, list):
+        d = [deep_normalize(i) for i in d]
+    else:
+        raise ValueError("Unsupported type: %s" % type(d))
+
     return d
 
 class Iride():
@@ -275,7 +280,7 @@ class Iride():
         except Exception as err:
             out['message'] = '%s' % err
             # for debug purposes in case of exception reasons are in input data
-            out['request'] = deep_normalize((dict(request), )+other)
+            out['request'] = deep_normalize(dict(request))
             out['xml_received'] = str(self.client.last_sent())
         else:
             out['result'] = self.parse_response(res)
