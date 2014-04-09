@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=protocolloAutomatico='SI'
+##parameters=
 ##title=
 ##
 # Example code:
@@ -15,8 +15,6 @@ Chiavi da restituire:
     ProcessID            (Stringa) Identificativo del processo proveniente dal portale;
     Oggetto              (Stringa) Oggetto del processo proveniente dal portale;
     Stato                (Stringa) Stato del processo proveniente dal portale;
-    protocolloAutomatico (Stringa) Indicatore di protocollazione automatica del
-        documento relativo al procedimento. Valori ammessi: Si/No, default = Si;
 
     int_numeropr (Stringa)  Numero di protocollo del procedimento da integrare;
     int_annopr   (Numerico) Anno di protocollazione del procedimento da integrare;
@@ -84,7 +82,6 @@ out = dict()
 out['ProcessID'] = plominoDocument.getId()
 out['Oggetto'] = plominoDocument.Title()
 out['Stato'] = ''
-out['protocolloAutomatico'] = protocolloAutomatico
 
 if plominoDocument.getItem('giuridica_opt', ''):
     out.update(plominoDocument.IrideLayer.compilagiuridica())

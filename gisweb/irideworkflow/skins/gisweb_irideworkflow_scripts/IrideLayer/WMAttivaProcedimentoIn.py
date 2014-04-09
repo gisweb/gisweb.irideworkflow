@@ -13,7 +13,9 @@
 Ricava dal PlominoDocument le informazioni utili per costruire un oggetto
 dati_procedimento-like.
 
-    protocollo_automatico (String) SI/NO
+Parametri:
+    protocollo_automatico (Stringa) Indicatore di protocollazione automatica del
+        documento relativo al procedimento. Valori ammessi: Si/No, default = Si;
 
 Chiavi da restituire:
     codice_fiscale_titolare: identificativo del soggetto intestatario del  procedimento;
@@ -53,8 +55,8 @@ out['tipo_procedimento'] = '%(TipoDocumento)s|%(Classifica)s|%(InCaricoA)s' % da
 out['oggetto'] = datiProtocolloIn['Oggetto']
 
 # TODO: restituisce ancora un dizionario VUOTO!!
-out['dati_procedimento'] = plominoDocument.IrideLayer.SubDatiProcedimentoIn()
+out['dati_procedimento'] = plominoDocument.IrideLayer.SubDatiProcedimentoIn(protocollo_automatico=protocollo_automatico)
 
-out['dati_richiesta'] = plominoDocument.IrideLayer.SubDatiRichiestaIn(protocolloAutomatico=protocollo_automatico)
+out['dati_richiesta'] = plominoDocument.IrideLayer.SubDatiRichiestaIn()
 
 return out

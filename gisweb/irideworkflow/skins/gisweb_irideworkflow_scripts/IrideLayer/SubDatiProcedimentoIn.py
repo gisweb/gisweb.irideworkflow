@@ -4,12 +4,16 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=
+##parameters=protocollo_automatico='SI'
 ##title=
 ##
 # Example code:
 
 """
+Parametri:
+    protocollo_automatico (Stringa) Indicatore di protocollazione automatica del
+        documento relativo al procedimento. Valori ammessi: Si/No, default = Si;
+
 Chiavi da restituire:
     pro_id                (Numerico) Numero identificativo del procedimento
     pro_nrprot            (Numerico) Numero del protocollo
@@ -22,4 +26,4 @@ Chiavi da restituire:
     protocollo_automatico (Stringa)  SI/NO ???
 """
 
-return dict()
+return dict(protocollo_automatico=protocollo_automatico)
