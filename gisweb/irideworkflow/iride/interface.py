@@ -289,6 +289,7 @@ class Iride():
 
             if self.testinfo or fail_test:
                 out['request'] = deep_normalize(dict(request))
+                out['request_repr'] = str(request)
                 out['xml_received'] = str(self.client.last_sent())
             if not fail_test:
                 out['success'] = 1
