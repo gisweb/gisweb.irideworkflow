@@ -31,7 +31,7 @@ def get_recapiti(formname, doc):
 PersonaFisica = dict(
     CodiceFiscale = lambda doc: doc.checkItem('fisica_cf'),
     CognomeNome = lambda doc: '%s %s' % (doc.checkItem('fisica_cognome'), doc.checkItem('fisica_nome'), ),
-    Nome = lambda doc: doc.checkItem('fisica_nome'),
+    #Nome = lambda doc: doc.checkItem('fisica_nome'),
     Localita = lambda doc: doc.checkItem('fisica_loc_nato'),
     Indirizzo = lambda doc: '%s, %s' % (doc.checkItem('fisica_indirizzo'), doc.checkItem('fisica_civico'), ),
     CodiceComuneResidenza = lambda doc: getCodcom(doc.checkItem('fisica_cod_cat')),

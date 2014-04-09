@@ -63,9 +63,7 @@ def prepare_string2(data, docid):
                 locals()['%s_%s' % (key, i)] = etree.SubElement(locals()['row_%s' % i], 'field', name=key)
                 locals()['%s_%s' % (key, i)].text = u"%s" % value
     return doc
-                
-                
-    
+
 def assign_value(obj, value, validator, transform):
     if value in ('', None, ):
         obj.text = ''
@@ -175,7 +173,7 @@ def deep_normalize(d):
     """ Normalize content of object returned from functions and methods """
     if 'sudsobject' in str(d.__class__):
         d = deep_normalize(dict(d))
-    else:
+    elif isinstance(d, dict):
         for k,v in d.iteritems():
             if 'sudsobject' in str(v.__class__):
                 #print k, v, '%s' % v.__class__
@@ -184,12 +182,15 @@ def deep_normalize(d):
             elif isinstance(v, dict):
                 r = deep_normalize(v)
                 d[k] = r
-            elif isinstance(v, list):
+            elif isinstance(v, (list, tuple, )):
                 d[k] = [deep_normalize(i) for i in v]
             elif isinstance(v, datetime):
                 # per problemi di permessi sugli oggetti datetime trasformo
                 # in DateTime di Zope
                 d[k] = DateTime(v.isoformat())
+    elif isinstance(d, (list, tuple, )):
+        d = [deep_normalize(i) for i in d]
+
     return d
 
 class Iride():
@@ -208,27 +209,37 @@ class Iride():
         self.url = url
         self.client = Client(url, location=url, timeout=self.timeout)
 
-    def build_xml(self, name, **kw):
-        """ Generic XML helper """
-        xml = self.client.factory.create(name)
-        # a quanto pare iride ha qualche problema con i valori settati a None
-        # come è di default per cui i valori non forniti li setto a '' (stringa vuota)
+    def _compile_xml_(self, xml, child_of='', **kw):
+        """ Xml fields filling """
         for k,v in dict(xml).items():
-            # considero gli oggetti semplici
-            if v == None:
-                xml[k] = kw.get(k) or ''
-            # qui ho considerato che la struttura o contiene oggetti semplici (vedi sopra)
-            # o contiene oggetti ArrayOf<something>-like.
-            elif k in kw and kw[k]:
-                # l'elemento k di kw a questo punto sarà una lista di dizionari
-                for o in kw[k]:
-                    xml[k][xml[k].__keylist__[0]].append(self.build_xml(str(v).split('\n')[0][8:-2], **o))
+            if v in (None, '', ):
+                xml[k] = '' if not k in kw else kw[k]
+            else:
+                class_type = str(v.__class__)
+                if class_type.startswith('suds.sudsobject'):
+                    suds_type = class_type.split('.')[2]
+                    if suds_type.startswith('ArrayOf'):
+                        if k in kw:
+                            for o in kw[k]:
+                                newname = suds_type[7:]
+                                parent = child_of + '.' + k # just for debug
+                                newobj = self.build_xml(newname, child_of=parent, **o)
+                                xml[k][xml[k].__keylist__[0]].append(newobj)
+                    else:
+                        pars = {} if not k in kw else kw[k]
+                        parent = child_of + '.' + k # just for debug
+                        xml[k] = self._compile_xml_(xml[k], child_of=parent, **pars)
         return xml
 
+    def build_xml(self, name, **kw):
+        """ Generic XML helper """
+        plain_xml = self.client.factory.create(name)
+        compiled_xml = self._compile_xml_(plain_xml, **kw)
+        return compiled_xml
+
     def build_obj(self, name, **kw):
-        """
-        Helper for getting a dictionary with keys loaded from the correspondent
-        xml-like object
+        """ Helper for getting a dictionary with keys loaded from the
+        correspondent xml-like object
         """
         xml = self.client.factory.create(name)
         obj = dict()
@@ -254,7 +265,7 @@ class Iride():
         """ Common response parsing """
         return deep_normalize(dict(res))
 
-    def query_service(self, methodname, request):
+    def query_service(self, methodname, request, *other):
         """ Standardize the output """
         service = getattr(self.client.service, methodname)
         out = dict(success=0, service=methodname)
@@ -263,7 +274,7 @@ class Iride():
             if isinstance(request, dict):
                 res = service(**request)
             else:
-                res = service(request)
+                res = service(request, *other)
         except Exception as err:
             out['message'] = '%s' % err
             # for debug purposes in case of exception reasons are in input data
@@ -271,11 +282,22 @@ class Iride():
             out['xml_received'] = str(self.client.last_sent())
         else:
             out['result'] = self.parse_response(res)
-            failtest = any([i in out['result'] for i in ('Errore', 'cod_err', )])
-            if self.testinfo or failtest:
-                out['request'] = deep_normalize(dict(request))
+
+            fail_test = any([i in out['result'] for i in ('Errore', 'cod_err', )])
+
+            if methodname == 'ModificaDocumento' and fail_test:
+                out['result'] = self._SendAgainModificaDocumentoEAnagrafiche()
+                out['second_attempt'] = True
+            else:
+                out['second_attempt'] = False
+
+            fail_test = any([i in out['result'] for i in ('Errore', 'cod_err', )])
+
+            if self.testinfo or fail_test:
+                out['request'] = deep_normalize((dict(request), )+other)
+                out['request_repr'] = '%s' % request
                 out['xml_received'] = str(self.client.last_sent())
-            if not failtest:
+            if not fail_test:
                 out['success'] = 1
             if self.testinfo:
                 # for backward compatibility with python 2.6
@@ -614,6 +636,49 @@ class IrideProtocollo(Iride):
 
         return self.query_service('RicercaPerCodiceFiscale', request)
 
+    def _SendAgainModificaDocumentoEAnagrafiche(self):
+        """ """
+        # 1. recupero il documento appena inviato
+        bad_xml_request = str(self.client.last_sent())
+
+        # 2. apporto le modifiche cablate
+        from lxml import etree
+        root = etree.fromstring(bad_xml_request)
+        root[1][0].append(root[1][0][0][-2])
+        root[1][0].append(root[1][0][0][-1])
+        root[1][0][0] = root[1][0][0][0]
+        good_xml_request = etree.tostring(root)
+
+        # 3. mando di nuovo il documento
+        import urllib2
+        headers = {
+            'Content-Type': 'application/soap+xml; charset=utf-8',
+            'Host': self.HOST[7:],
+            'Content-Type': 'text/xml; charset=utf-8',
+            'Content-Length': len(good_xml_request),
+            'SOAPAction': "http://tempuri.org/ModificaDocumentoEAnagrafiche"
+        }
+        auth_handler = urllib2.HTTPBasicAuthHandler()
+        opener = urllib2.build_opener(auth_handler)
+        urllib2.install_opener(opener)
+
+        req = urllib2.Request(self.url, good_xml_request, headers)
+        response = urllib2.urlopen(req)
+
+        # 4. preparo la risposta
+        def getTag(tag):
+            """ Elimino eventuale name space (es. {http://tempuri.org/}) """
+            if '}' in tag:
+                return tag[tag.index('}')+1:]
+            else:
+                return tag
+
+        the_page = response.read()
+        resp = etree.fromstring(the_page)
+        dresp = dict([(getTag(i.tag), i.text) for i in resp[0][0][0]])
+        return dresp
+
+
     def ModificaDocumentoEAnagrafiche(self, **kw):
         """ Partendo dal docid, o in sua assenza dall'anno e numero protocollo,
         il sistema provvederà a recuperare il documento e ad aggiornarlo con le
@@ -623,15 +688,13 @@ class IrideProtocollo(Iride):
         defaults = dict(
             Utente = UTENTE,
             Ruolo = RUOLO,
-            Origine = 'A'
+            Origine = 'A',
         )
 
-        request = self.build_xml('ModificaDocumentoEAnagrafiche',
-            CodiceAmministrazione='',
-            CodiceAOO = '')
-        sub_request = self.build_xml('ModificaProtocolloIn', **dict(defaults, **kw))
-        request.ProtoIn = sub_request
-        return self.query_service('ModificaDocumento', sub_request)
+        #request = self.build_xml('ModificaDocumentoEAnagrafiche', ProtoIn=dict(defaults, **kw))
+        request = self.build_xml('ModificaProtocolloIn', **dict(defaults, **kw))
+
+        return self.query_service('ModificaDocumento', request, '', '')
 
 
 class IrideProcedimento(Iride):
