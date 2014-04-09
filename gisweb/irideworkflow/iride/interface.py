@@ -280,13 +280,17 @@ class Iride():
         else:
             out['result'] = self.parse_response(res)
 
-            if methodname == 'ModificaDocumento' and any([i in out['result'] for i in ('Errore', 'cod_err', )]):
+            fail_test = any([i in out['result'] for i in ('Errore', 'cod_err', )])
+
+            if methodname == 'ModificaDocumento' and fail_test:
                 out['result'] = self._SendAgainModificaDocumentoEAnagrafiche()
 
-            if self.testinfo or any([i in out['result'] for i in ('Errore', 'cod_err', )]):
+            fail_test = any([i in out['result'] for i in ('Errore', 'cod_err', )])
+
+            if self.testinfo or fail_test:
                 out['request'] = deep_normalize(dict(request))
                 out['xml_received'] = str(self.client.last_sent())
-            else:
+            elif not fail_test:
                 out['success'] = 1
             if self.testinfo:
                 # for backward compatibility with python 2.6
