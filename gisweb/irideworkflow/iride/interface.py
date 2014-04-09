@@ -290,7 +290,7 @@ class Iride():
             if self.testinfo or fail_test:
                 out['request'] = deep_normalize(dict(request))
                 out['xml_received'] = str(self.client.last_sent())
-            elif not fail_test:
+            if not fail_test:
                 out['success'] = 1
             if self.testinfo:
                 # for backward compatibility with python 2.6
