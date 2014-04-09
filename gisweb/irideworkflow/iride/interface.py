@@ -285,6 +285,8 @@ class Iride():
             if methodname == 'ModificaDocumento' and fail_test:
                 out['result'] = self._SendAgainModificaDocumentoEAnagrafiche()
                 out['second_attempt'] = True
+            else:
+                out['second_attempt'] = False
 
             fail_test = any([i in out['result'] for i in ('Errore', 'cod_err', )])
 
