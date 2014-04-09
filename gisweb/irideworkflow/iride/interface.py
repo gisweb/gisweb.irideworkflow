@@ -188,7 +188,7 @@ def deep_normalize(d):
                 # per problemi di permessi sugli oggetti datetime trasformo
                 # in DateTime di Zope
                 d[k] = DateTime(v.isoformat())
-    elif isinstance(d, list):
+    elif isinstance(d, (list, tuple, )):
         d = [deep_normalize(i) for i in d]
     else:
         raise ValueError("Unsupported type: %s" % type(d))
