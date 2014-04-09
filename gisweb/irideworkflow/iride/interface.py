@@ -182,7 +182,7 @@ def deep_normalize(d):
             elif isinstance(v, dict):
                 r = deep_normalize(v)
                 d[k] = r
-            elif isinstance(v, list):
+            elif isinstance(v, (list, tuple, )):
                 d[k] = [deep_normalize(i) for i in v]
             elif isinstance(v, datetime):
                 # per problemi di permessi sugli oggetti datetime trasformo
