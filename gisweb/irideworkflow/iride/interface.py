@@ -262,16 +262,16 @@ class Iride():
         """ Common response parsing """
         return deep_normalize(dict(res))
 
-    def query_service(self, methodname, request):
+    def query_service(self, methodname, request, *other):
         """ Standardize the output """
         service = getattr(self.client.service, methodname)
         out = dict(success=0, service=methodname)
         if self.testinfo: t0 = datetime.now()
         try:
             if isinstance(request, dict):
-                res = service(**request)
+                res n= service(**request)
             else:
-                res = service(request)
+                res = service(request, *other)
         except Exception as err:
             out['message'] = '%s' % err
             # for debug purposes in case of exception reasons are in input data
@@ -284,12 +284,13 @@ class Iride():
 
             if methodname == 'ModificaDocumento' and fail_test:
                 out['result'] = self._SendAgainModificaDocumentoEAnagrafiche()
+                out['second_attempt'] = True
 
             fail_test = any([i in out['result'] for i in ('Errore', 'cod_err', )])
 
             if self.testinfo or fail_test:
                 out['request'] = deep_normalize(dict(request))
-                out['request_repr'] = str(request)
+                out['request_repr'] = '%s' % request
                 out['xml_received'] = str(self.client.last_sent())
             if not fail_test:
                 out['success'] = 1
@@ -685,9 +686,10 @@ class IrideProtocollo(Iride):
             Origine = 'A',
         )
 
-        request = self.build_xml('ModificaDocumentoEAnagrafiche', ProtoIn=dict(defaults, **kw))
+        #request = self.build_xml('ModificaDocumentoEAnagrafiche', ProtoIn=dict(defaults, **kw))
+        request = self.build_xml('ProtoIn', **dict(defaults, **kw))
 
-        return self.query_service('ModificaDocumento', request)
+        return self.query_service('ModificaDocumento', request, '', '')
 
 
 class IrideProcedimento(Iride):
