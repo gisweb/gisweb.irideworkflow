@@ -275,7 +275,7 @@ class Iride():
         except Exception as err:
             out['message'] = '%s' % err
             # for debug purposes in case of exception reasons are in input data
-            out['request'] = deep_normalize(dict(request))
+            out['request'] = deep_normalize((dict(request), )+other)
             out['xml_received'] = str(self.client.last_sent())
         else:
             out['result'] = self.parse_response(res)
