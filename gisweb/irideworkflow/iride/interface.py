@@ -279,6 +279,10 @@ class Iride():
             out['xml_received'] = str(self.client.last_sent())
         else:
             out['result'] = self.parse_response(res)
+
+            if methodname == 'ModificaDocumento' and any([i in out['result'] for i in ('Errore', 'cod_err', )]):
+                out['result'] = self._SendAgainModificaDocumentoEAnagrafiche()
+
             if self.testinfo or any([i in out['result'] for i in ('Errore', 'cod_err', )]):
                 out['request'] = deep_normalize(dict(request))
                 out['xml_received'] = str(self.client.last_sent())
@@ -621,6 +625,49 @@ class IrideProtocollo(Iride):
 
         return self.query_service('RicercaPerCodiceFiscale', request)
 
+    def _SendAgainModificaDocumentoEAnagrafiche(self):
+        """ """
+        # 1. recupero il documento appena inviato
+        bad_xml_request = str(self.client.last_sent())
+
+        # 2. apporto le modifiche cablate
+        from lxml import etree
+        root = etree.fromstring(bad_xml_request)
+        root[1][0].append(root[1][0][0][-2])
+        root[1][0].append(root[1][0][0][-1])
+        root[1][0][0] = root[1][0][0][0]
+        good_xml_request = etree.tostring(root)
+
+        # 3. mando di nuovo il documento
+        import urllib2
+        headers = {
+            'Content-Type': 'application/soap+xml; charset=utf-8',
+            'Host': self.HOST[7:],
+            'Content-Type': 'text/xml; charset=utf-8',
+            'Content-Length': len(good_xml_request),
+            'SOAPAction': "http://tempuri.org/ModificaDocumentoEAnagrafiche"
+        }
+        auth_handler = urllib2.HTTPBasicAuthHandler()
+        opener = urllib2.build_opener(auth_handler)
+        urllib2.install_opener(opener)
+
+        req = urllib2.Request(self.url, good_xml_request, headers)
+        response = urllib2.urlopen(req)
+
+        # 4. preparo la risposta
+        def getTag(tag):
+            """ Elimino eventuale name space (es. {http://tempuri.org/}) """
+            if '}' in tag:
+                return tag[tag.index('}')+1:]
+            else:
+                return tag
+
+        the_page = response.read()
+        resp = etree.fromstring(the_page)
+        dresp = dict([(getTag(i.tag), i.text) for i in resp[0][0][0]])
+        return dresp
+
+
     def ModificaDocumentoEAnagrafiche(self, **kw):
         """ Partendo dal docid, o in sua assenza dall'anno e numero protocollo,
         il sistema provvederà a recuperare il documento e ad aggiornarlo con le
@@ -634,8 +681,6 @@ class IrideProtocollo(Iride):
         )
 
         request = self.build_xml('ModificaDocumentoEAnagrafiche', ProtoIn=dict(defaults, **kw))
-        #sub_request = self.build_xml('ModificaProtocolloIn', **dict(defaults, **kw))
-        #request.ProtoIn = sub_request
 
         return self.query_service('ModificaDocumento', request)
 
