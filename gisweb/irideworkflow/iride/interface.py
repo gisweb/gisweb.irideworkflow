@@ -269,7 +269,7 @@ class Iride():
         if self.testinfo: t0 = datetime.now()
         try:
             if isinstance(request, dict):
-                res n= service(**request)
+                res = service(**request)
             else:
                 res = service(request, *other)
         except Exception as err:
