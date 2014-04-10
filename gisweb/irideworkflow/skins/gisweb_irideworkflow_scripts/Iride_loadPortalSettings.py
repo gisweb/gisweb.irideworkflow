@@ -21,7 +21,7 @@ if 'Iride' in pp.keys():
 else:
     out = dict()
 
-updatenfo = dict([(k,v) for k,v in context.getParentDatabase().propertyItems()
+updatenfo = dict([(k[6:],v) for k,v in context.getParentDatabase().propertyItems()
     if k.startswith('Iride_')])
 
 if len(updatenfo)>0:
