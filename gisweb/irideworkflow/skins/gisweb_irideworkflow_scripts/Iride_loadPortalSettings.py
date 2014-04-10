@@ -13,7 +13,6 @@ from Products.CMFCore.utils import getToolByName
 
 # così posso prendere alcuni attributi di default dalle
 # portal_properties del portale
-# (es. HOST è una impostazione propria del portale)
 pp = getToolByName(context,'portal_properties')
 
 if 'Iride' in pp.keys():
@@ -21,7 +20,9 @@ if 'Iride' in pp.keys():
 else:
     out = dict()
 
-updatenfo = dict([(k,v) for k,v in context.getParentDatabase().propertyItems()
+# così posso anche differenziare i settaggi per i singoli PlominoDatabase
+# su uno stesso portale
+updatenfo = dict([(k[6:],v) for k,v in context.getParentDatabase().propertyItems()
     if k.startswith('Iride_')])
 
 if len(updatenfo)>0:
