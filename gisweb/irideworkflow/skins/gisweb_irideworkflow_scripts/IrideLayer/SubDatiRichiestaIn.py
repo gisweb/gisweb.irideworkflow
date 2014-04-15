@@ -79,7 +79,8 @@ plominoDocument = context.getParentDocument()
 
 out = dict()
 
-out['ProcessID'] = plominoDocument.getItem('numero_pratica') or plominoDocument.getId()
+ProcessID = plominoDocument.getItem('numero_pratica') or plominoDocument.getId()
+out['ProcessID'] = str(ProcessID)
 out['Oggetto'] = plominoDocument.Title()
 out['Stato'] = plominoDocument.wf_statesInfo()[0]['title']
 
