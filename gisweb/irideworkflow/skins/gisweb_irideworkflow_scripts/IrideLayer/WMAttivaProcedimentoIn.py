@@ -38,7 +38,7 @@ Chiavi da restituire:
 
 plominoDocument = context.getParentDocument()
 
-dati_richiesta = plominoDocument.IrideLayer.SubDatiRichiestaIn(protcollo_automatico=protcollo_automatico)
+dati_richiesta = plominoDocument.IrideLayer.SubDatiRichiestaIn(protocollo_automatico=protocollo_automatico)
 
 out = dict()
 out['codice_fiscale_titolare'] = dati_richiesta['tit_codfisc']
