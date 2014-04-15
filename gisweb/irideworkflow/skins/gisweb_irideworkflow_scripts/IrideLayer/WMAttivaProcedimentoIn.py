@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=protocollo_automatico='SI', json=False
+##parameters=protocollo_automatico=True, json=False
 ##title=
 ##
 # Example code:
@@ -14,8 +14,8 @@ Ricava dal PlominoDocument le informazioni utili per costruire un oggetto
 dati_procedimento-like.
 
 Parametri:
-    protocollo_automatico (Stringa) Indicatore di protocollazione automatica del
-        documento relativo al procedimento. Valori ammessi: Si/No, default = Si;
+    protocollo_automatico (Boolean) Indicatore di protocollazione automatica del
+        documento relativo al procedimento.
 
 Chiavi da restituire:
     codice_fiscale_titolare: identificativo del soggetto intestatario del  procedimento;
@@ -38,7 +38,7 @@ Chiavi da restituire:
 
 plominoDocument = context.getParentDocument()
 
-dati_richiesta = plominoDocument.IrideLayer.SubDatiRichiestaIn()
+dati_richiesta = plominoDocument.IrideLayer.SubDatiRichiestaIn(protcollo_automatico=protcollo_automatico)
 
 out = dict()
 out['codice_fiscale_titolare'] = dati_richiesta['tit_codfisc']
@@ -56,7 +56,7 @@ out['oggetto'] = datiProtocolloIn['Oggetto']
 # TODO: restituisce ancora un dizionario VUOTO!!
 out['dati_procedimento'] = plominoDocument.IrideLayer.SubDatiProcedimentoIn()
 
-out['dati_richiesta'] = plominoDocument.IrideLayer.SubDatiRichiestaIn()
+out['dati_richiesta'] = dati_richiesta
 
 if json:
     from Products.CMFPlomino.PlominoUtils import json_dumps
