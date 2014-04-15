@@ -81,7 +81,7 @@ out = dict()
 
 out['ProcessID'] = plominoDocument.getItem('numero_pratica') or plominoDocument.getId()
 out['Oggetto'] = plominoDocument.Title()
-out['Stato'] = plominoDocument.wf_statesInfo()['title']
+out['Stato'] = plominoDocument.wf_statesInfo()[0]['title']
 
 if not protocollo_automatico:
     # la protocollazione automatica è il default
