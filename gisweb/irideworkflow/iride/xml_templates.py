@@ -78,7 +78,7 @@ processo = dict(
     ProcessID = tstr,
     Oggetto = tuni,
     Stato = tuni,
-    ProtocolloAutomatico = tstr
+    protocollo_automatico = tstr
 )
 
 oneri = dict(

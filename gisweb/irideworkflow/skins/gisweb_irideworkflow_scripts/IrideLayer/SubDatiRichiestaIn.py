@@ -86,7 +86,7 @@ out['Stato'] = plominoDocument.wf_statesInfo()[0]['title']
 
 if not protocollo_automatico:
     # la protocollazione automatica è il default
-    out['ProtocolloAutomatico'] = 'NO'
+    out['protocollo_automatico'] = 'NO'
 
 if plominoDocument.getItem('giuridica_opt', ''):
     out.update(plominoDocument.IrideLayer.compilagiuridica())
