@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=oggetto=None, data=None, protocollo_automatico='SI', testinfo=False, json=False, pmsg=True
+##parameters=oggetto=None, data=None, protocollo_automatico=True, testinfo=False, json=False, pmsg=True
 ##title=
 ##
 # Example code:
