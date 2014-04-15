@@ -95,7 +95,16 @@ def prepare_xml_richiesta(dati_allegati=[], **kw):
 
     dati_procedimento = etree.SubElement(root, 'dati_procedimento')
 
-    from xml_templates import titolare, richiedente, allegati
+    from xml_templates import titolare, richiedente, allegati, processo
+
+    dati_processo = etree.SubElement(dati_procedimento, 'dati_processo')
+    for el,v in processo.items():
+        for el,v in processo.items():
+            locals()[el] = etree.SubElement(dati_processo, el)
+            if 'dati_processo' in kw and el in kw['dati_processo']:
+                assign_value(locals()[el], kw['dati_processo'][el], *v)
+            elif el in kw:
+                assign_value(locals()[el], kw[el], *v)
 
     # almeno il titolare della richiesta è obbligatorio
     dati_titolare = etree.SubElement(dati_procedimento, 'dati_titolare')

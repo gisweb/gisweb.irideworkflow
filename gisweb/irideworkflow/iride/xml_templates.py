@@ -74,6 +74,13 @@ procedimento = dict(
     protocollo_automatico = tstr
 )
 
+processo = dict(
+    ProcessID = tstr,
+    Oggetto = tuni,
+    Stato = tuni,
+    protocollo_automatico = tstr
+)
+
 oneri = dict(
     one_docid = tint,
     one_ogg = tstr,

@@ -79,9 +79,9 @@ plominoDocument = context.getParentDocument()
 
 out = dict()
 
-out['ProcessID'] = plominoDocument.getId()
+out['ProcessID'] = plominoDocument.getItem('numero_pratica') or plominoDocument.getId()
 out['Oggetto'] = plominoDocument.Title()
-out['Stato'] = ''
+out['Stato'] = plominoDocument.wf_statesInfo()['title']
 
 if not protocollo_automatico:
     # la protocollazione automatica è il default
