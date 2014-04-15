@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=oggetto=None, data=None, protocollo_automatico='SI', pmsg=True, testinfo=False, json=False
+##parameters=oggetto=None, data=None, protocollo_automatico=True, pmsg=True, testinfo=False, json=False
 ##title=
 ##
 # Example code:
@@ -15,11 +15,11 @@
     data (String):
         data della richiesta di protocollazione (se mancante verrà usata quella
         corrente dalle procedure interne)
-    protocollo_automatico (String):
-        valori accettai: SI/NO. utile per inibire la protocollazione.
+    protocollo_automatico (Boolean):
+        utile per inibire la protocollazione.
         caso d'uso: invio di pratiche pregresse già protocollate
     pmsg (Boolean):
-        se i messaggi di errore debbano essere passati al PortalMessage
+        se vero i messaggi di errore vengono passati al PortalMessage
 
     testinfo e json sono parametri di test/debug.
 """
