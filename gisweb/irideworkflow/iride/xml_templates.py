@@ -71,7 +71,7 @@ procedimento = dict(
     pro_stato = tstr,
     pro_dtarr = tdate,
     pro_ricpro = tstr,
-    protocollo_automatico = tstr
+    #protocollo_automatico = tstr
 )
 
 processo = dict(
