@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=protocollo_automatico='SI'
+##parameters=protocollo_automatico='SI', json=False
 ##title=
 ##
 # Example code:
@@ -48,15 +48,19 @@ if plominoDocument.getItem('giuridica_opt', ''):
     out['codice_fiscale_richiedente'] = dati_richiesta['ric_codfisc']
     out['anagrafica_richiedente'] = (' '.join((dati_richiesta['ric_cognome'], dati_richiesta['ric_nome'], ))).strip()
 
-
 datiProtocolloIn = plominoDocument.IrideLayer.ProtocolloIn()
 out['tipo_procedimento'] = '%(TipoDocumento)s|%(Classifica)s|%(InCaricoA)s' % datiProtocolloIn
 
 out['oggetto'] = datiProtocolloIn['Oggetto']
 
 # TODO: restituisce ancora un dizionario VUOTO!!
-out['dati_procedimento'] = plominoDocument.IrideLayer.SubDatiProcedimentoIn(protocollo_automatico=protocollo_automatico)
+out['dati_procedimento'] = plominoDocument.IrideLayer.SubDatiProcedimentoIn()
 
 out['dati_richiesta'] = plominoDocument.IrideLayer.SubDatiRichiestaIn()
 
-return out
+if json:
+    from Products.CMFPlomino.PlominoUtils import json_dumps
+    print json_dumps(out)
+    return printed
+else:
+    return out

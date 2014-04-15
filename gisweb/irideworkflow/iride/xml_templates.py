@@ -70,7 +70,8 @@ procedimento = dict(
     pro_respon = tstr,
     pro_stato = tstr,
     pro_dtarr = tdate,
-    pro_ricpro = tstr
+    pro_ricpro = tstr,
+    protocollo_automatico = tstr
 )
 
 oneri = dict(

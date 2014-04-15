@@ -4,7 +4,7 @@
 ##bind namespace=
 ##bind script=script
 ##bind subpath=traverse_subpath
-##parameters=
+##parameters=protocollo_automatico=True, json=False
 ##title=
 ##
 # Example code:
@@ -83,6 +83,10 @@ out['ProcessID'] = plominoDocument.getId()
 out['Oggetto'] = plominoDocument.Title()
 out['Stato'] = ''
 
+if not protocollo_automatico:
+    # la protocollazione automatica è il default
+    out['protocollo_automatico'] = 'NO'
+
 if plominoDocument.getItem('giuridica_opt', ''):
     out.update(plominoDocument.IrideLayer.compilagiuridica())
     out.update(plominoDocument.IrideLayer.compilafisica(tit=False))
@@ -122,5 +126,10 @@ for fld in fields:
             )
 dati_allegati.sort()
 out['dati_allegati'] = [i[1] for i in dati_allegati]
+
+if json:
+    from Products.CMFPlomino.PlominoUtils import json_dumps
+    print json_dumps(out)
+    return printed
 
 return out
