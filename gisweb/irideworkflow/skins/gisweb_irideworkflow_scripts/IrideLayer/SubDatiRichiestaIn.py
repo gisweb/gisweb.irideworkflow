@@ -67,6 +67,9 @@ Chiavi da restituire:
     ric_email   (Stringa)  indirizzo email
     ric_pec     (Stringa)  indirizzo email posta certificata
     ric_cell    (Stringa)  telefono cellulare
+    
+    progkmda    (Stringa)   Progressiva Da KM
+    progkma     (Stringa)   Progressiva A KM
 
     all_blob     (BinBase64) Documento binario
     all_descri   (Stringa)   Descrizione documento
@@ -83,6 +86,10 @@ ProcessID = plominoDocument.getItem('numero_pratica') or plominoDocument.getId()
 out['ProcessID'] = str(ProcessID)
 out['Oggetto'] = plominoDocument.Title()
 out['Stato'] = plominoDocument.wf_statesInfo()[0]['title']
+
+out['progkmda']=str(plominoDocument.getItem('ubicazione_daprog',''))
+out['progkma']=str(plominoDocument.getItem('ubicazione_aprog',''))
+
 
 if not protocollo_automatico:
     # la protocollazione automatica è il default

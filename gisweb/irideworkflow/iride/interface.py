@@ -203,11 +203,11 @@ def deep_normalize(d):
 
 class Iride():
     """ Base class for interfacing to Iride web services """
-    HOST = 'http://10.94.128.230' # 'http://127.0.0.1:3340' #
+    HOST = 'http://10.94.129.204' # 'http://127.0.0.1:3340' #
     SPATH = 'ulissetest/iride/web_services_20'
     Utente = UTENTE
     Ruolo = RUOLO
-    timeout = 180
+    timeout = 480
 
     def __init__(self, testinfo=False, **kw):
         self.testinfo = testinfo
