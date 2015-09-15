@@ -84,7 +84,7 @@ out = dict()
 
 ProcessID = plominoDocument.getItem('numero_pratica') or plominoDocument.getId()
 out['ProcessID'] = str(ProcessID)
-out['Oggetto'] = plominoDocument.Title()
+out['Oggetto'] = "%s %s - %s" %(plominoDocument.getItem('fisica_cognome',''),plominoDocument.getItem('fisica_nome',''),plominoDocument.Title())
 out['Stato'] = plominoDocument.wf_statesInfo()[0]['title']
 
 out['progkmda']=str(plominoDocument.getItem('ubicazione_daprog',''))
