@@ -51,7 +51,7 @@ if plominoDocument.getItem('giuridica_opt', ''):
 datiProtocolloIn = plominoDocument.IrideLayer.ProtocolloIn()
 out['tipo_procedimento'] = '%(TipoDocumento)s|%(Classifica)s|%(InCaricoA)s' % datiProtocolloIn
 
-out['oggetto'] = datiProtocolloIn['Oggetto']
+out['oggetto'] = "%s - %s" %(out['anagrafica_titolare'],datiProtocolloIn['Oggetto']
 
 # TODO: restituisce ancora un dizionario VUOTO!!
 out['dati_procedimento'] = plominoDocument.IrideLayer.SubDatiProcedimentoIn()
