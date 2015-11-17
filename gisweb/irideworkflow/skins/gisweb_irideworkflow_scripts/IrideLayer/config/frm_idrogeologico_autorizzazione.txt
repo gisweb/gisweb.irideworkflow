@@ -34,7 +34,7 @@ INGEO_LOC_STUDIO = studio_progettista
 INGEO_VIA_STUDIO = via_progettista
 INGEO_NCIV_STUDIO = civico_progettista
 INGEO_TELEF_PROGE = telefono_progettista
-INGEO_WKTGEOM = localizzazione_indirizzo_geometry
+INGEO_WKTGEOM = ubicazione_posizione_geometry
 
 [POR_UBICA_INGEO]
 UINGEO_COMUNE = comune_punto

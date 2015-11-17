@@ -1,0 +1,25 @@
+# Autorizzazione unica per impianti di produzione di energia alimentati da fonti rinnovabili (ex art.29 L.R. 16/2008)
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = FRUNI
+InCaricoA = FD3SETTEC
+Classifica = IX.06.01.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_UNICAFONTI]
+UNIFO_VARIMP = tipologia_richiesta
+UNIFO_MODIFICA = tipologia_modifica
+UNIFO_TIPOIMP = tipo_impianto
+UNIFO_POTENZA = potenza_impianto
+UNIFO_COMUNE = COMUNE_ISTAT
+UNIFO_INDIRIZZO = ubicazione_indirizzo
+UNIFO_CIVICO = ubicazione_civico
+UNIFO_CAP = ubicazione_cap
+UNIFO_FOGLIO = ubicazione_foglio
+UNIFO_MAPPALE = ubicazione_mappale
+UNIFO_WKTGEOM = ubicazione_posizione_geometry

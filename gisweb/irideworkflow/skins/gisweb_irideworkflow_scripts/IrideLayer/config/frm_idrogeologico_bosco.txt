@@ -28,7 +28,7 @@ BO_VIA_STUDIO = via_progettista
 BO_NCIV_STUDIO = civico_progettista
 BO_TELEF_PROGE = telefono_progettista
 BO_AREA_SIC = area_sic
-BO_WKTGEOM = localizzazione_indirizzo_geometry
+BO_WKTGEOM = ubicazione_posizione_geometry
 
 [POR_UBICA_BOSCO]
 UBO_COMUNE = comune_punto

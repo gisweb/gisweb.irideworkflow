@@ -1,9 +1,10 @@
 # Comunicazione per inizio attività di recupero rifiuti sottoposte a procedure semplificate
 
+
 [CONFIG]
 # - INFORMAZIONI DI PROTOCOLLAZIONE
 TipoDocumento = RIFSE
-InCaricoA = RIFIUTINEW
+InCaricoA = FD4SETAMM
 Classifica = IX.07.
 
 # - STRUTTURE MULTI-RECORD PRESENTI
@@ -14,7 +15,10 @@ POR_RIFIUTICER_SEMP = rifiuti_elenco_cer
 
 # - STRUTTURA MONORECORD
 [POR_RIFIUTI_SEMP]
-RSEMP_COMUNE = ubicazione_comune
+RSEMP_COM = ??? TODO..... cambiare il tipo di campo 
+RSEMP_NUMREG = numero_registro
+RSEMP_PROVVE = data_inizio_attivita  ??? data
+RSEMP_COMUNE = COMUNE_ISTAT
 RSEMP_INDIRIZZO = ubicazione_indirizzo
 RSEMP_CIVICO = ubicazione_civico
 RSEMP_CAP = ubicazione_cap
@@ -27,8 +31,7 @@ RSEMP_POTEN_TN = rifiuti_elenco_cer_totale_2
 RSEMP_STOCCA_MC = rifiuti_elenco_cer_totale_3
 RSEMP_STOCCA_TN = rifiuti_elenco_cer_totale_4
 RSEMP_NOTE = rifiuti_annotazioni
-RSEMP_WKTGEOM = localizzazione_indirizzo_geometry
-
+RSEMP_WKTGEOM = ubicazione_posizione_geometry
 
 # - STRUTTURE MULTIRECORD
 [POR_SUBRIFIUTI_SEMP]
@@ -40,9 +43,9 @@ CERSEMP_TIPOLOGIA = rifiuti_tipologia
 CERSEMP_CODICE = rifiuti_codice
 CERSEMP_OPERAZIONE = rifiuti_operazioni
 CERSEMP_POTEN_MC = rifiuti_potenzialita_mc
-CERSEMP_POTEN_TN = rifiuti_potenzialita_ton
+CERSEMP_POTEN_TN = rifiuti_potenzialita_t
 CERSEMP_STOCCA_MC = rifiuti_stoccaggio_mc
-CERSEMP_STOCCA_TN = rifiuti_stoccaggio_mc
+CERSEMP_STOCCA_TN = rifiuti_stoccaggio_t
 CERSEMP_MATERIA = rifiuti_materia
 CERSEMP_ENERGIA = rifiuti_energia
 CERSEMP_ANALISI = rifiuti_analisi

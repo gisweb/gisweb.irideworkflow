@@ -1,0 +1,21 @@
+# Istanza di voltura dell'Autorizzazione unica all'esercizio di impianti di smaltimento e di recupero rifiuti (art. 208 Dlgs 152/2006)
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = RIFVA
+InCaricoA = FD4SETAMM
+Classifica = IX.07.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_RIFIUTI_VOLAU]
+RIF4_NREP = concessione_repertorio_numero
+RIF4_DATAREP = concessione_repertorio_data
+RIF4_INTESTA = concessione_intestazione_precedente
+RIF4_MOTIVO = concessione_voltura_motivazione
+RIF4_NOMODIFICA ???????????????? un campo con il valore 
+RIF4_OPEREMOD
+RIF4_NOTEMOD = concessione_modificazioni_altro

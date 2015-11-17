@@ -60,4 +60,4 @@ DPOZ_UTILIZZO = utilizzo_pozzo
 DPOZ_GGUTILIZZO = utilizzo_giorni_anno
 DPOZ_OREUTILIZZO = utilizzo_ore_giorno
 DPOZ_CONSUMO_ANNO = consumo_annuo
-DPOZ_WKTGEOM = localizzazione_indirizzo_geometry
+DPOZ_WKTGEOM = ubicazione_posizione_geometry

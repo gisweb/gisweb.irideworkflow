@@ -3,7 +3,7 @@
 [CONFIG]
 # - INFORMAZIONI DI PROTOCOLLAZIONE
 TipoDocumento = SCAAP
-InCaricoA = INQUIACQUENEW
+InCaricoA = FD4SETAMM
 Classifica = IX.04.01.
 
 # - STRUTTURE MULTI-RECORD PRESENTI
@@ -12,13 +12,13 @@ POR_ELESCARICO_AP = elenco_scarichi
 
 # - STRUTTURA MONORECORD
 [POR_SCARICO_AP]
-SCAAP_COMUNE = ubicazione_comune
+SCAAP_COMUNE = COMUNE_ISTAT
 SCAAP_INDIRIZZO = ubicazione_indirizzo
 SCAAP_CIVICO = ubicazione_civico
 SCAAP_CAP = ubicazione_cap
 SCAAP_FOGLIO = ubicazione_foglio
 SCAAP_MAPPALE = ubicazione_mappale
-SCAAP_WKTGEOM = localizzazione_indirizzo_geometry
+SCAAP_WKTGEOM = ubicazione_posizione_geometry
 
 # - STRUTTURE MULTIRECORD
 [POR_ELESCARICO_AP]

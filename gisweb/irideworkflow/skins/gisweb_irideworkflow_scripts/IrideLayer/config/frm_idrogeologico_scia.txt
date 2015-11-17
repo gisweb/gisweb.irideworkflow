@@ -26,7 +26,7 @@ SCIAIDR_LOC_STUDIO = studio_progettista
 SCIAIDR_VIA_STUDIO = via_progettista
 SCIAIDR_NCIV_STUDIO = civico_progettista
 SCIAIDR_TELEF_PROGE = telefono_progettista
-SCIAIDR_WKTGEOM = localizzazione_indirizzo_geometry
+SCIAIDR_WKTGEOM = ubicazione_posizione_geometry
 
 [POR_UBICA_SCIAIDR]
 USCIAIDR_COMUNE = comune_punto

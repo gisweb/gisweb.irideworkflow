@@ -1,0 +1,23 @@
+# Istanza di autorizzazione alle emissioni in atmosfera di impianti produttivi
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = EMANU
+InCaricoA = FD3SETTEC
+Classifica = IX.05.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_EMATMO]
+EMA_TIPOLOGIA = tipologia_autorizzazione
+EMA_COMUNE = COMUNE_ISTAT
+EMA_INDIRIZZO = ubicazione_indirizzo
+EMA_CIVICO = ubicazione_civico
+EMA_CAP = ubicazione_cap
+EMA_FOGLIO = ubicazione_foglio
+EMA_MAPPALE = ubicazione_mappale
+EMA_COORD = ubicazione_posizione
+EMA_WKTGEOM = ubicazione_posizione_geometry

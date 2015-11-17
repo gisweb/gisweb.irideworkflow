@@ -33,7 +33,7 @@ ATTAP_FOGLIO = ubicazione_foglio
 ATTAP_MAPPALE = ubicazione_mappale
 #ATTAP_POSLAT
 #ATTAP_POSLONG
-ATTAP_WKTGEOM = localizzazione_indirizzo_geometry
+ATTAP_WKTGEOM = ubicazione_posizione_geometry
 
 [POR_UBICA_ACQUAP]
 UACQUAP_COMUNE = comune_punto

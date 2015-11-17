@@ -1,0 +1,21 @@
+# Istanza di voltura dell'iscrizione di attività di recupero rifiuti sottoposte a procedure semplificate
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = RIFVI
+InCaricoA = FD4SETAMM
+Classifica = IX.07.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+# NESSUNA STRUTTURA MULTIRECORD PRESENTE
+
+# - STRUTTURA MONORECORD
+[POR_RIFIUTI_VOLI]
+RIF3_NREP = concessione_repertorio_numero
+RIF3_DATAREP = concessione_repertorio_data
+RIF3_INTESTA = concessione_intestazione_precedente
+RIF3_MOTIVO = concessione_voltura_motivazione
+RIF3_NOMODIFICA ???????????????? un campo con il valore 
+RIF3_OPEREMOD
+RIF3_NOTEMOD = concessione_modificazioni_altro

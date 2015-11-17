@@ -3,7 +3,7 @@
 [CONFIG]
 # - INFORMAZIONI DI PROTOCOLLAZIONE
 TipoDocumento = SCAVD
-InCaricoA = INQUIACQUENEW
+InCaricoA = FD4SETAMM
 Classifica = IX.04.01.
 
 # - STRUTTURE MULTI-RECORD PRESENTI
@@ -27,4 +27,4 @@ SCAVD_CIVICO = ubicazione_civico
 SCAVD_CAP = ubicazione_cap
 SCAVD_FOGLIO = ubicazione_foglio
 SCAVD_MAPPALE = ubicazione_mappale
-SCAVD_WKTGEOM = localizzazione_indirizzo_geometry
+SCAVD_WKTGEOM = ubicazione_posizione_geometry

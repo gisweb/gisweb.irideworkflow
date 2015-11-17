@@ -46,7 +46,7 @@ CONIDR_FOGLIO = localizzazione_foglio
 CONIDR_MAPPALE = localizzazione_mappale
 #CONIDR_POSLAT = 
 #CONIDR_POSLONG = 
-CONIDR_WKTGEOM = localizzazione_indirizzo_geometry
+CONIDR_WKTGEOM = ubicazione_posizione_geometry
 
 
 # - STRUTTURE MULTIRECORD

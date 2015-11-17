@@ -5,7 +5,7 @@
 [CONFIG]
 # - INFORMAZIONI DI PROTOCOLLAZIONE
 TipoDocumento = SCARD
-InCaricoA = INQUIACQUENEW
+InCaricoA = FD4SETAMM
 Classifica = IX.04.01.
 
 # - STRUTTURE MULTI-RECORD PRESENTI
@@ -23,4 +23,4 @@ SCARD_CIVICO = ubicazione_civico
 SCARD_CAP = ubicazione_cap
 SCARD_FOGLIO = ubicazione_foglio
 SCARD_MAPPALE = ubicazione_mappale
-SCARD_WKTGEOM = localizzazione_indirizzo_geometry
+SCARD_WKTGEOM = ubicazione_posizione_geometry

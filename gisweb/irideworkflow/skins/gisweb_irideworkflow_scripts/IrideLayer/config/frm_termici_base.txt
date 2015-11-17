@@ -1,0 +1,69 @@
+#Dichiarazione di nuovo impianto termico attestante il rispetto del regolamento
+#del contenimento dei consumi energetici d.p.r. 412/93
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = DENIT
+InCaricoA = FD3SETTEC
+Classifica = X.06.03.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+POR_ITERMI_GEN = termico_caratteristiche_generatori
+
+# - STRUTTURA MONORECORD
+[POR_ITERMI]
+ITERM_PROPRIE
+ITERM_CONAFF
+ITERM_AMMINI
+ITERM_INF35KW
+ITERM_SUP35KW
+
+ITERM_RAGSOC
+ITERM_CCIIA
+ITERM_REGNUM
+ITERM_PARTIVA
+ITERM_CODFIS
+ITERM_COMUNE
+ITERM_PROV
+ITERM_CAP
+ITERM_LOCE
+ITERM_INDIR
+ITERM_NCIV
+ITERM_EMAIL
+ITERM_PEC
+ITERM_TELF
+ITERM_TELC
+ITERM_FAX
+ITERM_LABTEKIMP
+ITERM_TIPOAUTO
+ITERM_TIPOCENT
+ITERM_NUMGEN
+ITERM_AIRGEN
+ITERM_WATERGEN
+ITERM_WGSANS
+ITERM_WGSANN
+ITERM_COMBSOL
+ITERM_COMBLIQ
+ITERM_COMBGAS
+ITERM_DATAINST
+
+
+
+
+
+IMPIA_COMUNE = ubicazione_comune
+IMPIA_INDIRIZZO = ubicazione_indirizzo
+IMPIA_CIVICO = ubicazione_civico
+IMPIA_CAP = ubicazione_cap
+IMPIA_FOGLIO = ubicazione_foglio
+IMPIA_MAPPALE = ubicazione_mappale
+IMPIA_TIPOLOGIA = oliminerali_tipo_impianto
+IMPIA_TERRENO = oliminerali_terreno
+IMPIA_WKTGEOM = ubicazione_posizione
+
+# - STRUTTURA MULTIRECORD
+[POR_ITERMI_GEN]
+SERB_CAPACITA = oliminerali_serbatoio
+SERB_DISTANZA = oliminerali_distanza
+SERB_COMBUSTIBILE = oliminerali_tipologie

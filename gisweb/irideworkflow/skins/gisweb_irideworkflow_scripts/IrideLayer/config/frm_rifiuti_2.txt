@@ -3,12 +3,14 @@
 [CONFIG]
 # - INFORMAZIONI DI PROTOCOLLAZIONE
 TipoDocumento = RIFDA
-InCaricoA = RIFIUTINEW
+InCaricoA = FD4SETAMM
 Classifica = IX.07.
 
 # - STRUTTURE MULTI-RECORD PRESENTI
 # -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
 POR_SUBRIFIUTI = ubicazione_altri_mappali
+POR_RIFIUTI_INGRESSO = elenco_cer
+POR_RIFIUTI_USCITA = elenco_cer_trattati
 
 # - STRUTTURE MONORECORD
 [POR_RIFIUTI]
@@ -43,14 +45,27 @@ NSEMP_R10 = ,N,,
 NSEMP_R11 = ,N,,
 NSEMP_R12 = ,N,,
 NSEMP_R13 = ,N,,
-NSEMP_COMUNE = ubicazione_comune
+NSEMP_COMUNE = COMUNE_ISTAT
 NSEMP_INDIRIZZO = ubicazione_indirizzo
 NSEMP_CIVICO = ubicazione_civico
 NSEMP_CAP = ubicazione_cap
 NSEMP_FOGLIO = ubicazione_foglio
 NSEMP_MAPPALE = ubicazione_mappale
-NSEMP_WKTGEOM = localizzazione_indirizzo_geometry
+NSEMP_WKTGEOM = ubicazione_posizione_geometry
+NSEMP_NPOTMC = capacita_totale_stoccaggio_mc
+NSEMP_NPOTON = capacita_totale_stoccaggio_t
+NSEMP_GGPOTMC = potenzialita_giornaliera_mc
+NSEMP_GGPOTON = potenzialita_giornaliera_t
+NSEMP_AAPOTMC = potenzialita_annua_mc
+NSEMP_AAPOTON = potenzialita_annua_t
+NSEMP_ORAPOTMC = potenzialita_oraria_mc
+NSEMP_ORAPOTON = potenzialita_oraria_t
+NSEMP_ORAGG = numero_ore_giornaliere
+NSEMP_GGANNO = numero_ore_annuali
+NSEMP_RIFIDEST = destinazione_rifiuti_post_trattamento
+NSEMP_MATEDEST = destinazione_rifiuti_materie_prime
 
+??? manca opzione gestore
 
 [POR_GESRIFIUTI]
 GEST_RAGSOC = gestore_denominazione
@@ -71,3 +86,23 @@ GEST_FAX = gestore_fax
 [POR_SUBRIFIUTI]
 SUB_FOGLIO = ubicazione_foglio
 SUB_MAPPALE = ubicazione_mappale
+
+[POR_RIFIUTI_INGRESSO]
+ING_TIPOLOGIA = rifiuti_tipologia
+ING_POTEN_MC = rifiuti_potenzialita_mc
+ING_POTEN_TN = rifiuti_potenzialita_t
+ING_STOCCA_MC = rifiuti_stoccaggio_mc
+ING_STOCCA_TN = rifiuti_stoccaggio_t
+ING_GGPERM = rifiuti_tempo_giorni
+ING_LUOGO = rifiuti_luogo_stocaggio
+ING_CAPACITA = rifiuti_capacita_contenitore
+
+[POR_RIFIUTI_USCITA]
+OUT_TIPOLOGIA = rifiuti_tipologia
+OUT_POTEN_MC = rifiuti_potenzialita_mc
+OUT_POTEN_TN = rifiuti_potenzialita_t
+OUT_STOCCA_MC = rifiuti_stoccaggio_mc
+OUT_STOCCA_TN = rifiuti_stoccaggio_t
+OUT_GGPERM = rifiuti_tempo_giorni
+OUT_LUOGO = rifiuti_luogo_stocaggio
+OUT_CAPACITA = rifiuti_capacita_contenitore

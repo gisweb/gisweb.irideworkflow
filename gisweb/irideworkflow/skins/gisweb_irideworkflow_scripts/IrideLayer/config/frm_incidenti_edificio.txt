@@ -1,0 +1,54 @@
+#Richiesta di risarcimento danni a seguito di sinistro all'interno di edificio
+#o delle sue pertinenze
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = SINED
+InCaricoA = ASSICURAZIONINEW
+Classifica = VI.10.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+POR_ANA_EDITERZI = dati_terzi
+
+# - STRUTTURA MONORECORD
+[POR_SINEDI]
+EDI_LEGCOGNOME = cognome_tecnico
+EDI_LEGNOME = nome_tecnico
+EDI_LEGTEL = telefono_tecnico
+EDI_LEGINDIRIZZO = indirizzo_tecnico
+EDI_LEGALBO = albo_tecnico
+EDI_LEGISCRIZIONE = iscrizione_tecnico
+EDI_LEGPEC = pec_tecnico
+EDI_DATASIN = data_incidente
+EDI_ORASIN = ora_incidente
+EDI_MINSIN = minuti_incidente
+EDI_IMMOBILE = luogo_immobile
+EDI_DESIMMOBILE = ubicazione_descrizione
+EDI_INDIMMOBILE = ubicazione_indirizzo
+EDI_CODMAPPA = ubicazione_codice
+EDI_COMUNE = ubicazione_comune
+EDI_FOGLIO = ubicazione_foglio
+EDI_MAPPALE = ubicazione_mappale
+EDI_TERZI
+EDI_DESINCIDENTE = descrizione_incidente
+EDI_AUTORITA = autorita_incidente
+EDI_FRISARCIMENTO
+EDI_MRISARCIMENTO
+APROG_WKTGEOM
+DAPROG_WKTGEOM
+PROG_WKTGEOM
+
+# - STRUTTURA MULTIRECORD
+[POR_ANA_EDITERZI]
+ATES_TESNOME = fisica_nome
+ATES_TESCOGNOME = fisica_cognome
+ATES_TESDATANAS = fisica_data_nato
+ATES_TESCOMNAS = fisica_comune_nato
+ATES_TESPROVNAS = fisica_provincia_nato
+ATES_TESCITTA = fisica_cittadinanza
+ATES_TESCODFIS = fisica_cf
+ATES_TESCOMRES = fisica_comune
+ATES_TESPROVRES = fisica_provincia
+ATES_TESCAP = fisica_cap
+ATES_TESINDIRIZZO = fisica_indirizzo

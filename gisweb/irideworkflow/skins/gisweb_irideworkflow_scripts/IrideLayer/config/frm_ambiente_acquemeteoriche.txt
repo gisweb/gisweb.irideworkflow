@@ -1,4 +1,5 @@
-# Denuncia ai sensi dell'art. 21 c.2 L.R. 43/1995 delle acque meteoriche di dilavamento
+# Denuncia ai sensi dell'art. 21 c.2 L.R. 43/1995 delle acque 
+# meteoriche di dilavamento
 
 [CONFIG]
 # - INFORMAZIONI DI PROTOCOLLAZIONE
@@ -29,4 +30,4 @@ AMETE_RECAPITO_CO = acque_meteoriche_recapito_2
 AMETE_NAUTOR = acque_meteoriche_aut
 AMETE_DATAUTOR = acque_meteoriche_aut_data
 AMETE_ENTEAUTOR = acque_meteoriche_aut_ril
-AMETE_WKTGEOM = localizzazione_indirizzo_geometry
+AMETE_WKTGEOM = ubicazione_posizione_geometry

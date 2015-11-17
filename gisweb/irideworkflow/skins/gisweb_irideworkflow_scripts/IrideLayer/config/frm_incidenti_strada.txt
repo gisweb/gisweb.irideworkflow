@@ -1,0 +1,88 @@
+#Richiesta di risarcimento danni a seguito di sinistro su strada
+
+[CONFIG]
+# - INFORMAZIONI DI PROTOCOLLAZIONE
+TipoDocumento = SINED
+InCaricoA = ASSICURAZIONINEW
+Classifica = VI.10.
+
+# - STRUTTURE MULTI-RECORD PRESENTI
+# -- <nome tabella> = <nome PlominoField di tipo DATAGRID o DOCLINK>
+POR_ANA_TERZI = dati_terzi
+
+# - STRUTTURA MONORECORD
+[POR_SINSTRADA]
+STRA_PEDONE
+STRA_NOPROPRIETARIO
+STRA_PCOGNOME = fisica_cointestatari_cognome
+STRA_PNOME = fisica_cointestatari_nome
+STRA_PSESSO = fisica_cointestatari_sesso
+STRA_PDATANAS = fisica_cointestatari_data_nato
+STRA_PCOMNAS = fisica_cointestatari_comune_nato
+STRA_PPROVNAS = fisica_cointestatari_provincia_nato
+STRA_PECOMNAS = fisica_cointestatari_loc_nato
+STRA_PCITTADINANZA = fisica_cointestatari_cittadinanza
+STRA_PCODFIS = fisica_cointestatari_cf
+STRA_PCOMRES = fisica_cointestatari_comune
+STRA_PPROVRES = fisica_cointestatari_provincia
+STRA_PINDIRIZZO = fisica_cointestatari_indirizzo
+STRA_PCIVICO = fisica_cointestatari_civico
+STRA_PCAP = fisica_cointestatari_cap
+STRA_LEGCOGNOME = cognome_tecnico
+STRA_LEGNOME = nome_tecnico
+STRA_LEGTEL = telefono_tecnico
+STRA_LEGINDIRIZZO = indirizzo_tecnico
+STRA_LEGALBO = albo_tecnico
+STRA_LEGISCRIZIONE = iscrizione_tecnico
+STRA_LEGPEC = pec_tecnico
+STRA_DATASIN = data_incidente
+STRA_ORASIN = ora_incidente
+STRA_MINSIN = minuti_incidente
+STRA_TIPOSOGG = opt_tecnico
+STRA_LEGCOGNOME = cognome_tecnico
+STRA_LEGNOME = nome_tecnico
+STRA_LEGTEL = telefono_tecnico
+STRA_LEGINDIRIZZO = indirizzo_tecnico
+STRA_LEGALBO = albo_tecnico
+STRA_LEGISCRIZIONE = iscrizione_tecnico
+STRA_LEGPEC = pec_tecnico
+STRA_DATASIN = data_incidente
+STRA_ORASIN = ora_incidente
+STRA_MINSIN = minuti_incidente
+STRA_LOCSTRADA = ubicazione_strada_elenco
+STRA_COMUNE = ubicazione_comune
+STRA_LATO = ubicazione_lato
+STRA_PROGRE = ubicazione_prog
+STRA_INIPROGRE = ubicazione_daprog
+STRA_FINEPROGRE = ubicazione_aprog
+STRA_FOGLIO = ubicazione_foglio
+STRA_MAPPALE = ubicazione_mappale
+STRA_TARGAVE = targa_veicolo
+STRA_TIPOVE = tipologia_veicolo
+STRA_MODVE = modello_veicolo
+STRA_TERZI
+STRA_POLIZIA
+STRA_ATTLAVOR
+STRA_DESINCIDENTE = descrizione_incidente
+STRA_ALTROPOL = polizia_altro
+STRA_VISVEICOLO = luogo_visione_veiclo
+STRA_FRISARCIMENTO
+STRA_MRISARCIMENTO
+STRA_CASCO = assicurazione_casco_opt
+APROG_WKTGEOM = ubicazione_aprog_geometry
+DAPROG_WKTGEOM = ubicazione_daprog_geometry
+PROG_WKTGEOM = ubicazione_prog_geometry
+
+# - STRUTTURA MULTIRECORD
+[POR_ANA_TERZI]
+ATES_TESNOME = fisica_nome
+ATES_TESCOGNOME = fisica_cognome
+ATES_TESDATANAS = fisica_data_nato
+ATES_TESCOMNAS = fisica_comune_nato
+ATES_TESPROVNAS = fisica_provincia_nato
+ATES_TESCITTA = fisica_cittadinanza
+ATES_TESCODFIS = fisica_cf
+ATES_TESCOMRES = fisica_comune
+ATES_TESPROVRES = fisica_provincia
+ATES_TESCAP = fisica_cap
+ATES_TESINDIRIZZO = fisica_indirizzo

@@ -3,7 +3,7 @@
 [CONFIG]
 # - INFORMAZIONI DI PROTOCOLLAZIONE
 TipoDocumento = DVOMC
-InCaricoA = DEPOLIMINNEW
+InCaricoA = FD3SETTEC
 Classifica = IX.06.04.
 
 # - STRUTTURE MULTI-RECORD PRESENTI
@@ -13,17 +13,18 @@ Classifica = IX.06.04.
 # - STRUTTURA MONORECORD
 [POR_OLI_VARIALAV]
 VLAV_TIPOLOGIA = oliminerali_concessione_tipologia
+VLAV_ENTERIL =  = oliminerali_concessione
 VLAV_DATARIL = oliminerali_concessione_data
 VLAV_PROTORIL = oliminerali_concessione_protocollo
 VLAV_NOTECAP = oliminerali_variazione_esistente
 VLAV_TIPOMOD = oliminerali_variazione_tipo
 VLAV_PROVVEDI = oliminerali_variazione_oggetto
 VLAV_CONSISTENZA = oliminerali_variazione_nuova
-VLAV_COMUNE = ubicazione_comune
+VLAV_COMUNE = COMUNE_ISTAT
 VLAV_INDIRIZZO = ubicazione_indirizzo
 VLAV_CIVICO = ubicazione_civico
 VLAV_CAP = ubicazione_cap
 VLAV_FOGLIO = ubicazione_foglio
 VLAV_MAPPALE = ubicazione_mappale
-VLAV_WKTGEOM = localizzazione_indirizzo_geometry
+VLAV_WKTGEOM = ubicazione_posizione_geometry
 

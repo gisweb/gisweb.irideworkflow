@@ -34,7 +34,7 @@ DEMAU_DATAINI_SAN = data_sanatoria
 #DEMAU_CORSO = 
 #DEMAU_POSLAT =
 #DEMAU_POSLONG = 
-#DEMAU_WKTGEOM = localizzazione_indirizzo_geometry
+#DEMAU_WKTGEOM = ubicazione_posizione_geometry
 
 # - STRUTTURE MULTIRECORD
 [POR_UBICA_DEMAUTO]

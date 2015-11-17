@@ -4,7 +4,7 @@
 [CONFIG]
 # - INFORMAZIONI DI PROTOCOLLAZIONE
 TipoDocumento = DEPMI
-InCaricoA = DEPOLIMINNEW
+InCaricoA = FD3SETTEC
 Classifica = IX.06.04.
 
 # - STRUTTURE MULTI-RECORD PRESENTI
@@ -13,15 +13,18 @@ POR_OLI_SERBATOI = oliminerali_elenco_serbatoi
 
 # - STRUTTURA MONORECORD
 [POR_OLI_IMPIA]
-IMPIA_COMUNE = ubicazione_comune
+IMPIA_COMUNE = COMUNE_ISTAT
 IMPIA_INDIRIZZO = ubicazione_indirizzo
 IMPIA_CIVICO = ubicazione_civico
 IMPIA_CAP = ubicazione_cap
 IMPIA_FOGLIO = ubicazione_foglio
 IMPIA_MAPPALE = ubicazione_mappale
 IMPIA_TIPOLOGIA = oliminerali_tipo_impianto
+IMPIA_ENTEAUTOR = oliminerali_autorizzazione
+IMPIA_DATAUTOR = oliminerali_data_autorizzazione
+IMPIA_PROTAUTOR = oliminerali_protocollo
 IMPIA_TERRENO = oliminerali_terreno
-IMPIA_WKTGEOM = localizzazione_indirizzo_geometry
+IMPIA_WKTGEOM = ubicazione_posizione_geometry
 
 # - STRUTTURA MULTIRECORD
 [POR_OLI_SERBATOI]
